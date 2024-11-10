@@ -25,13 +25,9 @@ export default async function Page() {
       <h2 className='font-bold'>User email: {userEmail} </h2>
       <h2 className='font-bold'>User id: {userId} </h2>
 
-      <div className='flex justify-center items-center h-screen'>
-        <div>
-          <form action={logout}>
-            <Button type='submit'>Logout</Button>
-          </form>
-        </div>
-      </div>
+      <form className='mt-5' action={logout}>
+        <Button type='submit'>Logout</Button>
+      </form>
     </>
   );
 }
