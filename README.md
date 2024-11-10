@@ -2,6 +2,10 @@
 
 ## Instructions
 
+```md
+npm install -g pnpm
+```
+
 1. Navigate to the `/login` route to access the authentication page.
 2. You can sign up or log in to the application.
 3. Once authenticated, you will be redirected to a temporary dashboard page.
