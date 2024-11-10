@@ -163,7 +163,8 @@ export default function AuthForm() {
           </Tabs>
         </CardContent>
         <CardFooter>
-          <form onSubmit={handleGoogleAuth} className='w-full'>
+          {/* Provider Authentication will be added soon */}
+          {/* <form onSubmit={handleGoogleAuth} className='w-full'>
             <Button
               variant='outline'
               className='w-full'
@@ -177,7 +178,7 @@ export default function AuthForm() {
               )}
               Sign in with Google
             </Button>
-          </form>
+          </form> */}
         </CardFooter>
       </Card>
     </div>
