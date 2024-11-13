@@ -2,7 +2,7 @@
 
 This README provides a comprehensive guide for setting up and using `pnpm` as the package manager for your project. This includes installation, initialization, dependency management, and additional configurations.
 
-## Table of Contents
+## Table of Contents.
 - [Prerequisites](#prerequisites)
 - [Step 1: Clean Installation of pnpm](#step-1-clean-installation-of-pnpm)
 - [Step 2: Project Setup with pnpm](#step-2-project-setup-with-pnpm)
