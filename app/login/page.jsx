@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
 import {
   Card,
   CardContent,
@@ -12,16 +11,20 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Icons } from '@/lib/icons';
-import { signUp, signIn, googleAuth } from '@/lib/actions';
+} from '../../components/ui/card';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '../../components/ui/tabs';
+import { Icons } from '../../lib/icons';
+import { signUp, signIn, googleAuth } from '../../lib/actions';
 
 export default function AuthForm() {
   const [activeTab, setActiveTab] = useState('signin');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const router = useRouter();
 
   const handleSubmit = async (event, action) => {
     event.preventDefault();
@@ -34,11 +37,6 @@ export default function AuthForm() {
 
       if (response?.error) {
         setError(response.error); // Display the error from the response
-      } else if (response?.success) {
-        // Successful signup or signin
-        router.push('/dashboard');
-      } else {
-        setError('An unexpected error occurred. Please try again.');
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
@@ -56,10 +54,8 @@ export default function AuthForm() {
     try {
       const result = await googleAuth();
 
-      if (result.error) {
+      if (result?.error) {
         setError(result.error);
-      } else if (result.success && result.url) {
-        window.location.href = result.url;
       }
     } catch (err) {
       setError(
@@ -144,7 +140,7 @@ export default function AuthForm() {
                   />
                 </div>
                 {error && (
-                  <p className='text-sm text-red-500' role='alert'>
+                  <p className='text-sm text-destructive' role='alert'>
                     {error}
                   </p>
                 )}
@@ -164,7 +160,7 @@ export default function AuthForm() {
         </CardContent>
         <CardFooter>
           {/* Provider Authentication will be added soon */}
-          {/* <form onSubmit={handleGoogleAuth} className='w-full'>
+          <form onSubmit={handleGoogleAuth} className='w-full'>
             <Button
               variant='outline'
               className='w-full'
@@ -176,9 +172,11 @@ export default function AuthForm() {
               ) : (
                 <Icons.google className='mr-2 h-4 w-4' />
               )}
-              Sign in with Google
+              {activeTab === 'signin'
+                ? 'Sign In with Google'
+                : 'Sign Up with Google'}
             </Button>
-          </form> */}
+          </form>
         </CardFooter>
       </Card>
     </div>
