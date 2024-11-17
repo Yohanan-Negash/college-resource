@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
-import { createClient } from '@/lib/supabase/server';
-import { logout } from '@/lib/actions';
-import { Button } from '@/components/ui/button';
+import { createClient } from '../../lib/supabase/server';
+import { logout } from '../../lib/actions';
+import { Button } from '../../components/ui/button';
 
 export default async function Page() {
   const supabase = createClient();
@@ -9,6 +9,7 @@ export default async function Page() {
   const { data: userData, error: userError } = await supabase.auth.getUser();
 
   if (userError || !userData?.user) {
+    console.error('Error getting user:', userError.message);
     redirect('/login');
   }
 

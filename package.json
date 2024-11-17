@@ -25,6 +25,7 @@
     "zod": "link:@hookform/resolvers/zod"
   },
   "devDependencies": {
+    "@types/react": "18.3.12",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
