@@ -19,7 +19,7 @@ import {
   TabsTrigger,
 } from '../../components/ui/tabs';
 import { Icons } from '../../lib/icons';
-import { signUp, signIn, googleAuth } from '../../lib/actions';
+import { signUp, signIn, googleAuth, signInWithEmail } from '../../lib/actions';
 
 export default function AuthForm() {
   const [activeTab, setActiveTab] = useState('signin');
@@ -108,7 +108,7 @@ export default function AuthForm() {
             </TabsList>
             <TabsContent value='signin'>
               <form
-                onSubmit={(e) => handleSubmit(e, signIn)}
+                onSubmit={(e) => handleSubmit(e, signInWithEmail)}
                 className='space-y-4'
               >
                 <div className='space-y-2'>
@@ -118,12 +118,14 @@ export default function AuthForm() {
                   <Input
                     id='signin-email'
                     name='email'
+                    placeholder='johndoe@example.com'
                     type='email'
                     required
                     className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
                   />
                 </div>
-                <div className='space-y-2'>
+                {/* Password auth is disabled for now, we can use this if we want to enable it later */}
+                {/* <div className='space-y-2'>
                   <Label htmlFor='signin-password' className='text-zinc-300'>
                     Password
                   </Label>
@@ -134,7 +136,7 @@ export default function AuthForm() {
                     required
                     className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
                   />
-                </div>
+                </div> */}
                 {error && (
                   <p className='text-sm text-red-500' role='alert'>
                     {error}
@@ -151,7 +153,7 @@ export default function AuthForm() {
                       Signing In...
                     </>
                   ) : (
-                    'Sign In'
+                    'Sign In with Email'
                   )}
                 </Button>
               </form>
@@ -169,11 +171,13 @@ export default function AuthForm() {
                     id='signup-email'
                     name='email'
                     type='email'
+                    placeholder='johndoe@example.com'
                     required
                     className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
                   />
                 </div>
-                <div className='space-y-2'>
+                {/* Password auth is disabled for now, we can use this if we want to enable it later */}
+                {/* <div className='space-y-2'>
                   <Label htmlFor='signup-password' className='text-zinc-300'>
                     Password
                   </Label>
@@ -184,7 +188,7 @@ export default function AuthForm() {
                     required
                     className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
                   />
-                </div>
+                </div> */}
                 {error && (
                   <p className='text-sm text-red-500' role='alert'>
                     {error}
@@ -201,7 +205,7 @@ export default function AuthForm() {
                       Signing Up...
                     </>
                   ) : (
-                    'Sign Up'
+                    'Sign Up with Email'
                   )}
                 </Button>
               </form>
