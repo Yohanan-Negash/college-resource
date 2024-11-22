@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     <SidebarProvider>
       <AppSidebar />
       <main className='flex flex-col flex-1'>
-        <div className='flex justify-between items-center p-2 border-b'>
+        <div className='flex justify-between items-center p-3.5 border-b'>
           <SidebarTrigger />
           <Button variant='default'>Upgrade</Button>
         </div>

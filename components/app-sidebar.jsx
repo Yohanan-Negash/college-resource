@@ -1,9 +1,5 @@
 import {
   Home,
-  ChevronUp,
-  User2,
-  LogOut,
-  Settings,
   Send,
   Mail,
   DollarSign,
@@ -13,6 +9,7 @@ import {
   BookOpen,
   UserPlus,
   CheckCircle,
+  GalleryVerticalEnd,
 } from 'lucide-react';
 
 import {
@@ -25,18 +22,12 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
+  SidebarHeader,
 } from '../components/ui/sidebar';
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from './ui/dropdown-menu';
 import { Separator } from '../components/ui/separator';
 import { redirect } from 'next/navigation';
-import { logout } from '../lib/actions';
-import { Button } from '../components/ui/button';
 import { createClient } from '../lib/supabase/server';
+import { NavUser } from '../components/nav-user';
 
 // Application section items
 const applicationItems = [
@@ -113,6 +104,23 @@ export async function AppSidebar() {
 
   return (
     <Sidebar collapsible='icon'>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size='lg' asChild>
+              <a href='#'>
+                <div className='flex aspect-square size-7 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground'>
+                  <GalleryVerticalEnd className='size-4' />
+                </div>
+                <div className='flex flex-col gap-0.5 leading-none'>
+                  <span className='font-semibold'>College Resource</span>
+                  <span className='ml-2 mt-1.5'>v1.0.0-beta</span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <Separator className='mb-1' />
       <SidebarContent>
         <SidebarGroup>
@@ -166,7 +174,7 @@ export async function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <SidebarMenu>
+        {/* <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
               <DropdownMenuTrigger asChild className='border'>
@@ -194,7 +202,8 @@ export async function AppSidebar() {
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
-        </SidebarMenu>
+        </SidebarMenu> */}
+        <NavUser user={userData.user} />
       </SidebarFooter>
     </Sidebar>
   );
