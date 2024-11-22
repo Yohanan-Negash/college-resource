@@ -1,6 +1,6 @@
 import {
   Home,
-  ChevronDown,
+  ChevronUp,
   User2,
   LogOut,
   Settings,
@@ -169,10 +169,10 @@ export async function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+              <DropdownMenuTrigger asChild className='border'>
                 <SidebarMenuButton>
-                  <User2 /> {userEmail}
-                  <ChevronDown className='ml-auto' />
+                  <User2 className='ml-auto' />
+                  {userEmail}
                 </SidebarMenuButton>
               </DropdownMenuTrigger>
               <DropdownMenuContent
@@ -186,7 +186,9 @@ export async function AppSidebar() {
                 <DropdownMenuItem>
                   <LogOut />
                   <form action={logout}>
-                    <Button type='submit'>Sign out</Button>
+                    <Button type='submit' variant='ghost'>
+                      Sign out
+                    </Button>
                   </form>
                 </DropdownMenuItem>
               </DropdownMenuContent>
