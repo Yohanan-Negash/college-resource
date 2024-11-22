@@ -1,7 +1,5 @@
 import {
-  Calendar,
   Home,
-  Inbox,
   ChevronDown,
   User2,
   LogOut,
@@ -9,6 +7,12 @@ import {
   Send,
   Mail,
   DollarSign,
+  MapPin,
+  Code,
+  Briefcase,
+  BookOpen,
+  UserPlus,
+  CheckCircle,
 } from 'lucide-react';
 
 import {
@@ -34,26 +38,46 @@ import { logout } from '../lib/actions';
 import { Button } from '../components/ui/button';
 import { createClient } from '../lib/supabase/server';
 
-//Application section items.
+// Application section items
 const applicationItems = [
   {
-    title: 'Home',
+    title: 'Dashboard',
     url: '#',
     icon: Home,
   },
   {
-    title: 'Inbox',
+    title: 'Roadmaps',
     url: '#',
-    icon: Inbox,
+    icon: MapPin,
   },
   {
-    title: 'Calendar',
+    title: 'Hackathons',
     url: '#',
-    icon: Calendar,
+    icon: Code,
+  },
+  {
+    title: 'Internships',
+    url: '#',
+    icon: Briefcase,
+  },
+  {
+    title: 'Skills & Resources',
+    url: '#',
+    icon: BookOpen,
+  },
+  {
+    title: 'Mentorship',
+    url: '#',
+    icon: UserPlus,
+  },
+  {
+    title: 'Job Board',
+    url: '#',
+    icon: CheckCircle,
   },
 ];
 
-//Help section items.
+// Help section items
 const helpItems = [
   {
     title: 'Support',
@@ -67,7 +91,7 @@ const helpItems = [
   },
 ];
 
-//Earn Section Item
+// Earn Section Item
 const earnItem = {
   title: 'Become an Affiliate',
   url: '/affiliate',
@@ -84,7 +108,7 @@ export async function AppSidebar() {
     redirect('/login');
   }
 
-  //Extract the user's email & id from the userData
+  // Extract the user's email & id from the userData
   const userEmail = userData.user.email;
 
   return (
