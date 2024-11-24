@@ -84,28 +84,29 @@ export default function AuthForm() {
             onValueChange={setActiveTab}
             className='w-full'
           >
-            <TabsList className='flex w-full bg-[#2A2D3E]/50 rounded-full border border-zinc-700/50'>
+            <TabsList className='flex w-full bg-[#2A2D3E]/50 rounded-full border border-zinc-700/50 p-0'>
               <TabsTrigger
                 value='signin'
-                className={`flex-grow text-zinc-400 h-10 py-2 rounded-full text-center flex items-center justify-center hover:bg-purple-500/20 ${
+                className={`flex-grow h-12 text-zinc-400 rounded-full text-center flex items-center justify-center transition-all ${
                   activeTab === 'signin'
                     ? 'bg-purple-500/30 text-purple-400 font-semibold'
-                    : ''
-                } transition-all`}
+                    : 'hover:bg-purple-500/20'
+                }`}
               >
                 Sign In
               </TabsTrigger>
               <TabsTrigger
                 value='signup'
-                className={`flex-grow text-zinc-400 h-10 py-2 rounded-full text-center flex items-center justify-center hover:bg-purple-500/20 ${
+                className={`flex-grow h-12 text-zinc-400 rounded-full text-center flex items-center justify-center transition-all ${
                   activeTab === 'signup'
                     ? 'bg-purple-500/30 text-purple-400 font-semibold'
-                    : ''
-                } transition-all`}
+                    : 'hover:bg-purple-500/20'
+                }`}
               >
                 Sign Up
               </TabsTrigger>
             </TabsList>
+
             <TabsContent value='signin'>
               <form
                 onSubmit={(e) => handleSubmit(e, signInWithEmail)}

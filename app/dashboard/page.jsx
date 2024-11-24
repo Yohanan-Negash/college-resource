@@ -23,12 +23,12 @@ export default async function Page() {
         This is a protected Dashboard Page only accessible for users who have
         successfully authetnicated or created an account.{' '}
       </h1>
-      <h2 className='font-bold'>User email: {userEmail} </h2>
+      {/* <h2 className='font-bold'>User email: {userEmail} </h2>
       <h2 className='font-bold'>User id: {userId} </h2>
 
       <form className='mt-5' action={logout}>
         <Button type='submit'>Logout</Button>
-      </form>
+      </form> */}
     </>
   );
 }
