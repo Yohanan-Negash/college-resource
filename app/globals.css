@@ -4,80 +4,88 @@
 
 @layer base {
   :root {
-    --background: 230 22% 15%;
-    --foreground: 0 0% 98%;
+    /* Light Mode Background is White */
+    --background: 0 0% 100%; /* White background */
+    --foreground: 230 22% 15%; /* Dark text color for light mode */
 
-    --card: 230 22% 20%;
-    --card-foreground: 0 0% 98%;
+    /* Adjust card colors in light mode */
+    --card: 280 75% 95%; /* Light card color with purple tones */
+    --card-foreground: 0 0% 20%; /* Dark text on light cards for contrast */
 
-    --popover: 230 22% 15%;
-    --popover-foreground: 0 0% 98%;
+    /* Popover for light mode */
+    --popover: 280 75% 95%; /* Light purple for popovers */
+    --popover-foreground: 0 0% 20%; /* Dark text for popovers */
 
+    /* Primary color stays the same (purple) */
     --primary: 280 75% 60%;
-    --primary-foreground: 0 0% 98%;
+    --primary-foreground: 0 0% 98%; /* Light text color for primary buttons */
 
-    --secondary: 230 22% 25%;
-    --secondary-foreground: 0 0% 98%;
+    /* Secondary, muted elements */
+    --secondary: 280 75% 50%; /* Lighter secondary color */
+    --secondary-foreground: 0 0% 98%; /* White text for secondary */
 
-    --muted: 230 22% 25%;
-    --muted-foreground: 240 5% 64.9%;
-
+    /* Accent color stays as purple */
     --accent: 280 75% 60%;
-    --accent-foreground: 0 0% 98%;
+    --accent-foreground: 0 0% 98%; /* Light text for accents */
 
+    /* Destructive stays the same */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 230 22% 30%;
-    --input: 230 22% 30%;
-    --ring: 280 75% 60%;
+    /* Light grey borders */
+    --border: 230 22% 90%; /* Lighter grey borders */
+    --input: 230 22% 90%; /* Light grey input */
+    --ring: 280 75% 60%; /* Ring color stays purple */
 
+    /* Charts, keeping purple and colorful accents */
     --chart-1: 280 75% 60%;
     --chart-2: 320 70% 60%;
     --chart-3: 200 70% 50%;
     --chart-4: 30 80% 55%;
     --chart-5: 160 60% 45%;
 
-    --radius: 0.7rem;
+    /* Sidebar adjustments for light mode */
+    --sidebar-background: 0 0% 100%; /* White sidebar background */
+    --sidebar-foreground: 230 22% 15%; /* Dark text for sidebar */
+    --sidebar-primary: 280 75% 60%; /* Purple primary color for sidebar */
+    --sidebar-primary-foreground: 0 0% 98%; /* Light text for sidebar items */
+    --sidebar-accent: 280 75% 60%; /* Purple accent */
+    --sidebar-accent-foreground: 0 0% 98%; /* Light text for sidebar accents */
+    --sidebar-border: 230 22% 80%; /* Light grey border for the sidebar */
+    --sidebar-ring: 280 75% 60%; /* Purple sidebar ring */
 
-    --sidebar-background: 230 22% 18%;
-    --sidebar-foreground: 240 5% 84.9%;
-    --sidebar-primary: 280 75% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 280 75% 60%;
-    --sidebar-accent-foreground: 240 5% 84.9%;
-    --sidebar-border: 230 22% 30%;
-    --sidebar-ring: 280 75% 60%;
+    /* Border radius for rounded corners */
+    --radius: 0.7rem;
   }
 
   .dark {
-    --background: 230 22% 10%;
-    --foreground: 0 0% 98%;
+    --background: 230 22% 10%; /* Dark mode: dark background */
+    --foreground: 0 0% 98%; /* Light text for dark mode */
 
-    --card: 230 22% 15%;
-    --card-foreground: 0 0% 98%;
+    --card: 230 22% 15%; /* Darker card color */
+    --card-foreground: 0 0% 98%; /* Light text on dark cards */
 
-    --popover: 230 22% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 230 22% 10%; /* Dark popovers */
+    --popover-foreground: 0 0% 98%; /* Light text for popovers */
 
-    --primary: 280 75% 60%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 280 75% 60%; /* Purple for primary */
+    --primary-foreground: 0 0% 98%; /* Light text for primary buttons */
 
-    --secondary: 230 22% 20%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 230 22% 20%; /* Darker secondary color */
+    --secondary-foreground: 0 0% 98%; /* Light text for secondary */
 
-    --muted: 230 22% 20%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 230 22% 20%; /* Dark muted elements */
+    --muted-foreground: 240 5% 64.9%; /* Lighter muted text */
 
-    --accent: 280 75% 60%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 280 75% 60%; /* Purple accent */
+    --accent-foreground: 0 0% 98%; /* Light text for accents */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%; /* Red for destructive */
+    --destructive-foreground: 0 0% 98%; /* Light text for destructive */
 
-    --border: 230 22% 25%;
-    --input: 230 22% 25%;
-    --ring: 280 75% 60%;
+    --border: 230 22% 25%; /* Darker borders */
+    --input: 230 22% 25%; /* Darker input */
+    --ring: 280 75% 60%; /* Purple ring for focus effects */
 
     --chart-1: 280 75% 60%;
     --chart-2: 320 70% 60%;
@@ -85,14 +93,17 @@
     --chart-4: 30 80% 55%;
     --chart-5: 160 60% 45%;
 
-    --sidebar-background: 230 22% 13%;
-    --sidebar-foreground: 240 5% 84.9%;
-    --sidebar-primary: 280 75% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 230 22% 20%;
-    --sidebar-accent-foreground: 240 5% 84.9%;
-    --sidebar-border: 230 22% 25%;
-    --sidebar-ring: 280 75% 60%;
+    --sidebar-background: 230 22% 13%; /* Darker sidebar for dark mode */
+    --sidebar-foreground: 240 5% 84.9%; /* Light text on dark sidebar */
+    --sidebar-primary: 280 75% 60%; /* Purple primary for sidebar */
+    --sidebar-primary-foreground: 0 0% 98%; /* Light text in sidebar */
+    --sidebar-accent: 280 75% 60%; /* Dark accent color */
+    --sidebar-accent-foreground: 240 5% 84.9%; /* Light text for sidebar accent */
+    --sidebar-border: 230 22% 25%; /* Darker sidebar borders */
+    --sidebar-ring: 280 75% 60%; /* Purple ring on the sidebar */
+
+    /* Border radius for rounded corners */
+    --radius: 0.7rem;
   }
 }
 
