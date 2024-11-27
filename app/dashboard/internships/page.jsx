@@ -13,6 +13,7 @@ import { Separator } from '../../../components/ui/separator';
 import {
   LinkedinIcon,
   Briefcase,
+  Code,
   Rocket,
   Users,
   Globe,
@@ -86,6 +87,12 @@ export default function Internships() {
       url: 'https://www.hackerrank.com',
       icon: Terminal,
       description: 'Practice coding challenges & prep for interviews.',
+    },
+    {
+      name: 'GeeksforGeeks',
+      url: 'https://www.geeksforgeeks.org/',
+      icon: Code,
+      description: 'Tutorials, coding problems, and CS concepts.',
     },
   ];
 
