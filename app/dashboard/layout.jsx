@@ -2,8 +2,19 @@ import { SidebarProvider, SidebarTrigger } from '../../components/ui/sidebar';
 import { AppSidebar } from '../../components/app-sidebar';
 import { Button } from '../../components/ui/button';
 import { ModeToggle } from '../../components/ui/ModeToggle';
+import { createClient } from '../../lib/supabase/server';
+import { redirect } from 'next/navigation';
 
-export default function Layout({ children }) {
+export default async function Layout({ children }) {
+  const supabase = createClient();
+
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+
+  if (userError || !userData.user) {
+    console.error('Error getting user', userError.message);
+    redirect('/login');
+  }
+
   return (
     <SidebarProvider>
       <AppSidebar />
