@@ -44,7 +44,7 @@ const applicationItems = [
   },
   {
     title: 'Hackathons',
-    url: '#',
+    url: '/dashboard/hackathons',
     icon: Code,
   },
   {
