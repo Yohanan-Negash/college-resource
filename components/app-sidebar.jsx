@@ -28,6 +28,7 @@ import { Separator } from '../components/ui/separator';
 import { redirect } from 'next/navigation';
 import { createClient } from '../lib/supabase/server';
 import { NavUser } from '../components/nav-user';
+import Link from 'next/Link';
 
 // Application section items
 const applicationItems = [
@@ -108,7 +109,7 @@ export async function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size='lg' asChild>
-              <a href='#'>
+              <Link href='#'>
                 <div className='flex aspect-square size-7 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground'>
                   <GalleryVerticalEnd className='size-4' />
                 </div>
@@ -116,7 +117,7 @@ export async function AppSidebar() {
                   <span className='font-semibold'>College Resource</span>
                   <span className='ml-2 mt-1.5'>v1.0.0-beta</span>
                 </div>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -130,10 +131,10 @@ export async function AppSidebar() {
               {applicationItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -147,10 +148,10 @@ export async function AppSidebar() {
               {helpItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -163,10 +164,10 @@ export async function AppSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href={earnItem.url}>
+                  <Link href={earnItem.url}>
                     <earnItem.icon />
                     <span>{earnItem.title}</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -174,35 +175,6 @@ export async function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        {/* <SidebarMenu>
-          <SidebarMenuItem>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild className='border'>
-                <SidebarMenuButton>
-                  <User2 className='ml-auto' />
-                  {userEmail}
-                </SidebarMenuButton>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side='top'
-                className='w-[--radix-popper-anchor-width]'
-              >
-                <DropdownMenuItem>
-                  <Settings />
-                  <span>Settings</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <LogOut />
-                  <form action={logout}>
-                    <Button type='submit' variant='ghost'>
-                      Sign out
-                    </Button>
-                  </form>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SidebarMenuItem>
-        </SidebarMenu> */}
         <NavUser user={userData.user} />
       </SidebarFooter>
     </Sidebar>
