@@ -34,12 +34,12 @@ import Link from 'next/Link';
 const applicationItems = [
   {
     title: 'Dashboard',
-    url: '#',
+    url: '/dashboard',
     icon: Home,
   },
   {
     title: 'Roadmaps',
-    url: '#',
+    url: '/dashboard',
     icon: MapPin,
   },
   {
@@ -54,12 +54,12 @@ const applicationItems = [
   },
   {
     title: 'Skills & Resources',
-    url: '#',
+    url: '/dashboard/skills',
     icon: BookOpen,
   },
   {
     title: 'Mentorship',
-    url: '#',
+    url: '/dashboard',
     icon: UserPlus,
   },
   {
@@ -73,12 +73,12 @@ const applicationItems = [
 const helpItems = [
   {
     title: 'Support',
-    url: '#',
+    url: '/dashboard',
     icon: Mail,
   },
   {
     title: 'Feedback',
-    url: '#',
+    url: '/dashboard',
     icon: Send,
   },
 ];
@@ -86,7 +86,7 @@ const helpItems = [
 // Earn Section Item
 const earnItem = {
   title: 'Become an Affiliate',
-  url: '/affiliate',
+  url: '/dashboard',
   icon: DollarSign,
 };
 
