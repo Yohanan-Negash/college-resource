@@ -8,8 +8,8 @@ import {
   Briefcase,
   BookOpen,
   UserPlus,
-  CheckCircle,
   GalleryVerticalEnd,
+  Search,
 } from 'lucide-react';
 
 import {
@@ -62,9 +62,9 @@ const applicationItems = [
     icon: UserPlus,
   },
   {
-    title: 'Job Board',
-    url: '#',
-    icon: CheckCircle,
+    title: 'Job Search',
+    url: '/dashboard/search',
+    icon: Search,
   },
 ];
 
