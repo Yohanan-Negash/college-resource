@@ -28,7 +28,7 @@ import { Separator } from '../components/ui/separator';
 import { redirect } from 'next/navigation';
 import { createClient } from '../lib/supabase/server';
 import { NavUser } from '../components/nav-user';
-import Link from 'next/Link';
+import Link from 'next/link';
 
 // Application section items
 const applicationItems = [
