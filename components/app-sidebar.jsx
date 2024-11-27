@@ -49,7 +49,7 @@ const applicationItems = [
   },
   {
     title: 'Internships',
-    url: '#',
+    url: '/dashboard/internships',
     icon: Briefcase,
   },
   {
