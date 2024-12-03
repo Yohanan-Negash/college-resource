@@ -49,7 +49,7 @@ export default function Hackathons() {
   ];
 
   return (
-    <div className='container mx-auto p-6 max-w-4xl'>
+    <div className='container mx-auto p-6 max-w-100'>
       <Card className='mb-8'>
         <CardHeader>
           <CardTitle className='text-3xl font-bold'>Hackathon Hub</CardTitle>
