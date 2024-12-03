@@ -9,11 +9,11 @@
     --foreground: 230 22% 15%; /* Dark text color for light mode */
 
     /* Adjust card colors in light mode */
-    --card: 280 75% 95%; /* Light card color with purple tones */
+    --card: 280 75% 100%; /* Light card color with purple tones */
     --card-foreground: 0 0% 20%; /* Dark text on light cards for contrast */
 
     /* Popover for light mode */
-    --popover: 280 75% 95%; /* Light purple for popovers */
+    --popover: 280 75% 100%; /* Light purple for popovers */
     --popover-foreground: 0 0% 20%; /* Dark text for popovers */
 
     /* Primary color stays the same (purple) */
