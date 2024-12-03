@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronRight, Code, Brain, Briefcase, GraduationCap } from 'lucide-react';
-import CompanyCarousel from '../components/CompanyCarousel';
+import CompanyCarousel from '../components/landingpage/CompanyCarousel';
+import WaitlistForm from '../components/landingpage/waitlistform';
 
 const Home = React.memo(() => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   useEffect(() => {
     // Add animation classes after component mounts
     const elements = document.querySelectorAll('.animate-in');
@@ -12,6 +15,12 @@ const Home = React.memo(() => {
       el.classList.add('animate-in');
     });
   }, []);
+
+  const handleSubmit = (formData) => {
+    // Here you'll handle the form submission
+    console.log('Form submitted:', formData);
+    setIsFormOpen(false);
+  };
 
   return (
       <div className="min-h-screen bg-gradient-to-b from-[#1C1F2E] to-[#2A2D3E] text-white overflow-hidden">
@@ -46,9 +55,12 @@ const Home = React.memo(() => {
                 Democratizing access to career-advancing opportunities for all tech students. From hackathons to internships, we&apos;re your one-stop platform for landing that dream tech role.
               </p>
 
-              {/* Waitlist Button */}
+              {/* Updated Waitlist Button */}
               <div className="flex items-center space-x-4">
-                <button className="group px-8 py-4 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center">
+                <button
+                    onClick={() => setIsFormOpen(true)}
+                    className="group px-8 py-4 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center"
+                >
                   Join Waitlist
                   <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -107,6 +119,13 @@ const Home = React.memo(() => {
           </div>
           <CompanyCarousel />
         </main>
+
+        {/* Waitlist Form */}
+        <WaitlistForm
+            isOpen={isFormOpen}
+            onClose={() => setIsFormOpen(false)}
+            onSubmit={handleSubmit}
+        />
       </div>
   );
 });
