@@ -1,36 +1,29 @@
-import { redirect } from 'next/navigation';
-import { createClient } from '../../lib/supabase/server';
-import { Button } from '../../components/ui/button';
-import { Construction, Zap } from 'lucide-react';
+import { DashboardHeader } from './(dashboard-components)/dashboard-header';
+import { DashboardShell } from './(dashboard-components)/dashboard-shell';
+import { MotivationalQuote } from './(dashboard-components)/motivational-quote';
+import { ProgressOverview } from './(dashboard-components)/progress-overview';
+import { TaskTracker } from './(dashboard-components)/task-tracker';
+import { DailyQuest } from './(dashboard-components)/daily-quest';
+import { ProjectShowcase } from './(dashboard-components)/project-showcase';
+import { TimeTracking } from './(dashboard-components)/time-tracking';
+import { LearningStreak } from './(dashboard-components)/learning-streak';
 
-export default async function Page() {
-  const supabase = createClient();
-
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-
-  if (userError || !userData?.user) {
-    console.error('Error getting user:', userError.message);
-    redirect('/login');
-  }
-
-  //Extract the user's email & id from the userData
-  const userEmail = userData.user.email;
-  const userId = userData.user.id;
-
+export default function DashboardPage() {
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen bg-background text-foreground p-6 text-center'>
-      <div className='flex items-center justify-center p-4 mb-6 bg-accent rounded-full shadow-lg'>
-        <Zap />
+    <DashboardShell>
+      <DashboardHeader
+        heading='Your Coding Journey'
+        text='Track your progress, build your skills, become a great developer'
+      />
+      <MotivationalQuote className='mb-4' />
+      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+        <ProgressOverview className='col-span-full lg:col-span-2' />
+        <TimeTracking className='col-span-full lg:col-span-1' />
+        <TaskTracker className='col-span-full md:col-span-1' />
+        <DailyQuest className='col-span-full md:col-span-1' />
+        <LearningStreak className='col-span-full md:col-span-1' />
+        <ProjectShowcase className='col-span-full' />
       </div>
-      <h1 className='text-4xl font-extrabold mb-4'>Coming Soon</h1>
-      <p className='text-lg text-muted-foreground mb-8'>
-        We are working hard to bring this feature to life. Stay tuned for
-        updates!
-      </p>
-      <div className='mt-8 text-muted-foreground'>
-        <Construction className='inline-block mr-2' />
-        We appreciate your patience.
-      </div>
-    </div>
+    </DashboardShell>
   );
 }
