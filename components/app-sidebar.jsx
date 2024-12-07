@@ -39,7 +39,7 @@ const applicationItems = [
   },
   {
     title: 'Roadmaps',
-    url: '/dashboard',
+    url: '/dashboard/coming-soon',
     icon: MapPin,
   },
   {
@@ -59,7 +59,7 @@ const applicationItems = [
   },
   {
     title: 'Mentorship',
-    url: '/dashboard',
+    url: '/dashboard/coming-soon',
     icon: UserPlus,
   },
   {
@@ -73,12 +73,12 @@ const applicationItems = [
 const helpItems = [
   {
     title: 'Support',
-    url: '/dashboard',
+    url: '/dashboard/coming-soon',
     icon: Mail,
   },
   {
     title: 'Feedback',
-    url: '/dashboard',
+    url: '/dashboard/coming-soon',
     icon: Send,
   },
 ];
@@ -86,7 +86,7 @@ const helpItems = [
 // Earn Section Item
 const earnItem = {
   title: 'Become an Affiliate',
-  url: '/dashboard',
+  url: '/dashboard/coming-soon',
   icon: DollarSign,
 };
 
