@@ -5,8 +5,7 @@ import { ProgressOverview } from './(dashboard-components)/progress-overview';
 import { TaskTracker } from './(dashboard-components)/task-tracker';
 import { DailyQuest } from './(dashboard-components)/daily-quest';
 import { ProjectShowcase } from './(dashboard-components)/project-showcase';
-import { TimeTracking } from './(dashboard-components)/time-tracking';
-import { LearningStreak } from './(dashboard-components)/learning-streak';
+import { CodingStreak } from './(dashboard-components)/coding-streak';
 
 export default function DashboardPage() {
   return (
@@ -18,10 +17,9 @@ export default function DashboardPage() {
       <MotivationalQuote className='mb-4' />
       <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
         <ProgressOverview className='col-span-full lg:col-span-2' />
-        <TimeTracking className='col-span-full lg:col-span-1' />
         <TaskTracker className='col-span-full md:col-span-1' />
         <DailyQuest className='col-span-full md:col-span-1' />
-        <LearningStreak className='col-span-full md:col-span-1' />
+        <CodingStreak className='col-span-full md:col-span-1' />
         <ProjectShowcase className='col-span-full' />
       </div>
     </DashboardShell>
