@@ -24,7 +24,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '../components/ui/sidebar';
-import { logout } from '../lib/actions';
+import { logout } from '../lib/actions/auth';
 
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
