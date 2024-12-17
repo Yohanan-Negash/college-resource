@@ -73,7 +73,7 @@ const applicationItems = [
 const helpItems = [
   {
     title: 'Support',
-    url: '/dashboard/coming-soon',
+    url: '/dashboard/support',
     icon: Mail,
   },
   {
