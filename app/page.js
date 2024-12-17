@@ -1,11 +1,12 @@
-'use client';
+"use client"
 
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Code, Brain, Briefcase, GraduationCap } from 'lucide-react';
 import CompanyCarousel from '../components/landingpage/CompanyCarousel';
 import WaitlistForm from '../components/landingpage/waitlistform';
+import { Toaster } from "../components/ui/toaster"
 
-const Home = React.memo(() => {
+const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ const Home = React.memo(() => {
   };
 
   return (
+      <html lang="en">
+      <body>
       <div className="min-h-screen bg-gradient-to-b from-[#1C1F2E] to-[#2A2D3E] text-white overflow-hidden">
         {/* Animated Background Gradient */}
         <div className="fixed inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"/>
@@ -47,8 +50,8 @@ const Home = React.memo(() => {
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                 Your Path to
                 <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent block">
-                Tech Success
-              </span>
+                    Tech Success
+                  </span>
               </h1>
 
               <p className="text-zinc-300 text-lg lg:text-xl leading-relaxed">
@@ -127,9 +130,11 @@ const Home = React.memo(() => {
             onSubmit={handleSubmit}
         />
       </div>
+      <Toaster />
+      </body>
+      </html>
   );
-});
-
-Home.displayName = 'Home';
+};
 
 export default Home;
+
