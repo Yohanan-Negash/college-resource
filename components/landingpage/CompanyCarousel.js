@@ -16,7 +16,6 @@ const CompanyCarousel = () => {
         { name: 'Airbnb' },
         { name: 'Slack' },
         { name: 'Shopify' },
-        { name: 'Zoom' },
     ];
 
     return (
