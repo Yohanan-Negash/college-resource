@@ -35,7 +35,7 @@ import {
   AlertDescription,
   AlertTitle,
 } from '../../../components/ui/alert';
-import { submitSupportRequest } from '../../../lib/actions/support';
+import { submitSupportRequest } from '../../../lib/actions/email';
 
 export default function SupportForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
