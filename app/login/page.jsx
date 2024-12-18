@@ -19,7 +19,12 @@ import {
   TabsTrigger,
 } from '../../components/ui/tabs';
 import { Icons } from '../../lib/icons';
-import { signUp, signIn, googleAuth, signInWithEmail } from '../../lib/actions';
+import {
+  signUp,
+  signIn,
+  googleAuth,
+  signInWithEmail,
+} from '../../lib/actions/auth';
 
 export default function AuthForm() {
   const [activeTab, setActiveTab] = useState('signin');
