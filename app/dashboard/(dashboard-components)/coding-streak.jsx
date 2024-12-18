@@ -6,7 +6,7 @@ import {
 } from '../../../components/ui/card';
 import { Flame } from 'lucide-react';
 
-export function LearningStreak({ className, ...props }) {
+export function CodingStreak({ className, ...props }) {
   const streakDays = 7;
   const longestStreak = 14;
 
@@ -15,7 +15,7 @@ export function LearningStreak({ className, ...props }) {
       <CardHeader>
         <CardTitle className='flex items-center gap-2'>
           <Flame className='h-5 w-5 text-orange-500' />
-          Learning Streak
+          Coding Streak
         </CardTitle>
       </CardHeader>
       <CardContent>
