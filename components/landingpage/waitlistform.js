@@ -44,13 +44,25 @@ const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
       setLoading(false);
 
       if (error) {
-        setErrors({ form: 'Something went wrong. Please try again later.' });
-        toast({
-          variant: 'destructive',
-          title: 'Error',
-          description:
-            'There was an issue with your request. Please try again.',
-        });
+        if (error === 'This email is already registered') {
+          setErrors({ form: error });
+          toast({
+            variant: 'destructive',
+            title: 'Email Already Registered',
+            description:
+              'This email address is already on our waitlist. Please use a different .edu email.',
+          });
+        } else {
+          setErrors({
+            form: 'An unexpected error occurred. Please try again.',
+          });
+          toast({
+            variant: 'destructive',
+            title: 'Error',
+            description:
+              'There was an issue with your request. Please try again later.',
+          });
+        }
       } else {
         toast({
           title: 'Success',
