@@ -10,6 +10,16 @@ import {
   UserPlus,
   GalleryVerticalEnd,
   Search,
+  Menu,
+  Rocket,
+  Video,
+  BarChart,
+  Crown,
+  FileIcon,
+  FileText,
+  Trophy,
+  Brain,
+  Activity,
 } from 'lucide-react';
 
 import {
@@ -29,44 +39,50 @@ import { redirect } from 'next/navigation';
 import { createClient } from '../lib/supabase/server';
 import { NavUser } from '../components/nav-user';
 import Link from 'next/link';
+import { ComingSoonFeatureTeaser } from '@/app/dashboard/(dashboard-components)/coming-soon-feature-teaser';
 
 // Application section items
 const applicationItems = [
   {
-    title: 'Dashboard',
-    url: '/dashboard',
+    title: 'Start Here',
+    url: '/dashboard/getting-started',
     icon: Home,
+  },
+  // {
+  //   title: 'Analytics Dashboard',
+  //   url: '/dashboard',
+  //   icon: Home,
+  // },
+  {
+    title: 'Foudations',
+    url: '/dashboard/foundations',
+    icon: Brain,
   },
   {
     title: 'Roadmaps',
-    url: '/dashboard/coming-soon',
+    url: '/dashboard/roadmaps',
     icon: MapPin,
+  },
+  {
+    title: 'Tools & Resources',
+    url: '/dashboard/tools',
+    icon: BookOpen,
   },
   {
     title: 'Hackathons',
     url: '/dashboard/hackathons',
-    icon: Code,
+    icon: Trophy,
   },
   {
     title: 'Internships',
     url: '/dashboard/internships',
     icon: Briefcase,
   },
-  {
-    title: 'Skills & Resources',
-    url: '/dashboard/skills',
-    icon: BookOpen,
-  },
-  {
-    title: 'Mentorship',
-    url: '/dashboard/coming-soon',
-    icon: UserPlus,
-  },
-  {
-    title: 'Job Search',
-    url: '/dashboard/search',
-    icon: Search,
-  },
+  // {
+  //   title: 'Job Search',
+  //   url: '/dashboard/search',
+  //   icon: Search,
+  // },
 ];
 
 // Help section items
@@ -89,6 +105,25 @@ const earnItem = {
   url: '/dashboard/coming-soon',
   icon: DollarSign,
 };
+
+// Comming Soon Section Item
+const comingSoonItems = [
+  {
+    title: 'CodePulse',
+    url: '/#',
+    icon: Activity,
+  },
+  {
+    title: 'AI Resume Builder',
+    url: '/#',
+    icon: FileText,
+  },
+  {
+    title: 'Mentorship',
+    url: '/dashboard/coming-soon',
+    icon: UserPlus,
+  },
+];
 
 export async function AppSidebar() {
   const supabase = createClient();
@@ -152,6 +187,23 @@ export async function AppSidebar() {
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>PREMIUM FEATURES</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {comingSoonItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <ComingSoonFeatureTeaser
+                      icon={item.icon}
+                      title={item.title}
+                    />
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
