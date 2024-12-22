@@ -127,7 +127,7 @@ export default function PathPage({ params }) {
   }
 
   return (
-    <div className='container mx-auto py-6'>
+    <div className='container mx-auto p-6'>
       <PathGuide {...path} pathSlug={params.slug} />
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -14,7 +14,30 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Circle, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useProgress } from '@/lib/progress-context';
+
+// Implement useProgress hook
+const useProgress = () => {
+  const [progress, setProgress] = useState({});
+
+  useEffect(() => {
+    // Load progress from localStorage on component mount
+    const storedProgress = localStorage.getItem('foundationProgress');
+    if (storedProgress) {
+      setProgress(JSON.parse(storedProgress));
+    }
+  }, []);
+
+  const updateProgress = useCallback((topicSlug, completedSteps) => {
+    setProgress((prevProgress) => {
+      const newProgress = { ...prevProgress, [topicSlug]: completedSteps };
+      // Save progress to localStorage
+      localStorage.setItem('foundationProgress', JSON.stringify(newProgress));
+      return newProgress;
+    });
+  }, []);
+
+  return { progress, updateProgress };
+};
 
 export function PathGuide({ title, description, steps, pathSlug }) {
   const [currentSteps, setCurrentSteps] = useState(steps);

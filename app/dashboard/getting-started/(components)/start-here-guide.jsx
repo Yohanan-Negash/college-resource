@@ -45,7 +45,9 @@ export function StartHereGuide() {
   const router = useRouter();
 
   const handleStartPath = (pathTitle) => {
-    router.push(`/path/${pathTitle.toLowerCase().replace(/\s+/g, '-')}`);
+    router.push(
+      `/dashboard/path/${pathTitle.toLowerCase().replace(/\s+/g, '-')}`
+    );
   };
 
   return (
