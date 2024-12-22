@@ -78,7 +78,7 @@ export default function FoundationsPage() {
             <CardContent className='mt-auto'>
               <Button asChild className='w-full'>
                 <Link
-                  href={`/foundations/${topic.slug}`}
+                  href={`/dashboard/foundations/${topic.slug}`}
                   className='flex items-center justify-center whitespace-nowrap'
                 >
                   <span className='truncate'>Explore {topic.title}</span>
