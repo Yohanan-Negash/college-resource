@@ -62,7 +62,8 @@ export default function Home() {
     },
     {
       title: 'Tools & Resources',
-      description: 'Access curated learning materials',
+      description:
+        'Access curated tools and resources that will improve your development experience.',
       icon: Tool,
       href: '/dashboard/tools',
     },
@@ -74,7 +75,7 @@ export default function Home() {
     <div className='min-h-screen bg-background'>
       <div className='container mx-auto px-4 py-16 sm:px-6 lg:px-8'>
         <div className='text-center mb-16'>
-          <h1 className='text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 text-foreground'>
+          <h1 className='text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
             Welcome to Your Tech Career Hub
           </h1>
           <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
