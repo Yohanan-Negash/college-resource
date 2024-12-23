@@ -51,8 +51,8 @@ export function ResourcePage({ title, description, resources }) {
 
       <div className='flex justify-end'>
         <Button asChild variant='outline'>
-          <Link href='/dashboard/path/beginner-track'>
-            Back to Path
+          <Link href='/dashboard/getting-started'>
+            Back to Paths
             <ArrowRight className='ml-2 h-4 w-4' />
           </Link>
         </Button>
