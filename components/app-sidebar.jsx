@@ -93,11 +93,13 @@ const helpItems = [
 ];
 
 // Earn Section Item
-const earnItem = {
-  title: 'Become an Affiliate',
-  url: '/dashboard/coming-soon',
-  icon: DollarSign,
-};
+const earnItem = [
+  {
+    title: 'Become an Affiliate',
+    url: '/dashboard/coming-soon',
+    icon: DollarSign,
+  },
+];
 
 // Comming Soon Section Item
 const comingSoonItems = [
@@ -207,14 +209,16 @@ export async function AppSidebar() {
           <SidebarGroupLabel>Earn</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href={earnItem.url}>
-                    <earnItem.icon />
-                    <span>{earnItem.title}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              {earnItem.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <ComingSoonFeatureTeaser
+                      icon={item.icon}
+                      title={item.title}
+                    />
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
