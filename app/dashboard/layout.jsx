@@ -4,6 +4,8 @@ import { Button } from '../../components/ui/button';
 import { ModeToggle } from '../../components/ui/ModeToggle';
 import { createClient } from '../../lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 export default async function Layout({ children }) {
   const supabase = createClient();
@@ -26,7 +28,7 @@ export default async function Layout({ children }) {
             <Button variant='default'>Upgrade</Button>
           </div>
         </div>
-        {children}
+        <Suspense fallback={<Loading />}>{children}</Suspense>
       </main>
     </SidebarProvider>
   );
