@@ -14,12 +14,10 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Circle, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
-// Implement useProgress hook
 const useProgress = () => {
   const [progress, setProgress] = useState({});
 
   useEffect(() => {
-    // Load progress from localStorage on component mount
     const storedProgress = localStorage.getItem('foundationProgress');
     if (storedProgress) {
       setProgress(JSON.parse(storedProgress));
@@ -29,7 +27,6 @@ const useProgress = () => {
   const updateProgress = useCallback((topicSlug, completedSteps) => {
     setProgress((prevProgress) => {
       const newProgress = { ...prevProgress, [topicSlug]: completedSteps };
-      // Save progress to localStorage
       localStorage.setItem('foundationProgress', JSON.stringify(newProgress));
       return newProgress;
     });
@@ -53,7 +50,7 @@ export function FoundationTopicGuide({ title, description, steps, topicSlug }) {
 
   const handleCompleteStep = (index) => {
     const updatedSteps = [...currentSteps];
-    updatedSteps[index].completed = true;
+    updatedSteps[index].completed = !updatedSteps[index].completed;
     setCurrentSteps(updatedSteps);
     const completedSteps = updatedSteps.filter((step) => step.completed).length;
     updateProgress(topicSlug, completedSteps);
@@ -136,11 +133,9 @@ export function FoundationTopicGuide({ title, description, steps, topicSlug }) {
                 ))}
               </ul>
               <div className='flex justify-end'>
-                {!step.completed && (
-                  <Button onClick={() => handleCompleteStep(index)}>
-                    Mark as Complete
-                  </Button>
-                )}
+                <Button onClick={() => handleCompleteStep(index)}>
+                  {step.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
+                </Button>
               </div>
             </CardContent>
           </Card>
