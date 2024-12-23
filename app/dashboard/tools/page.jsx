@@ -7,134 +7,255 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '../../../components/ui/card';
-import { Button } from '../../../components/ui/button';
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import {
-  Book,
-  Code,
   GitMerge,
-  Users,
-  BarChart,
-  ExternalLink,
+  Code,
   Database,
+  Cloud,
+  Terminal,
+  PenTool,
+  Users,
+  Briefcase,
+  MessageSquare,
+  ExternalLink,
+  DollarSign,
 } from 'lucide-react';
 
-export default function SkillsAndResources() {
-  const programmingLanguages = [
+export default function ToolsAndResources() {
+  const categories = [
     {
-      name: 'Python',
-      url: 'https://www.freecodecamp.org/learn',
-      icon: Code,
+      title: 'Version Control',
       description:
-        'Beginner-friendly and versatile for automation, data science, and more.',
+        'Tools for managing code versions and collaborating with others.',
+      items: [
+        {
+          name: 'Git',
+          url: 'https://git-scm.com/',
+          icon: GitMerge,
+          description: 'Distributed version control system.',
+          type: 'Tool',
+          source: 'Git',
+        },
+        {
+          name: 'GitHub',
+          url: 'https://github.com/',
+          icon: GitMerge,
+          description:
+            'Web-based hosting service for version control using Git.',
+          type: 'Platform',
+          source: 'GitHub',
+        },
+        {
+          name: 'GitLab',
+          url: 'https://about.gitlab.com/',
+          icon: GitMerge,
+          description: 'Web-based DevOps lifecycle tool.',
+          type: 'Platform',
+          source: 'GitLab',
+        },
+        {
+          name: 'GitHub Desktop',
+          url: 'https://desktop.github.com/',
+          icon: GitMerge,
+          description: 'Simplified Git workflow with a user-friendly GUI.',
+          type: 'Tool',
+          source: 'GitHub',
+        },
+        {
+          name: 'GitKraken',
+          url: 'https://www.gitkraken.com/',
+          icon: GitMerge,
+          description: 'Powerful Git GUI client for Windows, Mac & Linux.',
+          type: 'Tool',
+          source: 'Axosoft',
+        },
+      ],
     },
     {
-      name: 'JavaScript',
-      url: 'https://javascript.info/',
-      icon: Code,
-      description: 'Essential for building modern web applications.',
+      title: 'Development Tools',
+      description: 'Essential tools for coding and development.',
+      items: [
+        {
+          name: 'Visual Studio Code',
+          url: 'https://code.visualstudio.com/',
+          icon: Code,
+          description: 'Lightweight but powerful source code editor.',
+          type: 'Tool',
+          source: 'Microsoft',
+        },
+        {
+          name: 'JetBrains IDEs',
+          url: 'https://www.jetbrains.com/',
+          icon: Code,
+          description: 'Intelligent IDEs for various programming languages.',
+          type: 'Tool',
+          source: 'JetBrains',
+        },
+        {
+          name: 'Postman',
+          url: 'https://www.postman.com/',
+          icon: Code,
+          description: 'API development and testing tool.',
+          type: 'Tool',
+          source: 'Postman',
+        },
+      ],
     },
     {
-      name: 'SQL',
-      url: 'https://www.w3schools.com/sql/',
-      icon: Database,
-      description: 'Learn to query and manage databases efficiently.',
+      title: 'Hosting & Deployment',
+      description: 'Platforms for hosting and deploying your applications.',
+      items: [
+        {
+          name: 'Vercel',
+          url: 'https://vercel.com/',
+          icon: Cloud,
+          description: 'Platform for static and serverless deployment.',
+          type: 'Platform',
+          source: 'Vercel',
+        },
+        {
+          name: 'Netlify',
+          url: 'https://www.netlify.com/',
+          icon: Cloud,
+          description:
+            'All-in-one platform for automating modern web projects.',
+          type: 'Platform',
+          source: 'Netlify',
+        },
+        {
+          name: 'Heroku',
+          url: 'https://www.heroku.com/',
+          icon: Cloud,
+          description: 'Cloud platform for deploying and running apps.',
+          type: 'Platform',
+          source: 'Salesforce',
+        },
+      ],
     },
     {
-      name: 'Java',
-      url: 'https://www.udemy.com/course/java-programming-tutorial-for-beginners/',
-      icon: Code,
-      description: 'A must-know language for backend and mobile development.',
+      title: 'Containerization & Orchestration',
+      description: 'Tools for containerizing and managing applications.',
+      items: [
+        {
+          name: 'Docker',
+          url: 'https://www.docker.com/',
+          icon: Database,
+          description:
+            'Platform for developing, shipping, and running applications in containers.',
+          type: 'Tool',
+          source: 'Docker',
+        },
+        {
+          name: 'Kubernetes',
+          url: 'https://kubernetes.io/',
+          icon: Database,
+          description:
+            'Open-source system for automating deployment, scaling, and management of containerized applications.',
+          type: 'Tool',
+          source: 'CNCF',
+        },
+      ],
     },
     {
-      name: 'C++',
-      url: 'https://www.learncpp.com/',
-      icon: Code,
-      description: 'Ideal for competitive programming and system design.',
-    },
-  ];
-
-  const toolsAndSoftware = [
-    {
-      name: 'Git & GitHub',
-      url: 'https://www.youtube.com/watch?v=RGOj5yH7evk',
-      icon: GitMerge,
-      description: 'Version control and collaboration made easy.',
-    },
-    {
-      name: 'VS Code',
-      url: 'https://code.visualstudio.com/',
-      icon: Code,
-      description: 'Powerful code editor for all programming needs.',
-    },
-    {
-      name: 'Docker',
-      url: 'https://docker.com/',
-      icon: Database,
-      description: 'Containerize applications & manage deployments.',
-    },
-    {
-      name: 'AWS Free Tier',
-      url: 'https://aws.amazon.com/free/',
-      icon: Database,
-      description: 'Learn cloud services and hosting basics.',
-    },
-  ];
-
-  const learningPaths = [
-    {
-      name: 'Frontend Development',
-      url: 'https://frontendmasters.com/',
-      icon: Code,
-      description: 'Learn HTML, CSS, JavaScript & frameworks.',
-    },
-    {
-      name: 'Backend Development',
-      url: 'https://roadmap.sh/backend',
-      icon: Database,
-      description: 'Master server-side coding and APIs.',
-    },
-    {
-      name: 'Full-Stack Development',
-      url: 'https://roadmap.sh/full-stack',
-      icon: BarChart,
-      description: 'Combine frontend and backend skills.',
+      title: 'Free Cloud Credits & Resources',
+      description:
+        'Platforms offering free credits or tiers for cloud services.',
+      items: [
+        {
+          name: 'AWS Free Tier',
+          url: 'https://aws.amazon.com/free/',
+          icon: DollarSign,
+          description:
+            'Free tier with 12 months of free services and always-free products.',
+          type: 'Cloud Platform',
+          source: 'Amazon Web Services',
+        },
+        {
+          name: 'Google Cloud Free Program',
+          url: 'https://cloud.google.com/free',
+          icon: DollarSign,
+          description:
+            '$300 in free credits for new customers and 20+ always-free products.',
+          type: 'Cloud Platform',
+          source: 'Google Cloud',
+        },
+        {
+          name: 'Microsoft Azure Free Account',
+          url: 'https://azure.microsoft.com/en-us/free/',
+          icon: DollarSign,
+          description:
+            '12 months of free services, $200 credit, and 25+ always-free services.',
+          type: 'Cloud Platform',
+          source: 'Microsoft Azure',
+        },
+        {
+          name: 'DigitalOcean Free Trial',
+          url: 'https://try.digitalocean.com/freetrial/',
+          icon: DollarSign,
+          description: '$200 in free credits over 60 days for new users.',
+          type: 'Cloud Platform',
+          source: 'DigitalOcean',
+        },
+        {
+          name: 'IBM Cloud Free Tier',
+          url: 'https://www.ibm.com/cloud/free',
+          icon: DollarSign,
+          description:
+            'Free tier with no time limits and 30-day free trial with $200 credit.',
+          type: 'Cloud Platform',
+          source: 'IBM Cloud',
+        },
+      ],
     },
     {
-      name: 'Data Science & AI',
-      url: 'https://datasciencedojo.com/',
-      icon: BarChart,
-      description: 'Analyze data and explore machine learning.',
-    },
-    {
-      name: 'DevOps',
-      url: 'https://roadmap.sh/devops',
-      icon: GitMerge,
-      description: 'Build CI/CD pipelines and deploy software.',
-    },
-    {
-      name: 'Mobile App Development',
-      url: 'https://developer.android.com/courses',
-      icon: Code,
-      description: 'Create apps for Android and iOS.',
-    },
-    {
-      name: 'Blockchain Development',
-      url: 'https://ethereum.org/en/developers/',
-      icon: Database,
-      description: 'Build smart contracts and block chain apps.',
-    },
-    {
-      name: 'Game Development',
-      url: 'https://learn.unity.com/',
-      icon: Code,
-      description: 'Design games with Unity or Unreal.',
-    },
-    {
-      name: 'UI/UX Design',
-      url: 'https://www.interaction-design.org/',
-      icon: Book,
-      description: 'Learn design principles and workflows.',
+      title: 'Often Overlooked Skills',
+      description: 'Essential skills that complement technical abilities.',
+      items: [
+        {
+          name: 'Technical Writing',
+          url: 'https://developers.google.com/tech-writing',
+          icon: PenTool,
+          description:
+            'Learn to write clear and effective technical documentation.',
+          type: 'Course',
+          source: 'Google',
+        },
+        {
+          name: 'Command Line Proficiency',
+          url: 'https://www.codecademy.com/learn/learn-the-command-line',
+          icon: Terminal,
+          description: 'Master essential command line skills for developers.',
+          type: 'Course',
+          source: 'Codecademy',
+        },
+        {
+          name: 'Soft Skills for Developers',
+          url: 'https://www.coursera.org/learn/developer-soft-skills',
+          icon: Users,
+          description:
+            'Enhance your communication and collaboration abilities.',
+          type: 'Course',
+          source: 'Coursera',
+        },
+        {
+          name: 'Time Management for Programmers',
+          url: 'https://medium.com/better-programming/time-management-techniques-for-programmers-d7f9f33a7d62',
+          icon: Briefcase,
+          description: 'Improve your productivity and work-life balance.',
+          type: 'Article',
+          source: 'Medium',
+        },
+        {
+          name: 'Code Review Best Practices',
+          url: 'https://google.github.io/eng-practices/review/',
+          icon: MessageSquare,
+          description: 'Learn how to conduct effective code reviews.',
+          type: 'Guide',
+          source: 'Google',
+        },
+      ],
     },
   ];
 
@@ -168,6 +289,9 @@ export default function SkillsAndResources() {
                         <div className='text-xs text-muted-foreground mt-1 line-clamp-2'>
                           {item.description}
                         </div>
+                        <div className='text-xs text-muted-foreground mt-1'>
+                          {item.type} • {item.source}
+                        </div>
                       </div>
                       <ExternalLink className='h-4 w-4 mt-1 flex-shrink-0 opacity-50' />
                     </div>
@@ -186,32 +310,23 @@ export default function SkillsAndResources() {
       <Card className='mb-8'>
         <CardHeader>
           <CardTitle className='text-3xl font-bold'>
-            Skills & Resources
+            Tools & Resources
           </CardTitle>
           <CardDescription className='text-lg'>
-            Your go-to hub for learning programming languages, tools, and
-            essential skills.
+            Explore essential tools, platforms, and skills for modern software
+            development, including free cloud resources.
           </CardDescription>
         </CardHeader>
       </Card>
 
-      <Section
-        title='Programming Languages'
-        description='Start learning the most in-demand languages today.'
-        items={programmingLanguages}
-      />
-
-      <Section
-        title='Learning Paths'
-        description='Follow curated paths to master key skills step-by-step.'
-        items={learningPaths}
-      />
-
-      <Section
-        title='Tools & Software'
-        description='Explore essential tools for modern development.'
-        items={toolsAndSoftware}
-      />
+      {categories.map((category) => (
+        <Section
+          key={category.title}
+          title={category.title}
+          description={category.description}
+          items={category.items}
+        />
+      ))}
     </div>
   );
 }
