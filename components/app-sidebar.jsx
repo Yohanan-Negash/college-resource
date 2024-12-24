@@ -4,12 +4,15 @@ import {
   Mail,
   DollarSign,
   MapPin,
-  Code,
   Briefcase,
   BookOpen,
   UserPlus,
   GalleryVerticalEnd,
   Search,
+  FileText,
+  Trophy,
+  Brain,
+  Activity,
 } from 'lucide-react';
 
 import {
@@ -29,44 +32,50 @@ import { redirect } from 'next/navigation';
 import { createClient } from '../lib/supabase/server';
 import { NavUser } from '../components/nav-user';
 import Link from 'next/link';
+import { ComingSoonFeatureTeaser } from '@/app/dashboard/(dashboard-components)/coming-soon-feature-teaser';
 
 // Application section items
 const applicationItems = [
   {
-    title: 'Dashboard',
-    url: '/dashboard',
+    title: 'Start Here',
+    url: '/dashboard/getting-started',
     icon: Home,
+  },
+  // {
+  //   title: 'Analytics Dashboard',
+  //   url: '/dashboard',
+  //   icon: Home,
+  // },
+  {
+    title: 'Foudations',
+    url: '/dashboard/foundations',
+    icon: Brain,
   },
   {
     title: 'Roadmaps',
-    url: '/dashboard/coming-soon',
+    url: '/dashboard/roadmaps',
     icon: MapPin,
+  },
+  {
+    title: 'Tools & Resources',
+    url: '/dashboard/tools',
+    icon: BookOpen,
   },
   {
     title: 'Hackathons',
     url: '/dashboard/hackathons',
-    icon: Code,
+    icon: Trophy,
   },
   {
     title: 'Internships',
     url: '/dashboard/internships',
     icon: Briefcase,
   },
-  {
-    title: 'Skills & Resources',
-    url: '/dashboard/skills',
-    icon: BookOpen,
-  },
-  {
-    title: 'Mentorship',
-    url: '/dashboard/coming-soon',
-    icon: UserPlus,
-  },
-  {
-    title: 'Job Search',
-    url: '/dashboard/search',
-    icon: Search,
-  },
+  // {
+  //   title: 'Job Search',
+  //   url: '/dashboard/search',
+  //   icon: Search,
+  // },
 ];
 
 // Help section items
@@ -84,11 +93,32 @@ const helpItems = [
 ];
 
 // Earn Section Item
-const earnItem = {
-  title: 'Become an Affiliate',
-  url: '/dashboard/coming-soon',
-  icon: DollarSign,
-};
+const earnItem = [
+  {
+    title: 'Become an Affiliate',
+    url: '/dashboard/coming-soon',
+    icon: DollarSign,
+  },
+];
+
+// Comming Soon Section Item
+const comingSoonItems = [
+  {
+    title: 'CodePulse',
+    url: '/#',
+    icon: Activity,
+  },
+  {
+    title: 'AI Resume Builder',
+    url: '/#',
+    icon: FileText,
+  },
+  {
+    title: 'Mentorship',
+    url: '/dashboard/coming-soon',
+    icon: UserPlus,
+  },
+];
 
 export async function AppSidebar() {
   const supabase = createClient();
@@ -109,7 +139,7 @@ export async function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size='lg' asChild>
-              <Link href='#'>
+              <Link href='/dashboard'>
                 <div className='flex aspect-square size-7 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground'>
                   <GalleryVerticalEnd className='size-4' />
                 </div>
@@ -159,17 +189,36 @@ export async function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
+          <SidebarGroupLabel>PREMIUM FEATURES</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {comingSoonItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <ComingSoonFeatureTeaser
+                      icon={item.icon}
+                      title={item.title}
+                    />
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
           <SidebarGroupLabel>Earn</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Link href={earnItem.url}>
-                    <earnItem.icon />
-                    <span>{earnItem.title}</span>
-                  </Link>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              {earnItem.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <ComingSoonFeatureTeaser
+                      icon={item.icon}
+                      title={item.title}
+                    />
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
