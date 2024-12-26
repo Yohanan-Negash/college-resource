@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { ChevronRight, Code, Brain, Briefcase, GraduationCap } from 'lucide-react';
 
