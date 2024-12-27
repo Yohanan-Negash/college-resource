@@ -11,7 +11,8 @@ const comparisonData = {
                 "Applying everywhere with no strategy",
                 "Missing crucial networking opportunities",
                 "Focusing only on GPA and leetcode"
-            ]
+            ],
+            imageUrl: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images/imga.webp?t=2024-12-27T02%3A00%3A15.562Z",
         },
         successful: {
             title: "Successful Students",
@@ -19,7 +20,8 @@ const comparisonData = {
                 "Strategic approach to applications",
                 "Strong industry connections",
                 "Well-rounded portfolio beyond academics"
-            ]
+            ],
+            imageUrl: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images/imgc.webp?t=2024-12-27T02%3A27%3A21.842Z",
         }
     }
 };
@@ -42,7 +44,7 @@ const Comparison = () => {
                     </div>
                     <div className="relative mb-6">
                         <Image
-                            src="/api/placeholder/400/320"
+                            src={comparisonData.sections.struggling.imageUrl}
                             alt="Struggling student"
                             width={400}
                             height={200}
@@ -67,7 +69,7 @@ const Comparison = () => {
                     </div>
                     <div className="relative mb-6">
                         <Image
-                            src="/api/placeholder/400/320"
+                            src={comparisonData.sections.successful.imageUrl}
                             alt="Successful student"
                             width={400}
                             height={200}

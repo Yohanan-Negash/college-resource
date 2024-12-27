@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 const showcaseContent = {
     title: "Securing Your Future",
@@ -14,58 +14,26 @@ const showcaseContent = {
     ]
 };
 
-const VideoShowcase = () => {
-    const videoRef = useRef(null);
-
-    useEffect(() => {
-        const handleError = (e) => {
-            console.error('Error loading video:', e);
-        };
-
-        const videoElement = videoRef.current;
-        if (videoElement) {
-            videoElement.addEventListener('error', handleError);
-            return () => videoElement.removeEventListener('error', handleError);
-        }
-    }, []);
-
+const TextShowcase = () => {
     return (
-        <div className="mb-20">
-            <div className="relative w-full overflow-hidden rounded-xl pt-[56.25%]">
-                <div className="absolute inset-0 bg-slate-800 bg-opacity-90">
-                    <video
-                        ref={videoRef}
-                        className="h-full w-full object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                    >
-                        <source src="../../marketing.mp4" type="video/mp4"/>
-                    </video>
+        <div className="mb-20 px-4 md:px-8">
+            <div className="relative w-full rounded-xl bg-gradient-to-t from-slate-800 via-slate-900 to-slate-800 p-6 sm:p-8 lg:p-12">
+                <div className="max-w-3xl mx-auto space-y-6 text-center">
+                    <h2 className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-2xl sm:text-3xl md:text-4xl font-bold text-transparent">
+                        {showcaseContent.title}
+                    </h2>
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent">
-                        <div className="absolute inset-0 flex flex-col justify-end p-8">
-                            <div className="max-w-3xl space-y-6">
-                                <h2 className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-4xl font-bold text-transparent">
-                                    {showcaseContent.title}
-                                </h2>
-
-                                <div className="space-y-8">
-                                    {showcaseContent.sections.map((section, index) => (
-                                        <div key={index}>
-                                            <h3 className="mb-3 text-2xl font-semibold text-white">
-                                                {section.title}
-                                            </h3>
-                                            <p className="text-lg text-zinc-300">
-                                                {section.description}
-                                            </p>
-                                        </div>
-                                    ))}
-                                </div>
+                    <div className="space-y-8">
+                        {showcaseContent.sections.map((section, index) => (
+                            <div key={index} className="text-left">
+                                <h3 className="mb-3 text-xl sm:text-2xl font-semibold text-white">
+                                    {section.title}
+                                </h3>
+                                <p className="text-base sm:text-lg text-zinc-300">
+                                    {section.description}
+                                </p>
                             </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -73,4 +41,4 @@ const VideoShowcase = () => {
     );
 };
 
-export default VideoShowcase;
+export default TextShowcase;
