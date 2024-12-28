@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Card,
   CardContent,
@@ -10,7 +10,7 @@ import {
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { CheckCircle2, Circle, ExternalLink } from 'lucide-react';
+import { CheckCircle2, Circle, ExternalLink, Loader } from 'lucide-react';
 import Link from 'next/link';
 import {
   Tooltip,
@@ -445,15 +445,20 @@ const roadmaps = {
 };
 
 export default function RoadmapPage({ params }) {
-  const roadmap = roadmaps[params.slug];
+  const [roadmap, setRoadmap] = useState(null);
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const selectedRoadmap = roadmaps[params.slug];
+    if (selectedRoadmap) {
+      setRoadmap(selectedRoadmap);
+      setSkills(selectedRoadmap.stages.flatMap((stage) => stage.skills));
+    }
+  }, [params.slug]);
 
   if (!roadmap) {
-    return <div>Roadmap not found</div>;
+    return;
   }
-
-  const [skills, setSkills] = useState(
-    roadmap.stages.flatMap((stage) => stage.skills)
-  );
 
   const totalSkills = skills.length;
   const completedSkills = skills.filter((skill) => skill.completed).length;
