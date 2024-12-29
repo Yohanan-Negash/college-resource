@@ -40,27 +40,41 @@ export function FoundationTopicGuide({ title, description, steps, topicSlug }) {
   const { progress, updateProgress } = useProgress();
 
   useEffect(() => {
-    const storedProgress = progress[topicSlug] || 0;
+    const storedProgress = progress[topicSlug] || [];
     const updatedSteps = steps.map((step, index) => ({
       ...step,
-      completed: index < storedProgress,
+      completed: Array.isArray(storedProgress)
+        ? storedProgress.includes(index)
+        : false,
     }));
     setCurrentSteps(updatedSteps);
   }, [steps, topicSlug, progress]);
 
-  const handleCompleteStep = (index) => {
-    const updatedSteps = [...currentSteps];
-    updatedSteps[index].completed = !updatedSteps[index].completed;
-    setCurrentSteps(updatedSteps);
-    const completedSteps = updatedSteps.filter((step) => step.completed).length;
-    updateProgress(topicSlug, completedSteps);
+  const handleToggleStep = (index) => {
+    setCurrentSteps((prevSteps) => {
+      const updatedSteps = prevSteps.map((step, i) =>
+        i === index ? { ...step, completed: !step.completed } : step
+      );
+      const completedIndices = updatedSteps
+        .map((step, i) => (step.completed ? i : -1))
+        .filter((i) => i !== -1);
+      updateProgress(topicSlug, completedIndices);
+      return updatedSteps;
+    });
   };
 
-  const progressPercentage = Math.round(
-    (currentSteps.filter((step) => step.completed).length /
-      currentSteps.length) *
-      100
+  const calculateProgress = useCallback(() => {
+    const completedSteps = currentSteps.filter((step) => step.completed).length;
+    return Math.round((completedSteps / currentSteps.length) * 100);
+  }, [currentSteps]);
+
+  const [progressPercentage, setProgressPercentage] = useState(
+    calculateProgress()
   );
+
+  useEffect(() => {
+    setProgressPercentage(calculateProgress());
+  }, [currentSteps, calculateProgress]);
 
   return (
     <div className='space-y-8'>
@@ -133,7 +147,7 @@ export function FoundationTopicGuide({ title, description, steps, topicSlug }) {
                 ))}
               </ul>
               <div className='flex justify-end'>
-                <Button onClick={() => handleCompleteStep(index)}>
+                <Button onClick={() => handleToggleStep(index)}>
                   {step.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
                 </Button>
               </div>
