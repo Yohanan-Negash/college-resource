@@ -15,12 +15,10 @@ import { CheckCircle, Circle, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-// Implement useProgress hook
 const useProgress = () => {
   const [progress, setProgress] = useState({});
 
   useEffect(() => {
-    // Load progress from localStorage on component mount
     const storedProgress = localStorage.getItem('foundationProgress');
     if (storedProgress) {
       setProgress(JSON.parse(storedProgress));
@@ -30,7 +28,6 @@ const useProgress = () => {
   const updateProgress = useCallback((topicSlug, completedSteps) => {
     setProgress((prevProgress) => {
       const newProgress = { ...prevProgress, [topicSlug]: completedSteps };
-      // Save progress to localStorage
       localStorage.setItem('foundationProgress', JSON.stringify(newProgress));
       return newProgress;
     });
@@ -45,27 +42,41 @@ export function PathGuide({ title, description, steps, pathSlug }) {
   const { progress, updateProgress } = useProgress();
 
   useEffect(() => {
-    const storedProgress = progress[pathSlug] || 0;
+    const storedProgress = progress[pathSlug] || [];
     const updatedSteps = steps.map((step, index) => ({
       ...step,
-      completed: index < storedProgress,
+      completed: Array.isArray(storedProgress)
+        ? storedProgress.includes(index)
+        : false,
     }));
     setCurrentSteps(updatedSteps);
   }, [steps, pathSlug, progress]);
 
-  const handleCompleteStep = (index) => {
-    const updatedSteps = [...currentSteps];
-    updatedSteps[index].completed = true;
-    setCurrentSteps(updatedSteps);
-    const completedSteps = updatedSteps.filter((step) => step.completed).length;
-    updateProgress(pathSlug, completedSteps);
+  const handleToggleStep = (index) => {
+    setCurrentSteps((prevSteps) => {
+      const updatedSteps = prevSteps.map((step, i) =>
+        i === index ? { ...step, completed: !step.completed } : step
+      );
+      const completedIndices = updatedSteps
+        .map((step, i) => (step.completed ? i : -1))
+        .filter((i) => i !== -1);
+      updateProgress(pathSlug, completedIndices);
+      return updatedSteps;
+    });
   };
 
-  const progressPercentage = Math.round(
-    (currentSteps.filter((step) => step.completed).length /
-      currentSteps.length) *
-      100
+  const calculateProgress = useCallback(() => {
+    const completedSteps = currentSteps.filter((step) => step.completed).length;
+    return Math.round((completedSteps / currentSteps.length) * 100);
+  }, [currentSteps]);
+
+  const [progressPercentage, setProgressPercentage] = useState(
+    calculateProgress()
   );
+
+  useEffect(() => {
+    setProgressPercentage(calculateProgress());
+  }, [currentSteps, calculateProgress]);
 
   return (
     <div className='space-y-8'>
@@ -113,11 +124,9 @@ export function PathGuide({ title, description, steps, pathSlug }) {
             <CardContent>
               <p className='text-muted-foreground'>{step.description}</p>
               <div className='mt-4 flex justify-end'>
-                {!step.completed && (
-                  <Button onClick={() => handleCompleteStep(index)}>
-                    Mark as Complete
-                  </Button>
-                )}
+                <Button onClick={() => handleToggleStep(index)}>
+                  {step.completed ? 'Mark as Incomplete' : 'Mark as Complete'}
+                </Button>
                 <Button variant='outline' className='ml-2' asChild>
                   <Link
                     href={`/dashboard/resources/${pathSlug}/${step.resourcePath}`}
