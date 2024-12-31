@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { addToWaitlist } from '@/lib/supabase/waitlist';
 import { useToast } from '../../components/hooks/use-toast';
-
+import { sendWaitlistEmail } from '@/lib/actions/waitlistEmail';
 const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
   const { toast } = useToast();
   const initialFormState = {
@@ -49,8 +49,7 @@ const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
           toast({
             variant: 'destructive',
             title: 'Email Already Registered',
-            description:
-              'This email address is already on our waitlist. Please use a different .edu email.',
+            description: 'This email address is already on our waitlist. Please use a different .edu email.',
           });
         } else {
           setErrors({
@@ -59,14 +58,14 @@ const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
           toast({
             variant: 'destructive',
             title: 'Error',
-            description:
-              'There was an issue with your request. Please try again later.',
+            description: 'There was an issue with your request. Please try again later.',
           });
         }
       } else {
+        await sendWaitlistEmail(formData);
         toast({
           title: 'Success',
-          description: 'You have been added to the waitlist!',
+          description: 'You have been added to the waitlist and an email has been sent!',
         });
         onSubmit(data);
         resetForm();
