@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 export const WaitlistEmailTemplate = ({ firstName, lastName }) => (
@@ -71,17 +72,6 @@ export const WaitlistEmailTemplate = ({ firstName, lastName }) => (
         >
             <p>
                 This is an automated email. Please do not reply directly to this message.
-            </p>
-            <p>
-                <a
-                    href="#unsubscribe"
-                    style={{
-                        color: '#2980b9',
-                        textDecoration: 'none',
-                    }}
-                >
-                    Unsubscribe
-                </a>
             </p>
         </div>
     </div>
