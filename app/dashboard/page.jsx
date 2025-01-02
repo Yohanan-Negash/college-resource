@@ -19,7 +19,14 @@ import {
   Users,
   PenToolIcon as Tool,
   Trophy,
+  ChevronRight,
 } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -31,9 +38,10 @@ export default function Home() {
   const resources = [
     {
       title: 'Start Your Journey',
-      description: 'Choose your career path and get started',
+      description: 'Take the first step towards your dream tech career',
       icon: Rocket,
       href: '/dashboard/getting-started',
+      primary: true,
     },
     {
       title: 'Foundations',
@@ -79,9 +87,8 @@ export default function Home() {
             Welcome to Your Tech Career Hub
           </h1>
           <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-            Enjoy a collection of carefully curated resources, handpicked to
-            help you succeed in your developer journey and achieve your career
-            goals.
+            Your journey to a successful tech career starts here. Let us begin
+            by choosing your path and setting your goals.
           </p>
         </div>
 
@@ -92,26 +99,53 @@ export default function Home() {
           className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'
         >
           {resources.map((item, index) => (
-            <Card
-              key={index}
-              className='h-full transition-all duration-300 hover:shadow-lg'
-            >
-              <CardHeader>
-                <CardTitle className='flex items-center space-x-2'>
-                  <item.icon className='w-6 h-6 text-primary' />
-                  <span>{item.title}</span>
-                </CardTitle>
-                <CardDescription>{item.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild className='w-full'>
-                  <Link href={item.href}>
-                    Explore
-                    <ArrowRight className='ml-2 h-4 w-4' />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
+            <TooltipProvider key={index}>
+              <Tooltip open={item.primary}>
+                <TooltipTrigger asChild>
+                  <Card
+                    className={`h-full transition-all duration-300 hover:shadow-lg ${
+                      item.primary ? 'ring-2 ring-primary shadow-lg' : ''
+                    }`}
+                  >
+                    <CardHeader>
+                      <CardTitle className='flex items-center space-x-2'>
+                        <item.icon
+                          className={`w-6 h-6 ${
+                            item.primary
+                              ? 'text-primary'
+                              : 'text-muted-foreground'
+                          }`}
+                        />
+                        <span>{item.title}</span>
+                      </CardTitle>
+                      <CardDescription>{item.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Button
+                        asChild
+                        className={`w-full ${
+                          item.primary ? 'bg-primary hover:bg-primary/90' : ''
+                        }`}
+                      >
+                        <Link href={item.href}>
+                          {item.primary ? 'Get Started' : 'Explore'}
+                          {item.primary ? (
+                            <ChevronRight className='ml-2 h-4 w-4' />
+                          ) : (
+                            <ArrowRight className='ml-2 h-4 w-4' />
+                          )}
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </TooltipTrigger>
+                {item.primary && (
+                  <TooltipContent sideOffset={5}>
+                    <p>Start here to kickstart your tech career!</p>
+                  </TooltipContent>
+                )}
+              </Tooltip>
+            </TooltipProvider>
           ))}
         </motion.div>
 
