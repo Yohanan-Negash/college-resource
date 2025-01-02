@@ -87,8 +87,9 @@ export default function Home() {
             Welcome to Your Tech Career Hub
           </h1>
           <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
-            Your journey to a successful tech career starts here. Let us begin
-            by choosing your path and setting your goals.
+            Enjoy a collection of carefully curated resources, handpicked to
+            help you succeed in your developer journey and achieve your career
+            goals.
           </p>
         </div>
 
