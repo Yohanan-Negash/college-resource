@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { AlertCircle, Loader2, Plus, X } from 'lucide-react';
+import { AlertCircle, Loader2 } from 'lucide-react';
+import { Resend } from 'resend';
 
-import { Button } from '../../../components/ui/button';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -12,7 +13,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '../../../components/ui/card';
+} from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -20,33 +21,29 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../../../components/ui/form';
-import { Input } from '../../../components/ui/input';
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../../../components/ui/select';
-import { Textarea } from '../../../components/ui/textarea';
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from '../../../components/ui/alert';
-import { submitSupportRequest } from '../../../lib/actions/email';
+} from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { submitFeedback } from '@/lib/actions/email';
 
-export default function SupportForm() {
+export default function FeedbackPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({});
 
   const form = useForm({
     defaultValues: {
-      category: '',
-      priority: '',
+      feedbackType: '',
+      rating: '',
       subject: '',
-      description: '',
+      details: '',
       email: '',
     },
   });
@@ -62,7 +59,7 @@ export default function SupportForm() {
     setIsSubmitting(true);
     setSubmitStatus(null);
     try {
-      const result = await submitSupportRequest(data);
+      const result = await submitFeedback(data);
       setSubmitStatus(result);
       if (result.success) {
         reset();
@@ -78,11 +75,12 @@ export default function SupportForm() {
 
   return (
     <div className='container mx-auto p-6 max-w-100'>
-      <Card className=''>
+      <Card>
         <CardHeader>
-          <CardTitle>Submit a Support Request</CardTitle>
+          <CardTitle>Submit Feedback</CardTitle>
           <CardDescription>
-            Tell us about the issue you are experiencing.
+            We value your feedback! Please share your thoughts, suggestions, or
+            experiences with our platform.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -90,43 +88,49 @@ export default function SupportForm() {
             <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
               <div className='grid grid-cols-2 gap-4'>
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Feedback Type</FormLabel>
                   <Select
-                    onValueChange={(value) => form.setValue('category', value)}
+                    onValueChange={(value) =>
+                      form.setValue('feedbackType', value)
+                    }
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder='Select category' />
+                        <SelectValue placeholder='Select feedback type' />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value='technical'>Technical Issue</SelectItem>
-                      <SelectItem value='billing'>Billing</SelectItem>
-                      <SelectItem value='account'>Account</SelectItem>
+                      <SelectItem value='general'>General Feedback</SelectItem>
+                      <SelectItem value='bug'>Bug Report</SelectItem>
+                      <SelectItem value='feature'>Feature Request</SelectItem>
+                      <SelectItem value='improvement'>
+                        Suggestion for Improvement
+                      </SelectItem>
                       <SelectItem value='other'>Other</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage>{errors.category?.message}</FormMessage>
+                  <FormMessage>{errors.feedbackType?.message}</FormMessage>
                 </FormItem>
 
                 <FormItem>
-                  <FormLabel>Priority</FormLabel>
+                  <FormLabel>Rating</FormLabel>
                   <Select
-                    onValueChange={(value) => form.setValue('priority', value)}
+                    onValueChange={(value) => form.setValue('rating', value)}
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder='Select priority' />
+                        <SelectValue placeholder='Rate your experience' />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value='low'>Low</SelectItem>
-                      <SelectItem value='medium'>Medium</SelectItem>
-                      <SelectItem value='high'>High</SelectItem>
-                      <SelectItem value='critical'>Critical</SelectItem>
+                      <SelectItem value='5'>5 - Excellent</SelectItem>
+                      <SelectItem value='4'>4 - Good</SelectItem>
+                      <SelectItem value='3'>3 - Average</SelectItem>
+                      <SelectItem value='2'>2 - Poor</SelectItem>
+                      <SelectItem value='1'>1 - Very Poor</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormMessage>{errors.priority?.message}</FormMessage>
+                  <FormMessage>{errors.rating?.message}</FormMessage>
                 </FormItem>
               </div>
 
@@ -134,7 +138,7 @@ export default function SupportForm() {
                 <FormLabel>Subject</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder='Brief description of the issue'
+                    placeholder='Brief summary of your feedback'
                     {...register('subject', {
                       required: 'Subject is required',
                       minLength: {
@@ -148,21 +152,21 @@ export default function SupportForm() {
               </FormItem>
 
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>Details</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder='Please provide detailed information about your issue or request'
+                    placeholder='Please provide detailed feedback'
                     className='min-h-[120px]'
-                    {...register('description', {
-                      required: 'Description is required',
+                    {...register('details', {
+                      required: 'Details are required',
                       minLength: {
                         value: 20,
-                        message: 'Description must be at least 20 characters.',
+                        message: 'Details must be at least 20 characters.',
                       },
                     })}
                   />
                 </FormControl>
-                <FormMessage>{errors.description?.message}</FormMessage>
+                <FormMessage>{errors.details?.message}</FormMessage>
               </FormItem>
 
               <FormItem>
@@ -180,7 +184,7 @@ export default function SupportForm() {
                   />
                 </FormControl>
                 <FormDescription>
-                  We will use this email to respond to your request
+                  We may use this email to follow up on your feedback
                 </FormDescription>
                 <FormMessage>{errors.email?.message}</FormMessage>
               </FormItem>
@@ -206,7 +210,7 @@ export default function SupportForm() {
             disabled={isSubmitting}
           >
             {isSubmitting && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
-            Submit Request
+            Submit Feedback
           </Button>
         </CardFooter>
       </Card>

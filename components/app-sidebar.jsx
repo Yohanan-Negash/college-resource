@@ -33,6 +33,7 @@ import { createClient } from '../lib/supabase/server';
 import { NavUser } from '../components/nav-user';
 import Link from 'next/link';
 import { ComingSoonFeatureTeaser } from '@/app/dashboard/(dashboard-components)/coming-soon-feature-teaser';
+import { ActiveLink } from '@/components/active-link';
 
 // Application section items
 const applicationItems = [
@@ -87,7 +88,7 @@ const helpItems = [
   },
   {
     title: 'Feedback',
-    url: '/dashboard/coming-soon',
+    url: '/dashboard/feedback',
     icon: Send,
   },
 ];
@@ -161,10 +162,10 @@ export async function AppSidebar() {
               {applicationItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.url}>
+                    <ActiveLink href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </Link>
+                    </ActiveLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -178,10 +179,10 @@ export async function AppSidebar() {
               {helpItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.url}>
+                    <ActiveLink href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </Link>
+                    </ActiveLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
