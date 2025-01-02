@@ -88,7 +88,7 @@ const helpItems = [
   },
   {
     title: 'Feedback',
-    url: '/dashboard/coming-soon',
+    url: '/dashboard/feedback',
     icon: Send,
   },
 ];
