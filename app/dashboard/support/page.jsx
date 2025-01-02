@@ -82,8 +82,7 @@ export default function SupportForm() {
         <CardHeader>
           <CardTitle>Submit a Support Request</CardTitle>
           <CardDescription>
-            Tell us about the issue you are experiencing or feature you would
-            like to request.
+            Tell us about the issue you are experiencing.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -102,7 +101,6 @@ export default function SupportForm() {
                     </FormControl>
                     <SelectContent>
                       <SelectItem value='technical'>Technical Issue</SelectItem>
-                      <SelectItem value='feature'>Feature Request</SelectItem>
                       <SelectItem value='billing'>Billing</SelectItem>
                       <SelectItem value='account'>Account</SelectItem>
                       <SelectItem value='other'>Other</SelectItem>
