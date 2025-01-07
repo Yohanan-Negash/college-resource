@@ -8,7 +8,7 @@ const basicDataStructuresResources = {
     {
       title: 'Data Structures - GeeksforGeeks',
       description: 'Comprehensive tutorials on various data structures.',
-      type: 'article',
+      type: 'documentation',
       url: 'https://www.geeksforgeeks.org/data-structures/',
     },
     {
@@ -19,17 +19,18 @@ const basicDataStructuresResources = {
       duration: '8 months',
     },
     {
+      title: 'Data Structures and Algorithms',
+      description: 'A great video playlist on data structures and algorithms.',
+      type: 'videos',
+      url: 'https://www.youtube.com/playlist?list=PLBZBJbE_rGRV8D7XZ08LK6z-4zPoWzu5H',
+      duration: 'Self-paced',
+    },
+    {
       title: 'Visualgo',
       description:
         'Visualizing data structures and algorithms through animation.',
       type: 'tool',
       url: 'https://visualgo.net/en',
-    },
-    {
-      title: 'Python Data Structures Tutorial',
-      description: 'Tutorial on built-in data structures in Python.',
-      type: 'article',
-      url: 'https://docs.python.org/3/tutorial/datastructures.html',
     },
   ],
 };

@@ -13,25 +13,26 @@ const rapidPrototypingResources = {
       url: 'https://www.figma.com/',
     },
     {
-      title: 'Adobe XD',
-      description:
-        'UI/UX design and collaboration tool with prototyping capabilities.',
-      type: 'tool',
-      url: 'https://www.adobe.com/products/xd.html',
-    },
-    {
-      title: 'InVision',
-      description:
-        'Digital product design platform for prototyping and collaboration.',
-      type: 'tool',
-      url: 'https://www.invisionapp.com/',
-    },
-    {
       title: 'Rapid Prototyping Course',
       description: 'Coursera course on rapid prototyping techniques.',
       type: 'course',
-      url: 'https://www.coursera.org/learn/rapid-prototyping',
-      duration: '4 weeks',
+      url: 'https://www.coursera.org/learn/high-fidelity-designs-prototype?action=enroll',
+      duration: 'Self-paced',
+    },
+    {
+      title: 'Mobile App Design in Figma',
+      description:
+        'You have to pay for this course but it is worth it. If your are interested in a step-by-step guide to designing mobile apps in Figma, this course is for you.',
+      type: 'course',
+      url: 'https://www.udemy.com/course/mobile-app-design-in-figma-from-concept-to-prototype/?couponCode=NEWYEARCAREER',
+      duration: 'Self-paced',
+    },
+    {
+      title: 'Typography',
+      description: 'A great video on UI Design that you need to watch.',
+      type: 'video',
+      url: 'https://www.youtube.com/watch?v=9-oefwZ6Z74',
+      duration: '12 minutes',
     },
   ],
 };

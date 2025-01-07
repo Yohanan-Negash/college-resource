@@ -21,13 +21,6 @@ const resourcesData = {
         type: 'tool',
         url: 'https://example.com/data-structure-visualizer',
       },
-      {
-        title: 'Data Structures in Python',
-        description:
-          'Article series explaining how to implement common data structures in Python.',
-        type: 'article',
-        url: 'https://example.com/python-data-structures',
-      },
     ],
   },
   algorithms: {
