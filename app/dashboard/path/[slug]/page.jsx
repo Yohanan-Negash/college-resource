@@ -104,12 +104,6 @@ const pathData = {
         resourcePath: 'basic-data-structures',
       },
       {
-        title: 'Introduction to Databases',
-        description: 'Understand the basics of databases and SQL.',
-        completed: false,
-        resourcePath: 'intro-to-databases',
-      },
-      {
         title: 'Basic Algorithms',
         description: 'Learn about basic sorting and searching algorithms.',
         completed: false,
