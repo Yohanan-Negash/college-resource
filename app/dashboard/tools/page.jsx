@@ -63,14 +63,6 @@ export default function ToolsAndResources() {
           type: 'Tool',
           source: 'GitHub',
         },
-        {
-          name: 'GitKraken',
-          url: 'https://www.gitkraken.com/',
-          icon: GitMerge,
-          description: 'Powerful Git GUI client for Windows, Mac & Linux.',
-          type: 'Tool',
-          source: 'Axosoft',
-        },
       ],
     },
     {
@@ -132,29 +124,14 @@ export default function ToolsAndResources() {
           type: 'Platform',
           source: 'Salesforce',
         },
-      ],
-    },
-    {
-      title: 'Containerization & Orchestration',
-      description: 'Tools for containerizing and managing applications.',
-      items: [
         {
-          name: 'Docker',
-          url: 'https://www.docker.com/',
-          icon: Database,
+          name: 'FlyIo',
+          url: 'https://fly.io',
+          icon: Cloud,
           description:
-            'Platform for developing, shipping, and running applications in containers.',
-          type: 'Tool',
-          source: 'Docker',
-        },
-        {
-          name: 'Kubernetes',
-          url: 'https://kubernetes.io/',
-          icon: Database,
-          description:
-            'Open-source system for automating deployment, scaling, and management of containerized applications.',
-          type: 'Tool',
-          source: 'CNCF',
+            'Platform for deploying full-stack applications and databases close to your users.',
+          type: 'Platform',
+          source: 'Vercel',
         },
       ],
     },
@@ -198,15 +175,6 @@ export default function ToolsAndResources() {
           type: 'Cloud Platform',
           source: 'DigitalOcean',
         },
-        {
-          name: 'IBM Cloud Free Tier',
-          url: 'https://www.ibm.com/cloud/free',
-          icon: DollarSign,
-          description:
-            'Free tier with no time limits and 30-day free trial with $200 credit.',
-          type: 'Cloud Platform',
-          source: 'IBM Cloud',
-        },
       ],
     },
     {
@@ -214,13 +182,12 @@ export default function ToolsAndResources() {
       description: 'Essential skills that complement technical abilities.',
       items: [
         {
-          name: 'Technical Writing',
-          url: 'https://developers.google.com/tech-writing',
+          name: 'Technical Writing Guide',
+          url: 'https://www.writethedocs.org/guide/writing/beginners-guide-to-docs/',
           icon: PenTool,
-          description:
-            'Learn to write clear and effective technical documentation.',
-          type: 'Course',
-          source: 'Google',
+          description: 'Learn to write clear documentation and READMEs.',
+          type: 'Guide',
+          source: 'Write the Docs',
         },
         {
           name: 'Command Line Proficiency',
@@ -231,21 +198,12 @@ export default function ToolsAndResources() {
           source: 'Codecademy',
         },
         {
-          name: 'Soft Skills for Developers',
-          url: 'https://www.coursera.org/learn/developer-soft-skills',
+          name: 'Developer Communication',
+          url: 'https://www.coursera.org/learn/developer-career-communication',
           icon: Users,
-          description:
-            'Enhance your communication and collaboration abilities.',
+          description: 'Master communication skills for software developers.',
           type: 'Course',
           source: 'Coursera',
-        },
-        {
-          name: 'Time Management for Programmers',
-          url: 'https://medium.com/better-programming/time-management-techniques-for-programmers-d7f9f33a7d62',
-          icon: Briefcase,
-          description: 'Improve your productivity and work-life balance.',
-          type: 'Article',
-          source: 'Medium',
         },
         {
           name: 'Code Review Best Practices',
