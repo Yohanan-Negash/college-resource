@@ -15,14 +15,15 @@ const foundationTopics = {
         resources: [
           {
             name: 'CS50: Introduction to Computer Science',
-            url: 'https://cs50.harvard.edu/x/2023/',
+            url: 'https://cs50.harvard.edu/x/2024/weeks',
             type: 'course',
             duration: '11 weeks',
           },
           {
-            name: 'Khan Academy: Computer Science',
-            url: 'https://www.khanacademy.org/computing/computer-science',
-            type: 'course',
+            name: 'CS50: Full 2023 course',
+            url: 'https://www.youtube.com/watch?v=LfaMVlDaQ24',
+            type: 'video',
+            duration: '1 day',
           },
         ],
       },
@@ -33,10 +34,10 @@ const foundationTopics = {
         completed: false,
         resources: [
           {
-            name: 'MIT OpenCourseWare: Introduction to Algorithms',
-            url: 'https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/',
-            type: 'course',
-            duration: '12 weeks',
+            name: ' Algorithms & Data Structures Tutorial',
+            url: 'https://www.youtube.com/watch?v=8hly31xKli0&t=7064s',
+            type: 'video',
+            duration: '6 hours',
           },
           {
             name: 'GeeksforGeeks: Data Structures',
@@ -51,10 +52,10 @@ const foundationTopics = {
         completed: false,
         resources: [
           {
-            name: 'Coursera: Algorithms Specialization',
-            url: 'https://www.coursera.org/specializations/algorithms',
-            type: 'course',
-            duration: '4 months',
+            name: 'MIT OpenCourseWare: Introduction to Algorithms & Computation',
+            url: 'https://www.youtube.com/playlist?list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY',
+            type: 'videos',
+            duration: 'Self-paced',
           },
           {
             name: 'VisuAlgo',
