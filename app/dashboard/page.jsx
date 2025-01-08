@@ -43,13 +43,13 @@ export default function Home() {
       href: '/dashboard/getting-started',
       primary: true,
     },
-    {
-      title: 'Foundations',
-      description:
-        'Master the fundamentals of programming and computer science',
-      icon: Book,
-      href: '/dashboard/foundations',
-    },
+    // {
+    //   title: 'Foundations',
+    //   description:
+    //     'Master the fundamentals of programming and computer science',
+    //   icon: Book,
+    //   href: '/dashboard/foundations',
+    // },
     {
       title: 'Explore Roadmaps',
       description: 'View detailed career roadmaps',
