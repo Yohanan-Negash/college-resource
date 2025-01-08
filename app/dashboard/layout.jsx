@@ -25,7 +25,7 @@ export default async function Layout({ children }) {
           <SidebarTrigger />
           <div className='flex items-center space-x-3 ml-auto'>
             <ModeToggle />
-            <Button variant='default'>Upgrade</Button>
+            {/* <Button variant='default'>Upgrade</Button> */}
           </div>
         </div>
         <Suspense fallback={<Loading />}>{children}</Suspense>
