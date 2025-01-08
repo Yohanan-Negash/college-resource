@@ -28,8 +28,8 @@ const devopsBasicsResources = {
       title: 'Introduction to DevOps',
       description: 'edX course on DevOps practices and principles.',
       type: 'course',
-      url: 'https://www.edx.org/course/introduction-to-devops',
-      duration: '6 weeks',
+      url: 'https://www.edx.org/learn/devops/ibm-devops-basics-for-everyone?index=product&queryID=91bbc27fd76a2103e7fd0bc67a6b31ef&position=2&results_level=first-level-results&term=devops&objectID=course-63ca4f1d-411a-451c-acd6-697e100dc144&campaign=DevOps+Basics+for+Everyone&source=edX&product_category=course&placement_url=https%3A%2F%2Fwww.edx.org%2Fsearch',
+      duration: '3 - 4 weeks',
     },
   ],
 };

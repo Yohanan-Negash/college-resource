@@ -47,11 +47,11 @@ const applicationItems = [
   //   url: '/dashboard',
   //   icon: Home,
   // },
-  {
-    title: 'Foudations',
-    url: '/dashboard/foundations',
-    icon: Brain,
-  },
+  // {
+  //   title: 'Foudations',
+  //   url: '/dashboard/foundations',
+  //   icon: Brain,
+  // },
   {
     title: 'Roadmaps',
     url: '/dashboard/roadmaps',

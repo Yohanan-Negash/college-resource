@@ -8,7 +8,7 @@ const webFundamentalsResources = {
     {
       title: 'MDN: Getting started with the Web',
       description: "Beginner's guide to web development by Mozilla.",
-      type: 'article',
+      type: 'documentation',
       url: 'https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web',
     },
     {
@@ -16,20 +16,14 @@ const webFundamentalsResources = {
       description: 'Learn HTML and CSS with practical projects.',
       type: 'course',
       url: 'https://www.freecodecamp.org/learn/responsive-web-design/',
-      duration: '300 hours',
+      duration: 'Self-paced',
     },
     {
       title: 'W3Schools',
       description:
         'Comprehensive tutorials and references for web technologies.',
-      type: 'article',
+      type: 'documentation',
       url: 'https://www.w3schools.com/',
-    },
-    {
-      title: 'Interneting Is Hard',
-      description: 'Friendly web development tutorials for complete beginners.',
-      type: 'article',
-      url: 'https://www.internetingishard.com/',
     },
   ],
 };

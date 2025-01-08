@@ -13,23 +13,25 @@ const programmingBasicsResources = {
       duration: '25 hours',
     },
     {
+      title: "CS50's Introduction to Programming with Python",
+      description:
+        "Harvard's renowned introductory course, now focused on Python.",
+      type: 'course',
+      url: 'https://www.edx.org/course/cs50s-introduction-to-programming-with-python',
+      duration: '10 weeks',
+    },
+    {
       title: 'freeCodeCamp: JavaScript Algorithms and Data Structures',
       description: 'Comprehensive course on JavaScript fundamentals.',
       type: 'course',
       url: 'https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/',
-      duration: '300 hours',
-    },
-    {
-      title: 'Python for Everybody',
-      description: 'Free book and course on Python programming.',
-      type: 'course',
-      url: 'https://www.py4e.com/',
       duration: 'Self-paced',
     },
+
     {
       title: 'MDN JavaScript Guide',
       description: 'Comprehensive guide to JavaScript programming.',
-      type: 'article',
+      type: 'documentation',
       url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide',
     },
   ],
