@@ -93,13 +93,13 @@ export function StartHereGuide() {
                   </div>
                 ))}
               </div>
-              <div className='space-y-2'>
+              {/* <div className='space-y-2'>
                 <div className='flex justify-between text-sm'>
                   <span>Progress</span>
                   <span>{path.progress}%</span>
                 </div>
                 <Progress value={path.progress} />
-              </div>
+              </div> */}
               <Button
                 className='w-full'
                 onClick={() => handleStartPath(path.title)}

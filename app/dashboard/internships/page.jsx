@@ -90,7 +90,7 @@ export default function Internships() {
     },
     {
       name: 'GeeksforGeeks',
-      url: 'https://www.geeksforgeeks.org/',
+      url: 'https://www.geeksforgeeks.org/dsa-tutorial-learn-data-structures-and-algorithms/',
       icon: Code,
       description: 'Tutorials, coding problems, and CS concepts.',
     },
