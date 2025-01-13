@@ -17,6 +17,8 @@ import {
   Smartphone,
   Database,
   ChevronDown,
+  LightbulbIcon,
+  Heart,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -61,14 +63,43 @@ export default function RoadmapsPage() {
   ];
 
   return (
-    <div className='container mx-auto px-4 py-16 sm:px-6 lg:px-8'>
-      <h1 className='text-3xl font-bold mb-8 text-center'>
-        Tech Career Roadmaps
-      </h1>
-      <p className='text-xl text-muted-foreground mb-12 text-center max-w-3xl mx-auto'>
-        Explore different career paths in tech and find comprehensive roadmaps
-        to guide your learning journey.
-      </p>
+    <div className='container mx-auto p-6 max-w-100'>
+      <Card className='mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900'>
+        <CardHeader>
+          <CardTitle className='text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600'>
+            Tech Career Roadmaps
+          </CardTitle>
+          <CardDescription className='text-xl text-gray-600 dark:text-gray-300'>
+            Explore different career paths in tech and find comprehensive
+            roadmaps to guide your learning journey.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+
+      <Card className='mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-800 dark:to-gray-900'>
+        <CardHeader>
+          <CardTitle className='text-2xl font-bold flex items-center text-yellow-600 dark:text-yellow-400'>
+            <LightbulbIcon className='h-6 w-6 mr-2' />
+            Why Follow These Roadmaps?
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className='list-none pl-5 space-y-2'>
+            {[
+              'Get a clear path for learning and skill development',
+              'Understand the technologies and concepts crucial for your chosen career',
+              'Stay up-to-date with industry trends and best practices',
+              'Identify gaps in your knowledge and fill them systematically',
+              'Boost your confidence by tracking your progress along the roadmap',
+            ].map((item, index) => (
+              <li key={index} className='flex items-start'>
+                <ArrowRight className='h-5 w-5 mr-2 text-yellow-500 flex-shrink-0 mt-1' />
+                <span className='text-gray-700 dark:text-gray-200'>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
 
       <div className='grid gap-8 md:grid-cols-2'>
         {careerPaths.map((path, index) => (
@@ -162,17 +193,38 @@ export default function RoadmapsPage() {
         </Card>
       </div>
 
-      <div className='mt-16 text-center'>
-        <p className='text-lg text-muted-foreground mb-4'>
-          These roadmaps are provided by{' '}
-          <Link href='https://roadmap.sh' className='underline text-purple-500'>
-            roadmap.sh
-          </Link>
-          , an open-source project dedicated to creating comprehensive guides
-          for various technology paths. We highly recommend checking out their
-          resources to gain a detailed understanding of the tech landscape.
-        </p>
-      </div>
+      <Card className='mt-8 shadow-lg hover:shadow-xl transition-shadow duration-300 '>
+        <CardHeader>
+          <CardTitle className='text-2xl font-bold flex items-center text-pink-600 dark:text-pink-400'>
+            <Heart className='h-6 w-6 mr-2' />
+            Appreciating roadmap.sh
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className='text-gray-700 dark:text-gray-200 mb-4'>
+            roadmap.sh has been a game-changer for us as we built our app for
+            aspiring developers. Their open-source roadmaps provided clarity in
+            our learning paths, helping us stay focused and productive. Their
+            resources have been an essential guide in our journey, breaking down
+            complex tech concepts into clear steps that made us better
+            developers.
+          </p>
+          <Button
+            asChild
+            variant='outline'
+            className='bg-gradient-to-r from-pink-500 to-red-500 text-white border-0 hover:from-pink-600 hover:to-red-600'
+          >
+            <Link
+              href='https://roadmap.sh/about'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Learn More About roadmap.sh
+              <ArrowRight className='h-4 w-4 ml-2' />
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }
