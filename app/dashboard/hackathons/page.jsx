@@ -47,12 +47,12 @@ export default function Hackathons() {
 
   return (
     <div className='container mx-auto p-6 max-w-100'>
-      <Card className='mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-gray-800 dark:to-gray-900'>
+      <Card className='mb-8 s'>
         <CardHeader>
-          <CardTitle className='text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600'>
+          <CardTitle className='text-4xl font-bold bg-clip-text text-primary'>
             Hackathon Hub
           </CardTitle>
-          <CardDescription className='text-xl text-gray-600 dark:text-gray-300'>
+          <CardDescription className='text-lg text-gray-600 dark:text-gray-300'>
             Discover hackathons to boost your skills and build your portfolio.
           </CardDescription>
         </CardHeader>
