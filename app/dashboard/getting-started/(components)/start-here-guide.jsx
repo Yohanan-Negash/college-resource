@@ -53,7 +53,7 @@ export function StartHereGuide() {
   return (
     <div className='space-y-8'>
       <div className='space-y-2'>
-        <h2 className='text-3xl font-bold tracking-tight'>
+        <h2 className='text-3xl font-bold tracking-tight text-primary'>
           Start Your Tech Journey Here!
         </h2>
         <p className='text-muted-foreground'>
@@ -93,13 +93,13 @@ export function StartHereGuide() {
                   </div>
                 ))}
               </div>
-              <div className='space-y-2'>
+              {/* <div className='space-y-2'>
                 <div className='flex justify-between text-sm'>
                   <span>Progress</span>
                   <span>{path.progress}%</span>
                 </div>
                 <Progress value={path.progress} />
-              </div>
+              </div> */}
               <Button
                 className='w-full'
                 onClick={() => handleStartPath(path.title)}
