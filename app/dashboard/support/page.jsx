@@ -80,7 +80,9 @@ export default function SupportForm() {
     <div className='container mx-auto p-6 max-w-100'>
       <Card className=''>
         <CardHeader>
-          <CardTitle>Submit a Support Request</CardTitle>
+          <CardTitle className='text-primary font-bold text-2xl'>
+            Submit a Support Request
+          </CardTitle>
           <CardDescription>
             Tell us about the issue you are experiencing.
           </CardDescription>

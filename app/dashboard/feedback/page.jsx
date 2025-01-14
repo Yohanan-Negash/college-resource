@@ -77,7 +77,9 @@ export default function FeedbackPage() {
     <div className='container mx-auto p-6 max-w-100'>
       <Card>
         <CardHeader>
-          <CardTitle>Submit Feedback</CardTitle>
+          <CardTitle className='text-primary font-bold text-2xl'>
+            Submit Feedback
+          </CardTitle>
           <CardDescription>
             We value your feedback! Please share your thoughts, suggestions, or
             experiences with our platform.
