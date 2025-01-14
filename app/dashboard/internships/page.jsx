@@ -99,7 +99,9 @@ export default function Internships() {
   const InternshipSection = ({ title, description, resources }) => (
     <Card className='mb-8'>
       <CardHeader>
-        <CardTitle className='text-2xl font-bold'>{title}</CardTitle>
+        <CardTitle className='text-2xl font-bold text-primary'>
+          {title}
+        </CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
@@ -143,12 +145,9 @@ export default function Internships() {
     <div className='container mx-auto p-6 max-w-100'>
       <Card className='mb-8'>
         <CardHeader>
-          <CardTitle className='text-3xl font-bold'>
+          <CardTitle className='text-4xl font-bold bg-clip-text text-primary'>
             Internship Resources
           </CardTitle>
-          <CardDescription className='text-lg'>
-            Find your next internship opportunity with these curated resources.
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <p className='text-muted-foreground'>
