@@ -27,6 +27,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "components": "^0.1.0",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.456.0",
     "motion": "^11.13.1",
     "next": "14.2.15",
