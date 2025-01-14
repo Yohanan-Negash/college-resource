@@ -21,6 +21,8 @@ import {
   Monitor,
   ExternalLink,
   Terminal,
+  BriefcaseIcon,
+  ArrowRight,
 } from 'lucide-react';
 
 export default function Internships() {
@@ -154,6 +156,31 @@ export default function Internships() {
             Whether you are looking for internships or preparing for interviews,
             these resources will help you succeed.
           </p>
+        </CardContent>
+      </Card>
+
+      <Card className='mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-800 dark:to-gray-900'>
+        <CardHeader>
+          <CardTitle className='text-2xl font-bold flex items-center text-yellow-600 dark:text-yellow-400'>
+            <BriefcaseIcon className='h-6 w-6 mr-2' />
+            Why Pursue Internships?
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ul className='list-none pl-5 space-y-2'>
+            {[
+              'Gain real-world experience in a professional setting',
+              'Apply theoretical knowledge to practical projects',
+              'Expand your professional network and mentorship opportunities',
+              'Enhance your resume with hands-on experience',
+              'Discover career paths and industry insights early on',
+            ].map((item, index) => (
+              <li key={index} className='flex items-start'>
+                <ArrowRight className='h-5 w-5 mr-2 text-yellow-500 flex-shrink-0 mt-1' />
+                <span className='text-gray-700 dark:text-gray-200'>{item}</span>
+              </li>
+            ))}
+          </ul>
         </CardContent>
       </Card>
 
