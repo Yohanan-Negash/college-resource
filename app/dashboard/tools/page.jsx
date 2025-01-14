@@ -273,8 +273,11 @@ export default function ToolsAndResources() {
             Tools & Resources
           </CardTitle>
           <CardDescription className='text-lg'>
-            Explore essential tools, platforms, and skills for modern software
-            development, including free cloud resources.
+            Discover powerful free tools, platforms, and resources we have
+            handpicked to help you build amazing projects without spending a
+            dime. Whether you are working on hobby projects, sharpening your
+            skills, or just starting out, these essentials will give you a head
+            start in modern software development.
           </CardDescription>
         </CardHeader>
       </Card>
