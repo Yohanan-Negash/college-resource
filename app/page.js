@@ -7,7 +7,7 @@ import FinalCTA from '../components/landingpage/finalcta';
 import FAQ from '../components/landingpage/faq';
 import WaitlistForm from '../components/landingpage/waitlistform';
 import Navigation from '../components/landingpage/navigation';
-import LearningFeatures from '../components/landingpage/learningFeatures';
+import LearningFeatures from '@/components/landingpage/learningFeatures';
 import Footer from '../components/landingpage/footer';
 import { Toaster } from '../components/ui/toaster';
 
