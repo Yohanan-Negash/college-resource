@@ -20,7 +20,12 @@ const paths = [
     description: 'Start your tech journey here',
     progress: 0,
     icon: BookOpen,
-    steps: ['Programming Basics', 'Web Fundamentals', 'Version Control'],
+    steps: [
+      'Programming Basics',
+      'Web Fundamentals',
+      'Version Control',
+      'Open Source',
+    ],
     difficulty: 'Beginner',
   },
   {
