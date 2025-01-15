@@ -80,37 +80,6 @@ export default function VersionControlResourcesPage() {
         },
       ],
     },
-    {
-      title: 'Open Source Contributions',
-      description:
-        'Learn about open source and make your first ever open source contribution.',
-      icon: Users,
-      resources: [
-        {
-          title: 'Introduction to Open Source',
-          description: 'Learn what open source is and why it matters.',
-          url: 'https://opensource.guide/how-to-contribute/',
-        },
-        {
-          title: 'OpenSauced',
-          description:
-            'Find open source projects to contribute to and track your progress.',
-          url: 'https://opensauced.pizza/',
-        },
-        {
-          title: 'First Contributions Repository',
-          description:
-            'A hands-on tutorial to make your first open source contribution.',
-          url: 'https://github.com/firstcontributions/first-contributions',
-        },
-        {
-          title: 'First Contributions Site',
-          description:
-            'Another hub of open source projects you can contribute to.',
-          url: 'https://firstcontributions.github.io/',
-        },
-      ],
-    },
   ];
 
   return (
