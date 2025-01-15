@@ -97,6 +97,13 @@ const pathData = {
         resourcePath: 'version-control',
       },
       {
+        title: 'Open Source',
+        description:
+          'Learn how to contribute to open source projects and make a real-world impact while building your skills.',
+        completed: false,
+        resourcePath: 'open-source',
+      },
+      {
         title: 'Basic Data Structures',
         description:
           'Learn about fundamental data structures like arrays, lists, and dictionaries.',
