@@ -103,19 +103,19 @@ const pathData = {
         completed: false,
         resourcePath: 'open-source',
       },
-      {
-        title: 'Basic Data Structures',
-        description:
-          'Learn about fundamental data structures like arrays, lists, and dictionaries.',
-        completed: false,
-        resourcePath: 'basic-data-structures',
-      },
-      {
-        title: 'Basic Algorithms',
-        description: 'Learn about basic sorting and searching algorithms.',
-        completed: false,
-        resourcePath: 'basic-algorithms',
-      },
+      // {
+      //   title: 'Basic Data Structures',
+      //   description:
+      //     'Learn about fundamental data structures like arrays, lists, and dictionaries.',
+      //   completed: false,
+      //   resourcePath: 'basic-data-structures',
+      // },
+      // {
+      //   title: 'Basic Algorithms',
+      //   description: 'Learn about basic sorting and searching algorithms.',
+      //   completed: false,
+      //   resourcePath: 'basic-algorithms',
+      // },
     ],
   },
 };
