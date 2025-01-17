@@ -34,19 +34,19 @@ const LearningFeatures = ({ className }) => {
     ];
     const SECTION_IMAGES = [
         {
-            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images/imga.webp?t=2025-01-02T05%3A05%3A49.208Z",
+            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/imga.webp?t=2025-01-17T01%3A35%3A42.284Z",
             alt: "Editor feature preview"
         },
         {
-            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images/imgb.webp?t=2025-01-02T05%3A06%3A07.283Z",
+            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/imgb.webp?t=2025-01-17T01%3A36%3A20.118Z",
             alt: "Review feature preview"
         },
         {
-            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images/imga.webp?t=2025-01-02T05%3A05%3A49.208Z",
+            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/imgc.webp?t=2025-01-17T01%3A36%3A55.316Z",
             alt: "Insights feature preview"
         },
         {
-            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images/imgb.webp?t=2025-01-02T05%3A06%3A07.283Z",
+            src: "https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/imga.webp?t=2025-01-17T01%3A35%3A42.284Z",
             alt: "Spaced Repetition feature preview"
         }
     ];
@@ -155,7 +155,7 @@ const LearningFeatures = ({ className }) => {
 
     return (
         <div className={`min-h-screen text-white p-4 xl:p-8 overflow-x-hidden ${className || ''}`}>
-            <h1 className="text-xl xl:text-4xl font-bold text-center mb-8 xl:mb-16 px-4">
+            <h1 className="text-xl xl:text-4xl font-bold text-center mb-8 xl:mb-16 px-4 bg-gradient-to-r from-yellow-200 to-pink-500 text-transparent bg-clip-text">
                 Everything you need to learn efficiently
             </h1>
 

@@ -67,6 +67,7 @@ module.exports = {
 			},
 			backgroundImage: {
 				'heading-gradient': 'linear-gradient(135deg, #FF6B6B, #E0B0FF, #4ECDC4)',
+				'shine-size': 'radial-gradient(circle at var(--x) var(--y), var(--color) 0%, transparent 30%)', // Added for shine effect
 			},
 			dropShadow: {
 				'heading': [
@@ -82,10 +83,23 @@ module.exports = {
 				blink: {
 					'0%, 100%': { opacity: 1 },
 					'50%': { opacity: 0 }
+				},
+				// Added shine animation
+				shine: {
+					"0%": {
+						"background-position": "0% 0%",
+					},
+					"50%": {
+						"background-position": "100% 100%",
+					},
+					to: {
+						"background-position": "0% 0%",
+					},
 				}
 			},
 			animation: {
-				'blink': 'blink 1s step-end infinite'
+				'blink': 'blink 1s step-end infinite',
+				'shine': 'shine var(--duration) infinite linear', // Added shine animation
 			}
 		}
 	},
