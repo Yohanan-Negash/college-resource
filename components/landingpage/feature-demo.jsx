@@ -27,17 +27,8 @@ const FeatureDemo = () => {
         <div className="my-24">
             <FeatureSection
                 features={features}
-                title={
-                    <>
-                        <span
-                            className="font-ubuntu text-cyan-400 text-base font-medium mb-4 block"> {/* Increased text size and margin */}
-                            HOW IT WORKS
-                        </span>
-                        <h2 className="font-ubuntu text-white text-5xl font-bold mb-4">
-                            Get Started in 3 Simple Steps
-                        </h2>
-                    </>
-                }
+                subtitle="HOW IT WORKS"
+                title="Get Started in 3 Simple Steps"
                 autoPlayInterval={4000}
                 imageHeight="h-[500px]"
             />

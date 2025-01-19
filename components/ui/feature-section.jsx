@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils"
 const FeatureSection = ({
                             features,
                             className,
-                            title = "How to get Started",
+                            title,
+                            subtitle,  // Added subtitle to props
                             autoPlayInterval = 3000,
                             imageHeight = "h-[400px]",
                         }) => {
@@ -31,7 +32,10 @@ const FeatureSection = ({
     return (
         <div className={cn("p-8 md:p-12", className)}>
             <div className="max-w-7xl mx-auto w-full">
-                <h2 className="font-ubuntu text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center text-white">
+            <span className="font-ubuntu text-cyan-400 text-base font-medium mb-4 block">
+                {subtitle}
+            </span>
+                <h2 className="font-ubuntu text-white text-5xl font-bold mb-4">
                     {title}
                 </h2>
 
