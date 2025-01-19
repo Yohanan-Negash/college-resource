@@ -109,7 +109,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-zinc-200/10;;
   }
   body {
     @apply bg-background text-foreground;

@@ -9,6 +9,8 @@ import Navigation from '../components/landingpage/navigation';
 import Footer from '../components/landingpage/footer';
 import HeroScroll from '../components/landingpage/heroscroll';
 import HeroVideo from '../components/landingpage/herovideo';
+import FeatureDemo from "../components/landingpage/feature-demo";
+import ProblemStatementDemo from "../components/landingpage/problem-demo";
 import { Toaster } from '../components/ui/toaster';
 import ScrollAnimation from '../components/ui/scrollanimation';
 
@@ -20,42 +22,54 @@ const Home = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-[#1C1F2E] to-[#2A2D3E] text-white overflow-hidden">
-            {/* Background */}
-            <div
-                className="fixed inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"/>
+        <div className="min-h-screen text-white overflow-hidden">
+            {/* Black background section with navigation and initial content */}
+            <div className="bg-black">
+                <Navigation/>
 
-            <Navigation/>
+                {/* Initial Content */}
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-20 relative">
+                    <ScrollAnimation animation="fade">
+                        <Hero onJoinWaitlist={() => setIsFormOpen(true)}/>
+                    </ScrollAnimation>
 
-            {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-20 relative">
-                <ScrollAnimation animation="fade">
-                    <Hero onJoinWaitlist={() => setIsFormOpen(true)}/>
-                </ScrollAnimation>
+                    <ScrollAnimation animation="fade">
+                        <HeroVideo/>
+                    </ScrollAnimation>
 
-                <ScrollAnimation animation="fade">
-                    <HeroVideo/>
-                </ScrollAnimation>
+                    <ScrollAnimation animation="fade">
+                        <ProblemStatementDemo/>
+                    </ScrollAnimation>
 
-                <ScrollAnimation animation="fade">
-                    <Features className="mb-12"/>
-                </ScrollAnimation>
+                    <ScrollAnimation animation="fade">
+                        <Features className="mb-12"/>
+                    </ScrollAnimation>
 
-                <ScrollAnimation animation="fade">
-                    <HeroScroll/>
-                </ScrollAnimation>
+                    <ScrollAnimation animation="fade">
+                        <FeatureDemo/>
+                    </ScrollAnimation>
+                </div>
+            </div>
+            {/* Black background section */}
+            <div className="bg-black">
+                <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 relative">
+                    <ScrollAnimation animation="fade">
+                        <HeroScroll/>
+                    </ScrollAnimation>
 
-                <ScrollAnimation animation="fade">
-                    <FinalCTA onJoinWaitlist={() => setIsFormOpen(true)}/>
-                </ScrollAnimation>
+                    <ScrollAnimation animation="fade">
+                        <FinalCTA onJoinWaitlist={() => setIsFormOpen(true)}/>
+                    </ScrollAnimation>
 
-                <ScrollAnimation animation="fade">
-                    <FAQ/>
-                </ScrollAnimation>
-            </main>
-            <ScrollAnimation animation="fade">
-            <Footer/>
-            </ScrollAnimation>
+                    <ScrollAnimation animation="fade">
+                        <FAQ/>
+                    </ScrollAnimation>
+
+                    <ScrollAnimation animation="fade">
+                        <Footer/>
+                    </ScrollAnimation>
+                </div>
+            </div>
 
             <WaitlistForm
                 isOpen={isFormOpen}
