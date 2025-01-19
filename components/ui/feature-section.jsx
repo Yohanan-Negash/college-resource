@@ -32,12 +32,15 @@ const FeatureSection = ({
     return (
         <div className={cn("p-8 md:p-12", className)}>
             <div className="max-w-7xl mx-auto w-full">
-            <span className="font-ubuntu text-cyan-400 text-base font-medium mb-4 block">
-                {subtitle}
-            </span>
-                <h2 className="font-ubuntu text-white text-5xl font-bold mb-4">
-                    {title}
-                </h2>
+                {/* Center container for title and subtitle only */}
+                <div className="text-center mb-12">
+                    <span className="font-ubuntu text-cyan-400 text-base font-medium mb-4 block">
+                        {subtitle}
+                    </span>
+                    <h2 className="font-ubuntu text-white text-5xl font-bold mb-4">
+                        {title}
+                    </h2>
+                </div>
 
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10">
                     <div className="order-2 md:order-1 space-y-8">
