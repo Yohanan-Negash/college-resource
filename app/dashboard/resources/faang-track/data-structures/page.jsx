@@ -143,8 +143,8 @@ export default function DataStructuresResourcesPage() {
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
-            Understanding data structures is crucial for every programmer.
-            Here's why:
+            Understanding data structures is crucial for every programmer. Here
+            is why:
           </p>
           <ul className='list-none pl-5 space-y-2'>
             {[

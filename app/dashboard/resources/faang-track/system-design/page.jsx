@@ -139,7 +139,7 @@ export default function SystemDesignResourcesPage() {
         <CardContent>
           <p className='mb-4'>
             Understanding system design is crucial for software engineers,
-            especially those aiming for senior roles. Here's why:
+            especially those aiming for senior roles. Here is why:
           </p>
           <ul className='list-none pl-5 space-y-2'>
             {[

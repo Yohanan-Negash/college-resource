@@ -142,7 +142,7 @@ export default function AlgorithmsResourcesPage() {
         </CardHeader>
         <CardContent>
           <p className='mb-4'>
-            Understanding algorithms is crucial for every programmer. Here's
+            Understanding algorithms is crucial for every programmer. Here is
             why:
           </p>
           <ul className='list-none pl-5 space-y-2'>
