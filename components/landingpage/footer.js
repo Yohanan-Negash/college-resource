@@ -54,16 +54,16 @@ const footerContent = {
 
 const Footer = () => {
     return (
-        <footer className="mt-24 border-t border-zinc-800 bg-[#1C1F2E]/50 backdrop-blur-xl">
+        <footer className="mt-24 border-t border-zinc-800">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="py-16">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                         {/* About Section */}
                         <div className="lg:col-span-2">
-                            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                            <Link href="/" className="font-ubuntu text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                                 CollegeResource
                             </Link>
-                            <p className="mt-4 text-sm text-zinc-400 max-w-md">
+                            <p className="font-ubuntu mt-4 text-sm text-zinc-400 max-w-md">
                                 {footerContent.about.description}
                             </p>
                             {/* Social Links */}
@@ -88,7 +88,7 @@ const Footer = () => {
                         {/* Navigation Sections */}
                         {footerContent.sections.map((section) => (
                             <div key={section.title}>
-                                <h3 className="text-sm font-semibold text-white">
+                                <h3 className="font-ubuntu text-sm font-semibold text-white">
                                     {section.title}
                                 </h3>
                                 <ul className="mt-4 space-y-3">
@@ -96,7 +96,7 @@ const Footer = () => {
                                         <li key={link.name}>
                                             <Link
                                                 href={link.href}
-                                                className="text-sm text-zinc-400 hover:text-white transition-colors"
+                                                className="font-ubuntu text-sm text-zinc-400 hover:text-white transition-colors"
                                             >
                                                 {link.name}
                                             </Link>
@@ -110,7 +110,7 @@ const Footer = () => {
 
                 {/* Copyright */}
                 <div className="border-t border-zinc-800 py-8">
-                    <p className="text-sm text-zinc-400 text-center">
+                    <p className="font-ubuntu text-sm text-zinc-400 text-center">
                         © {new Date().getFullYear()} CollegeResource. All rights reserved.
                     </p>
                 </div>

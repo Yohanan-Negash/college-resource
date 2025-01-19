@@ -40,8 +40,8 @@ const FAQ = () => {
     return (
         <div className="mt-32 pb-20">
             <div className="max-w-4xl mx-auto">
-                <h2 className="text-4xl font-bold mb-4 text-center">Have Questions?</h2>
-                <p className="text-zinc-300 text-center mb-10">
+                <h2 className="font-ubuntu text-4xl font-bold mb-4 text-center">Have Questions?</h2>
+                <p className="font-ubuntu text-zinc-300 text-center mb-10">
                     Find answers to commonly asked questions about CollegeResource
                 </p>
                 <div className="space-y-4">
@@ -58,7 +58,7 @@ const FAQ = () => {
                                     el.style.maxHeight = isExpanded ? "0px" : `${el.scrollHeight}px`;
                                 }}
                             >
-                                <span className="font-semibold text-lg">{faq.question}</span>
+                                <span className="font-ubuntu font-semibold text-lg">{faq.question}</span>
                                 <ChevronRight className="w-5 h-5 transform transition-transform" />
                             </button>
                             <div
@@ -66,7 +66,7 @@ const FAQ = () => {
                                 className="max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
                                 style={{ maxHeight: "0px" }}
                             >
-                                <p className="px-6 pb-6 text-zinc-300">
+                                <p className="font-ubuntu px-6 pb-6 text-zinc-300">
                                     {faq.answer}
                                 </p>
                             </div>

@@ -44,13 +44,19 @@ const features = [
 const Features = ({ className }) => {
     return (
         <div className={`mt-20 ${className || ''}`}>
-            <h2 className="text-4xl font-bold mb-10 text-center bg-gradient-to-r from-yellow-200 to-pink-400 bg-clip-text text-transparent">Your Complete Success Toolkit</h2>
+            <span
+                className="font-ubuntu text-cyan-400 text-center font-medium mb-4 block"> {/* Increased text size and margin */}
+                SOLUTION
+            </span>
+            <h2 className="font-ubuntu text-5xl font-extrabold mb-10 text-center text-white">Your Complete Success
+                Toolkit</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {features.map((feature, index) => (
-                    <div key={index} className="bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50 hover:border-purple-500/50 transition-all">
+                    <div key={index}
+                         className="bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50 hover:border-purple-500/50 transition-all">
                         <div className="mb-4">{feature.icon}</div>
-                        <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                        <p className="text-zinc-300">{feature.description}</p>
+                        <h3 className="font-ubuntu text-xl font-semibold mb-3 text-white">{feature.title}</h3>
+                        <p className="font-ubuntu text-zinc-300">{feature.description}</p>
                     </div>
                 ))}
             </div>

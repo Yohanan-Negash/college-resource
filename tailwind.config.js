@@ -60,6 +60,10 @@ module.exports = {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			borderColor: {
+				DEFAULT: 'hsl(var(--border))',
+				'border': 'hsl(var(--border))'
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -67,7 +71,7 @@ module.exports = {
 			},
 			backgroundImage: {
 				'heading-gradient': 'linear-gradient(135deg, #FF6B6B, #E0B0FF, #4ECDC4)',
-				'shine-size': 'radial-gradient(circle at var(--x) var(--y), var(--color) 0%, transparent 30%)', // Added for shine effect
+				'shine-size': 'radial-gradient(circle at var(--x) var(--y), var(--color) 0%, transparent 30%)',
 			},
 			dropShadow: {
 				'heading': [
@@ -84,7 +88,6 @@ module.exports = {
 					'0%, 100%': { opacity: 1 },
 					'50%': { opacity: 0 }
 				},
-				// Added shine animation
 				shine: {
 					"0%": {
 						"background-position": "0% 0%",
@@ -99,7 +102,7 @@ module.exports = {
 			},
 			animation: {
 				'blink': 'blink 1s step-end infinite',
-				'shine': 'shine var(--duration) infinite linear', // Added shine animation
+				'shine': 'shine var(--duration) infinite linear',
 			}
 		}
 	},
