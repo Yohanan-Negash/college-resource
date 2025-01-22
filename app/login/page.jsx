@@ -25,6 +25,7 @@ import {
   googleAuth,
   signInWithEmail,
 } from '../../lib/actions/auth';
+import Link from 'next/link';
 
 export default function AuthForm() {
   const [activeTab, setActiveTab] = useState('signin');
@@ -235,6 +236,23 @@ export default function AuthForm() {
                 ? 'Sign In with Google'
                 : 'Sign Up with Google'}
             </Button>
+            <p className='text-center text-sm mt-5'>
+              By signing up, you agree to our{' '}
+              <Link
+                href='/terms-of-service'
+                className='text-underline text-primary'
+              >
+                Terms
+              </Link>{' '}
+              &{' '}
+              <Link
+                href='/privacy-policy'
+                className='text-underline text-primary'
+              >
+                Privacy
+              </Link>
+              .
+            </p>
           </form>
         </CardFooter>
       </Card>
