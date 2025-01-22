@@ -57,9 +57,8 @@ const PrivacyPolicyPage = () => {
             <p>
               We collect information that you provide directly to us, such as
               when you create an account, subscribe to our waitlist, or
-              communicate with us. This may include your name, email address
-              (specifically .edu email addresses), and any other information you
-              choose to provide.
+              communicate with us. This may include your name, any type of email
+              address, and any other information you choose to provide.
             </p>
           </section>
 
