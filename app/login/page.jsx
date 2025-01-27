@@ -8,9 +8,9 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '../../components/ui/card';
 import {
   Tabs,
@@ -26,23 +26,29 @@ import {
   signInWithEmail,
 } from '../../lib/actions/auth';
 import Link from 'next/link';
+import { Alert, AlertDescription, AlertTitle } from '../../components/ui/alert';
+import { CheckCircle2Icon } from 'lucide-react';
 
 export default function AuthForm() {
   const [activeTab, setActiveTab] = useState('signin');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
   const handleSubmit = async (event, action) => {
     event.preventDefault();
     setIsLoading(true);
     setError('');
+    setShowSuccessAlert(false);
 
     const formData = new FormData(event.target);
     try {
       const response = await action(formData);
 
       if (response?.error) {
-        setError(response.error); // Display the error from the response
+        setError(response.error);
+      } else if (response?.success) {
+        setShowSuccessAlert(true);
       }
     } catch (err) {
       setError('An unexpected error occurred. Please try again.');
@@ -114,6 +120,16 @@ export default function AuthForm() {
             </TabsList>
 
             <TabsContent value='signin'>
+              {showSuccessAlert && (
+                <Alert className='mb-4 mt-5 bg-green-500/20 text-green-400 border-green-500/50'>
+                  <CheckCircle2Icon className='h-4 w-4' />
+                  <AlertTitle>Success</AlertTitle>
+                  <AlertDescription>
+                    Magic link sent successfully! Please check your email to
+                    complete the sign-in process.
+                  </AlertDescription>
+                </Alert>
+              )}
               <form
                 onSubmit={(e) => handleSubmit(e, signInWithEmail)}
                 className='space-y-4'
