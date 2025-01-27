@@ -20,8 +20,8 @@ const TermsOfServicePage = () => {
 
         <div className='space-y-6'>
           <p>
-            Welcome to College Resource. By using our service, you agree to
-            these terms. Please read them carefully.
+            Welcome to PhazeOne. By using our service, you agree to these terms.
+            Please read them carefully.
           </p>
 
           <section>
@@ -29,9 +29,9 @@ const TermsOfServicePage = () => {
               1. Acceptance of Terms
             </h2>
             <p>
-              By accessing or using College Resource, you agree to be bound by
-              these Terms of Service and all applicable laws and regulations. If
-              you do not agree with any part of these terms, you may not use our
+              By accessing or using PhazeOne, you agree to be bound by these
+              Terms of Service and all applicable laws and regulations. If you
+              do not agree with any part of these terms, you may not use our
               service.
             </p>
           </section>
@@ -41,7 +41,7 @@ const TermsOfServicePage = () => {
               2. Description of Service
             </h2>
             <p>
-              College Resource is a platform designed to provide information and
+              PhazeOne is a platform designed to provide information and
               resources for computer science students looking to enter the tech
               industry. Our service includes, but is not limited to, educational
               content, industry insights, and career guidance.
@@ -58,9 +58,8 @@ const TermsOfServicePage = () => {
               of your account and password, including but not limited to
               restricting access to your computer and/or account. You agree to
               accept responsibility for all activities that occur under your
-              account or password. You must immediately notify College Resource
-              of any unauthorized use of your account or any other breach of
-              security.
+              account or password. You must immediately notify PhazeOne of any
+              unauthorized use of your account or any other breach of security.
             </p>
           </section>
 
@@ -69,7 +68,7 @@ const TermsOfServicePage = () => {
               4. Content and Liability Disclaimer
             </h2>
             <p>
-              The content provided through College Resource is for informational
+              The content provided through PhazeOne is for informational
               purposes only. We strive to keep the information up to date and
               accurate, but we make no representations or warranties of any
               kind, express or implied, about the completeness, accuracy,
@@ -78,16 +77,16 @@ const TermsOfServicePage = () => {
             </p>
             <p className='mt-2'>
               It is important to note that many of the resources, links, and
-              information provided on College Resource are curated from various
-              sources and are not original content created by us. We do not
-              claim ownership of these external resources. Users should refer to
-              the original sources for specific terms of use and attribution.
+              information provided on PhazeOne are curated from various sources
+              and are not original content created by us. We do not claim
+              ownership of these external resources. Users should refer to the
+              original sources for specific terms of use and attribution.
             </p>
             <p className='mt-2'>
-              College Resource shall not be held liable for any direct,
-              indirect, consequential, or incidental damages arising from the
-              use or inability to use our service or any content provided. Users
-              rely on the information at their own risk.
+              PhazeOne shall not be held liable for any direct, indirect,
+              consequential, or incidental damages arising from the use or
+              inability to use our service or any content provided. Users rely
+              on the information at their own risk.
             </p>
           </section>
 

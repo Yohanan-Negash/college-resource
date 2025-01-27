@@ -7,6 +7,10 @@ import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import Loading from './loading';
 
+export const metadata = {
+  title: 'Dashboard | PhazeOne',
+};
+
 export default async function Layout({ children }) {
   const supabase = createClient();
 
