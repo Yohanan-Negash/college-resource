@@ -12,30 +12,18 @@ import {
   CardTitle,
   CardFooter,
 } from '../../components/ui/card';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '../../components/ui/tabs';
 import { Icons } from '../../lib/icons';
-import {
-  signUp,
-  signIn,
-  googleAuth,
-  signInWithEmail,
-} from '../../lib/actions/auth';
+import { googleAuth, signInWithEmail } from '../../lib/actions/auth';
 import Link from 'next/link';
 import { Alert, AlertDescription, AlertTitle } from '../../components/ui/alert';
-import { CheckCircle2Icon } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 export default function AuthForm() {
-  const [activeTab, setActiveTab] = useState('signin');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
-  const handleSubmit = async (event, action) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     setError('');
@@ -43,7 +31,7 @@ export default function AuthForm() {
 
     const formData = new FormData(event.target);
     try {
-      const response = await action(formData);
+      const response = await signInWithEmail(formData);
 
       if (response?.error) {
         setError(response.error);
@@ -87,153 +75,54 @@ export default function AuthForm() {
             Welcome!
           </CardTitle>
           <CardDescription className='text-zinc-400'>
-            Sign in or create an account to get started.
+            Login or Sign Up to get started.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Tabs
-            value={activeTab}
-            onValueChange={setActiveTab}
-            className='w-full'
-          >
-            <TabsList className='flex w-full bg-[#2A2D3E]/50 rounded-full border border-zinc-700/50 p-0'>
-              <TabsTrigger
-                value='signin'
-                className={`flex-grow h-12 text-zinc-400 rounded-full text-center flex items-center justify-center transition-all ${
-                  activeTab === 'signin'
-                    ? 'bg-purple-500/30 text-purple-400 font-semibold'
-                    : 'hover:bg-purple-500/20'
-                }`}
-              >
-                Sign In
-              </TabsTrigger>
-              <TabsTrigger
-                value='signup'
-                className={`flex-grow h-12 text-zinc-400 rounded-full text-center flex items-center justify-center transition-all ${
-                  activeTab === 'signup'
-                    ? 'bg-purple-500/30 text-purple-400 font-semibold'
-                    : 'hover:bg-purple-500/20'
-                }`}
-              >
-                Sign Up
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value='signin'>
-              {showSuccessAlert && (
-                <Alert className='mb-4 mt-5 bg-green-500/20 text-green-400 border-green-500/50'>
-                  <CheckCircle2Icon className='h-4 w-4' />
-                  <AlertTitle>Success</AlertTitle>
-                  <AlertDescription>
-                    Magic link sent successfully! Please check your email to
-                    complete the sign-in process.
-                  </AlertDescription>
-                </Alert>
+          {showSuccessAlert && (
+            <Alert className='mb-4 bg-green-500/20 text-green-400 border-green-500/50'>
+              <CheckCircle2 className='h-4 w-4' />
+              <AlertTitle>Success</AlertTitle>
+              <AlertDescription>
+                Magic link sent successfully! Please check your email to
+                complete the process.
+              </AlertDescription>
+            </Alert>
+          )}
+          <form onSubmit={handleSubmit} className='space-y-4'>
+            <div className='space-y-2'>
+              <Label htmlFor='email' className='text-zinc-300'>
+                Email
+              </Label>
+              <Input
+                id='email'
+                name='email'
+                placeholder='johndoe@example.com'
+                type='email'
+                required
+                className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
+              />
+            </div>
+            {error && (
+              <p className='text-sm text-red-500' role='alert'>
+                {error}
+              </p>
+            )}
+            <Button
+              type='submit'
+              className='w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300'
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+                  Processing...
+                </>
+              ) : (
+                'Continue with Email'
               )}
-              <form
-                onSubmit={(e) => handleSubmit(e, signInWithEmail)}
-                className='space-y-4'
-              >
-                <div className='space-y-2'>
-                  <Label htmlFor='signin-email' className='text-zinc-300'>
-                    Email
-                  </Label>
-                  <Input
-                    id='signin-email'
-                    name='email'
-                    placeholder='johndoe@example.com'
-                    type='email'
-                    required
-                    className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
-                  />
-                </div>
-                {/* Password auth is disabled for now, we can use this if we want to enable it later */}
-                {/* <div className='space-y-2'>
-                  <Label htmlFor='signin-password' className='text-zinc-300'>
-                    Password
-                  </Label>
-                  <Input
-                    id='signin-password'
-                    name='password'
-                    type='password'
-                    required
-                    className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
-                  />
-                </div> */}
-                {error && (
-                  <p className='text-sm text-red-500' role='alert'>
-                    {error}
-                  </p>
-                )}
-                <Button
-                  type='submit'
-                  className='w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300'
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
-                      Signing In...
-                    </>
-                  ) : (
-                    'Sign In with Email'
-                  )}
-                </Button>
-              </form>
-            </TabsContent>
-            <TabsContent value='signup'>
-              <form
-                onSubmit={(e) => handleSubmit(e, signUp)}
-                className='space-y-4'
-              >
-                <div className='space-y-2'>
-                  <Label htmlFor='signup-email' className='text-zinc-300'>
-                    Email
-                  </Label>
-                  <Input
-                    id='signup-email'
-                    name='email'
-                    type='email'
-                    placeholder='johndoe@example.com'
-                    required
-                    className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
-                  />
-                </div>
-                {/* Password auth is disabled for now, we can use this if we want to enable it later */}
-                {/* <div className='space-y-2'>
-                  <Label htmlFor='signup-password' className='text-zinc-300'>
-                    Password
-                  </Label>
-                  <Input
-                    id='signup-password'
-                    name='password'
-                    type='password'
-                    required
-                    className='bg-[#1C1F2E] text-zinc-300 border border-zinc-700 focus:border-purple-500 focus:ring-purple-500 rounded-lg'
-                  />
-                </div> */}
-                {error && (
-                  <p className='text-sm text-red-500' role='alert'>
-                    {error}
-                  </p>
-                )}
-                <Button
-                  type='submit'
-                  className='w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300'
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <>
-                      <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
-                      Signing Up...
-                    </>
-                  ) : (
-                    'Sign Up with Email'
-                  )}
-                </Button>
-              </form>
-            </TabsContent>
-          </Tabs>
+            </Button>
+          </form>
         </CardContent>
         <CardFooter>
           <form onSubmit={handleGoogleAuth} className='w-full'>
@@ -248,12 +137,10 @@ export default function AuthForm() {
               ) : (
                 <Icons.google className='mr-2 h-4 w-4' />
               )}
-              {activeTab === 'signin'
-                ? 'Sign In with Google'
-                : 'Sign Up with Google'}
+              Continue with Google
             </Button>
             <p className='text-center text-sm mt-5'>
-              By signing up, you agree to our{' '}
+              By continuing, you agree to our{' '}
               <Link
                 href='/terms-of-service'
                 className='text-underline text-primary'
