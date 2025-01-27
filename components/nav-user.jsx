@@ -5,6 +5,7 @@ import {
   ChevronsUpDown,
   CreditCard,
   LogOut,
+  Settings,
   Sparkles,
   User2,
 } from 'lucide-react';
@@ -25,9 +26,12 @@ import {
   useSidebar,
 } from '../components/ui/sidebar';
 import { logout } from '../lib/actions/auth';
+import { SettingsModal } from './settings-modal';
+import { useState } from 'react';
 
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <SidebarMenu className='border border-primary rounded-lg'>
@@ -90,14 +94,24 @@ export function NavUser({ user }) {
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                Account
+              <DropdownMenuItem
+                onSelect={(e) => {
+                  e.preventDefault();
+                  setShowSettings(true);
+                }}
+              >
+                <Settings />
+                Settings
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <SettingsModal
+                user={user}
+                open={showSettings}
+                onOpenChange={setShowSettings}
+              />
+              {/* <DropdownMenuItem>
                 <CreditCard />
                 Billing
-              </DropdownMenuItem>
+              </DropdownMenuItem> */}
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
