@@ -92,26 +92,22 @@ export function StartHereGuide() {
               <CardTitle>{path.title}</CardTitle>
               <CardDescription>{path.description}</CardDescription>
             </CardHeader>
-            <CardContent className='space-y-4'>
-              <div className='space-y-2'>
+            <CardContent className='flex flex-col justify-between h-[200px]'>
+              <div
+                className='overflow-y-auto pr-2'
+                style={{ maxHeight: '150px' }}
+              >
                 {path.steps.map((step, index) => (
-                  <div key={step} className='flex items-center gap-2'>
-                    <div className='flex h-6 w-6 items-center justify-center rounded-full border text-sm'>
+                  <div key={step} className='flex items-center gap-2 mb-2'>
+                    <div className='flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-sm'>
                       {index + 1}
                     </div>
                     <span>{step}</span>
                   </div>
                 ))}
               </div>
-              {/* <div className='space-y-2'>
-                <div className='flex justify-between text-sm'>
-                  <span>Progress</span>
-                  <span>{path.progress}%</span>
-                </div>
-                <Progress value={path.progress} />
-              </div> */}
               <Button
-                className='w-full'
+                className='w-full mt-4'
                 onClick={() => handleStartPath(path.title)}
               >
                 Start This Path
