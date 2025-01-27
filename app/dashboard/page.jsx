@@ -84,7 +84,7 @@ export default function Home() {
       <div className='container mx-auto px-4 py-16 sm:px-6 lg:px-8'>
         <div className='text-center mb-16'>
           <h1 className='text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
-            Welcome to Your Tech Career Hub
+            Welcome to PhazeOne!
           </h1>
           <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
             Enjoy a collection of carefully curated resources, handpicked to
@@ -142,7 +142,7 @@ export default function Home() {
                 </TooltipTrigger>
                 {item.primary && (
                   <TooltipContent sideOffset={5}>
-                    <p>Start here to kickstart your tech career!</p>
+                    <p>Start here to kickstart your tech journey!</p>
                   </TooltipContent>
                 )}
               </Tooltip>
