@@ -98,11 +98,17 @@ module.exports = {
 					to: {
 						"background-position": "0% 0%",
 					},
+				},
+				"border-beam": {
+					"100%": {
+						"offset-distance": "100%",
+					},
 				}
 			},
 			animation: {
 				'blink': 'blink 1s step-end infinite',
 				'shine': 'shine var(--duration) infinite linear',
+				"border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
 			}
 		}
 	},

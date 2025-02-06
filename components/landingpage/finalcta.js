@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import BorderBeam from '../ui/borderbeam';
 
 const ctaContent = {
     title: "Time-Sensitive Opportunity",
@@ -32,7 +33,18 @@ const FinalCTA = ({ onJoinWaitlist }) => {
                 </p>
                 <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
                     {ctaContent.benefits.map((benefit, index) => (
-                        <div key={index} className="bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50">
+                        <div
+                            key={index}
+                            className="relative bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50"
+                        >
+                            <BorderBeam
+                                size={200}
+                                duration={10}
+                                delay={0}
+                                colorFrom="#FFD700" // Bright gold
+                                colorTo="#FFA500" // Orange
+                                borderWidth={1.5}
+                            />
                             <h3 className="font-ubuntu font-semibold mb-2 text-white">{benefit.title}</h3>
                             <p className="font-ubuntu text-zinc-300 text-sm">{benefit.description}</p>
                         </div>

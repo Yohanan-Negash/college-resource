@@ -24,7 +24,7 @@ const features = [
 
 const FeatureDemo = () => {
     return (
-        <div className="my-24">
+        <div className="">
             <FeatureSection
                 features={features}
                 subtitle="HOW IT WORKS"
