@@ -1,21 +1,13 @@
 'use client';
 import React from 'react';
+import {AtlassianLogo, Dropbox, Amazon} from '../../components/ui/logo';
 
 const CompanyCarousel = () => {
     const companies = [
-        { name: 'Meta' },
-        { name: 'Google' },
-        { name: 'Amazon' },
-        { name: 'Microsoft' },
-        { name: 'Apple' },
-        { name: 'Tesla' },
-        { name: 'Netflix' },
-        { name: 'Twitter' },
-        { name: 'Uber' },
-        { name: 'Lyft' },
-        { name: 'Airbnb' },
-        { name: 'Slack' },
-        { name: 'Shopify' },
+        { name: 'Atlassian', Logo: AtlassianLogo },
+        { name: 'Amazon', Logo: Amazon },
+        { name: 'Dropbox', Logo: Dropbox },
+        // Add more as you get the SVGs
     ];
 
     return (
@@ -35,14 +27,14 @@ const CompanyCarousel = () => {
                 <div className="flex w-[calc(250px*28)] animate-[scroll_40s_linear_infinite]">
                     {/* First set */}
                     {companies.map((company) => (
-                        <span key={company.name} className="w-[250px] text-4xl text-zinc-400 font-bold hover:text-zinc-200 transition-colors flex items-center justify-center">
-                            {company.name}
+                        <span key={company.name} className="w-[250px] text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center">
+                            <company.Logo />
                         </span>
                     ))}
                     {/* Duplicate set for seamless loop */}
                     {companies.map((company) => (
-                        <span key={`${company.name}-2`} className="w-[250px] text-4xl text-zinc-400 font-bold hover:text-zinc-200 transition-colors flex items-center justify-center">
-                            {company.name}
+                        <span key={`${company.name}-2`} className="w-[250px] text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center">
+                            <company.Logo />
                         </span>
                     ))}
                 </div>
