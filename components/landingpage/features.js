@@ -49,7 +49,36 @@ const features = [
 ];
 
 const Features = ({ className }) => {
-
+  return (
+      <div className={`mt-20 ${className || ''}`}>
+            <span className="font-ubuntu text-cyan-400 text-center font-medium mb-4 block">
+                SOLUTION
+            </span>
+        <h2 className="font-ubuntu text-5xl font-extrabold mb-10 text-center text-white">
+          Your Complete Success Toolkit
+        </h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+              <div
+                  key={index}
+                  className="relative bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50 hover:border-purple-500/50 transition-all"
+              >
+                <BorderBeam
+                    size={1300}
+                    duration={20}
+                    delay={0}
+                    colorFrom="#FFD700"
+                    colorTo="#FFA500"
+                    borderWidth={1.5}
+                />
+                <div className="mb-4">{feature.icon}</div>
+                <h3 className="font-ubuntu text-xl font-semibold mb-3 text-white">{feature.title}</h3>
+                <p className="font-ubuntu text-zinc-300">{feature.description}</p>
+              </div>
+          ))}
+        </div>
+      </div>
+  );
 };
 
 export default Features;
