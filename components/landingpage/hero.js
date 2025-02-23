@@ -1,40 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import {
-  ChevronRight,
-  Code,
-  Brain,
-  Briefcase,
-  GraduationCap,
-} from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-
-const featureCards = [
-  {
-    icon: Code,
-    title: 'Hackathons',
-    description:
-      'Get access to the latest hackathons through carefully curated links to help you connect with peers and showcase your skills.',
-  },
-  {
-    icon: Brain,
-    title: 'Paths',
-    description:
-      'Choose from curated paths that help you navigate your unique tech journey.',
-  },
-  {
-    icon: Briefcase,
-    title: 'Internships',
-    description:
-      'Discover opportunities at top companies and kickstart your career journey, with links to internship prep resources to help you succeed.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Roadmaps',
-    description:
-      'Follow structured paths to guide your learning and career progression in tech.',
-  },
-];
 
 const Hero = ({ onJoinWaitlist }) => {
   return (
@@ -68,49 +35,6 @@ const Hero = ({ onJoinWaitlist }) => {
             Learn More
             <ChevronRight className='ml-2 group-hover:translate-x-1 transition-transform' />
           </Link>
-        </div>
-      </div>
-
-      {/* Stats/Features Cards */}
-      <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8'>
-        <div className='space-y-6 lg:space-y-8 sm:mt-8'>
-          {featureCards.slice(0, 2).map((feature, index) => (
-            <div
-              key={index}
-              className='group bg-[#2A2D3E]/50 backdrop-blur-sm p-6 lg:p-8 rounded-xl border border-zinc-700/50 hover:border-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-2 cursor-pointer'
-            >
-              <feature.icon
-                className='text-purple-400 mb-4 group-hover:scale-110 transition-transform'
-                size={28}
-              />
-              <h3 className='font-ubuntu font-semibold text-xl mb-3 group-hover:text-purple-400 transition-colors'>
-                {feature.title}
-              </h3>
-              <p className='font-ubuntu text-zinc-400 group-hover:text-zinc-300 transition-colors'>
-                {feature.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className='space-y-6 lg:space-y-8'>
-          {featureCards.slice(2, 4).map((feature, index) => (
-            <div
-              key={index}
-              className='group bg-[#2A2D3E]/50 backdrop-blur-sm p-6 lg:p-8 rounded-xl border border-zinc-700/50 hover:border-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-2 cursor-pointer'
-            >
-              <feature.icon
-                className='text-purple-400 mb-4 group-hover:scale-110 transition-transform'
-                size={28}
-              />
-              <h3 className='font-ubuntu font-semibold text-xl mb-3 group-hover:text-purple-400 transition-colors'>
-                {feature.title}
-              </h3>
-              <p className='font-ubuntu text-zinc-400 group-hover:text-zinc-300 transition-colors'>
-                {feature.description}
-              </p>
-            </div>
-          ))}
         </div>
       </div>
     </div>
