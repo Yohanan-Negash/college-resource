@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import Hero from '../components/landingpage/hero';
-import Features from '../components/landingpage/features';
 import FinalCTA from '../components/landingpage/finalcta';
 import FAQ from '../components/landingpage/faq';
 import WaitlistForm from '../components/landingpage/waitlistform';
@@ -51,15 +50,6 @@ const Home = () => {
         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <ProblemStatementDemo />
-          </ScrollAnimation>
-        </div>
-      </div>
-
-      {/* Features section */}
-      <div className='bg-zinc-900 py-1'>
-        <div className='max-w-7xl mx-auto px-6 lg:px-8'>
-          <ScrollAnimation animation='fade'>
-            <Features className='mb-12' />
           </ScrollAnimation>
         </div>
       </div>
