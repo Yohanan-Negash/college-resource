@@ -105,7 +105,7 @@ export default function InternshipsTable() {
         };
 
         loadData();
-    }, []);
+    }, [toast]);
 
     // Toggle firm expansion
     const toggleFirmExpansion = (firm) => {
