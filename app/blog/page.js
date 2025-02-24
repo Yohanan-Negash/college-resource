@@ -20,7 +20,7 @@ const BlogPage = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-[#1C1F2E] to-[#2A2D3E] text-white overflow-hidden'>
+    <div className='min-h-screen bg-black text-white overflow-hidden'>
       {/* Animated background */}
       <div className='fixed inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none'>
         <motion.div
@@ -57,10 +57,10 @@ const BlogPage = () => {
       >
         <button
           onClick={() => setIsFormOpen(true)}
-          className='group px-14 font-bold py-4 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center'
+          className='group px-6 py-3 rounded-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center text-white hover:text-white'
         >
           Join Waitlist
-          <ChevronRight className='ml-2 group-hover:translate-x-1 transition-transform' />
+          <ChevronRight className='ml-1 w-5 h-5 group-hover:translate-x-1 transition-transform' />
         </button>
       </motion.div>
 
