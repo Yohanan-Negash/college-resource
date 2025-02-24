@@ -5,7 +5,7 @@ import { ShineBorder } from '../../components/ui/shineborder';
 
 const HeroVideo = ({ youtubeUrl, thumbnailUrl, className }) => {
   return (
-    <div className={`relative pt-16 ${className || ''}`}>
+    <div className={`relative pt-3 ${className || ''}`}>
       <ShineBorder
         borderRadius={20}
         borderWidth={2}

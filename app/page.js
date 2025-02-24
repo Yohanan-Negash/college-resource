@@ -29,7 +29,7 @@ const Home = () => {
       </div>
 
       {/* Hero Section */}
-      <div className='bg-black py-12 lg:py-20'>
+      <div className='bg-black py-12 lg:py-16 flex justify-center'>
         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <Hero onJoinWaitlist={() => setIsFormOpen(true)} />
@@ -38,8 +38,8 @@ const Home = () => {
       </div>
 
       {/* Hero Video Section */}
-      <div className='bg-black py-12'>
-        <div className='max-w-7xl mx-auto px-6 lg:px-8'>
+      <div className='bg-black'>
+        <div className='max-w-7xl mx-auto px-2 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <HeroVideo />
           </ScrollAnimation>
@@ -47,7 +47,7 @@ const Home = () => {
       </div>
 
       {/* Problem Statement Section */}
-      <div className='bg-black py-12'>
+      <div className='bg-black py-5'>
         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <ProblemStatementDemo />
@@ -56,7 +56,7 @@ const Home = () => {
       </div>
 
       {/* Features section */}
-      <div className='bg-zinc-900 py-12'>
+      <div className='bg-zinc-900 py-1'>
         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <Features className='mb-12' />
@@ -65,7 +65,7 @@ const Home = () => {
       </div>
 
       {/* Feature Demo Section */}
-      <div className='bg-black py-12 lg:py-20'>
+      <div className='bg-black py-1 lg:py-12'>
         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <FeatureDemo />
@@ -74,7 +74,7 @@ const Home = () => {
       </div>
 
       {/* Hero Scroll Section */}
-      <div className='bg-black py-12 lg:py-20'>
+      <div className='bg-black py-6 lg:py-12'>
         <div className='max-w-7xl mx-auto px-6 lg:px-8'>
           <ScrollAnimation animation='fade'>
             <HeroScroll />

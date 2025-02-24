@@ -38,7 +38,7 @@ const Features = ({ className }) => {
       <h2 className='font-ubuntu text-5xl font-extrabold mb-10 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
         Your Complete Success Toolkit
       </h2>
-      <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-8'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8'>
         {features.map((feature, index) => (
           <div
             key={index}
