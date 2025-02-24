@@ -1,13 +1,21 @@
 'use client';
 import React from 'react';
-import {AtlassianLogo, Dropbox, Amazon} from '../../components/ui/logo';
+import {Amazon, Google, Microsoft, GoldmanSachs, Oracle,
+    WellsFargo, Citi, CapitalOne, AmericanExpress, Accenture, UsBank} from '../../components/ui/logo';
 
 const CompanyCarousel = () => {
     const companies = [
-        { name: 'Atlassian', Logo: AtlassianLogo },
+        { name: 'Oracle', Logo: Oracle },
         { name: 'Amazon', Logo: Amazon },
-        { name: 'Dropbox', Logo: Dropbox },
-        // Add more as you get the SVGs
+        {name: 'WellsFargo', Logo: WellsFargo},
+        { name: 'UsBank', Logo: UsBank },
+        { name: 'GoldmanSachs', Logo: GoldmanSachs},
+        { name: 'Citi', Logo: Citi },
+        { name: 'Google', Logo: Google },
+        {name: 'CapitalOne', Logo: CapitalOne},
+        {name: 'Accenture', Logo: Accenture},
+        {name: 'Microsoft', Logo: Microsoft},
+        {name: 'AmericanExpress', Logo: AmericanExpress},
     ];
 
     return (
@@ -18,22 +26,28 @@ const CompanyCarousel = () => {
                         transform: translateX(0);
                     }
                     100% {
-                        transform: translateX(calc(-250px * ${companies.length}));
+                        transform: translateX(calc(-150px * ${companies.length}));
                     }
                 }
             `}</style>
 
             <div className="mt-20 overflow-hidden">
-                <div className="flex w-[calc(250px*28)] animate-[scroll_40s_linear_infinite]">
+                <div className="flex w-[calc(150px*22)] animate-[scroll_40s_linear_infinite]">
                     {/* First set */}
                     {companies.map((company) => (
-                        <span key={company.name} className="w-[250px] text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center">
+                        <span
+                            key={company.name}
+                            className="w-[150px] px-4 text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center"
+                        >
                             <company.Logo />
                         </span>
                     ))}
                     {/* Duplicate set for seamless loop */}
                     {companies.map((company) => (
-                        <span key={`${company.name}-2`} className="w-[250px] text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center">
+                        <span
+                            key={`${company.name}-2`}
+                            className="w-[150px] px-4 text-zinc-400 hover:text-zinc-200 transition-colors flex items-center justify-center"
+                        >
                             <company.Logo />
                         </span>
                     ))}
