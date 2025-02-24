@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   return (
-    <div className='min-h-screen text-white overflow-hidden bg-[#1C1F2E]'>
+    <div className='min-h-screen text-white overflow-hidden bg-black'>
       {/* Navigation */}
       <div className='bg-black'>
         <Navigation />
