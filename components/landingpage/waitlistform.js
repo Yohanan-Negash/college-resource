@@ -1,177 +1,155 @@
 'use client';
 
-import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { useState } from 'react';
 import { addToWaitlist } from '@/lib/supabase/waitlist';
-import { useToast } from '../../components/hooks/use-toast';
+import { useToast } from '@/components/hooks/use-toast';
 import { sendWaitlistEmail } from '@/lib/actions/waitlistEmail';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog';
+import { useForm } from 'react-hook-form';
+
 const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
   const { toast } = useToast();
-  const initialFormState = {
-    firstName: '',
-    lastName: '',
-    email: '',
-  };
-
-  const [formData, setFormData] = useState(initialFormState);
-  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.firstName.trim())
-      newErrors.firstName = 'First name is required';
-    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!formData.email.endsWith('.edu')) {
-      newErrors.email = 'Must be a valid .edu email';
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    setError,
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+    },
+  });
 
-  const resetForm = () => {
-    setFormData(initialFormState);
-    setErrors({});
-  };
+  const onFormSubmit = async (data) => {
+    setLoading(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setLoading(true);
-      const { data, error } = await addToWaitlist(formData);
-      setLoading(false);
+    try {
+      const { data: responseData, error } = await addToWaitlist(data);
 
       if (error) {
         if (error === 'This email is already registered') {
-          setErrors({ form: error });
+          setError('email', {
+            type: 'manual',
+            message: 'This email is already on our waitlist',
+          });
           toast({
             variant: 'destructive',
-            title: 'Email Already Registered',
-            description: 'This email address is already on our waitlist. Please use a different .edu email.',
+            title: 'Already Registered',
+            description: 'Please use a different .edu email address.',
           });
         } else {
-          setErrors({
-            form: 'An unexpected error occurred. Please try again.',
-          });
           toast({
             variant: 'destructive',
             title: 'Error',
-            description: 'There was an issue with your request. Please try again later.',
+            description:
+              'There was an issue with your request. Please try again.',
           });
         }
       } else {
-        await sendWaitlistEmail(formData);
+        await sendWaitlistEmail(data);
         toast({
-          title: 'Success',
-          description: 'You have been added to the waitlist and an email has been sent!',
+          title: 'Success!',
+          description: 'You have been added to the waitlist.',
         });
-        onSubmit(data);
-        resetForm();
-        onClose(); // Optionally close the form after success
+        onSubmit(responseData);
+        reset();
+        onClose();
       }
+    } catch (err) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'An unexpected error occurred.',
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
-    }
+  const handleClose = () => {
+    reset();
+    onClose();
   };
-
-  if (!isOpen) return null;
 
   return (
-    <div
-      className='fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50'
-      role='dialog'
-      aria-modal='true'
-      aria-labelledby='waitlist-form-title'
-    >
-      <div className='bg-[#2A2D3E] rounded-xl p-6 w-full max-w-md mx-4 relative border border-purple-500/20'>
-        <button
-          onClick={() => {
-            resetForm();
-            onClose();
-          }}
-          className='absolute right-4 top-4 text-zinc-400 hover:text-white transition-colors'
-          aria-label='Close waitlist form'
-        >
-          <X size={20} />
-        </button>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent className='sm:max-w-[425px] w-[95vw] max-w-[95vw] rounded-lg border-purple-500/20'>
+        <DialogHeader>
+          <DialogTitle className='text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-center'>
+            Join Waitlist
+          </DialogTitle>
+        </DialogHeader>
 
-        <h2
-          id='waitlist-form-title'
-          className='text-2xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'
-        >
-          Join Waitlist
-        </h2>
-
-        <form onSubmit={handleSubmit} className='space-y-4' noValidate>
-          {errors.form && <p className='text-sm text-red-400'>{errors.form}</p>}
+        <form onSubmit={handleSubmit(onFormSubmit)} className='space-y-4 py-2'>
           <div>
-            <input
-              type='text'
-              name='firstName'
+            <Input
+              {...register('firstName', { required: 'First name is required' })}
               placeholder='First Name'
-              value={formData.firstName}
-              onChange={handleChange}
-              className='w-full px-4 py-2 rounded-lg bg-[#1C1F2E] border border-zinc-700/50 focus:border-purple-500/50 focus:outline-none text-white placeholder-zinc-500'
-              aria-label='First Name'
+              className='bg-background/50 w-full'
             />
             {errors.firstName && (
-              <p className='mt-1 text-sm text-red-400'>{errors.firstName}</p>
+              <p className='text-xs text-destructive mt-1'>
+                {errors.firstName.message}
+              </p>
             )}
           </div>
 
           <div>
-            <input
-              type='text'
-              name='lastName'
+            <Input
+              {...register('lastName', { required: 'Last name is required' })}
               placeholder='Last Name'
-              value={formData.lastName}
-              onChange={handleChange}
-              className='w-full px-4 py-2 rounded-lg bg-[#1C1F2E] border border-zinc-700/50 focus:border-purple-500/50 focus:outline-none text-white placeholder-zinc-500'
-              aria-label='Last Name'
+              className='bg-background/50 w-full'
             />
             {errors.lastName && (
-              <p className='mt-1 text-sm text-red-400'>{errors.lastName}</p>
+              <p className='text-xs text-destructive mt-1'>
+                {errors.lastName.message}
+              </p>
             )}
           </div>
 
           <div>
-            <input
+            <Input
               type='email'
-              name='email'
-              placeholder='Student Email (.edu)'
-              value={formData.email}
-              onChange={handleChange}
-              className='w-full px-4 py-2 rounded-lg bg-[#1C1F2E] border border-zinc-700/50 focus:border-purple-500/50 focus:outline-none text-white placeholder-zinc-500'
-              aria-label='Email Address'
+              {...register('email', {
+                required: 'Email is required',
+                validate: (value) =>
+                  value.endsWith('.edu') || 'Must be a valid .edu email',
+              })}
+              placeholder='your.name@university.edu'
+              className='bg-background/50 w-full'
             />
             {errors.email && (
-              <p className='mt-1 text-sm text-red-400'>{errors.email}</p>
+              <p className='text-xs text-destructive mt-1'>
+                {errors.email.message}
+              </p>
             )}
           </div>
 
-          <button
-            type='submit'
-            className={`w-full py-3 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-            disabled={loading}
-          >
-            {loading ? 'Submitting...' : 'Submit'}
-          </button>
+          <DialogFooter className='mt-4 sm:mt-6'>
+            <Button
+              type='submit'
+              disabled={loading}
+              className='w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition-opacity'
+            >
+              {loading ? 'Submitting...' : 'Join Waitlist'}
+            </Button>
+          </DialogFooter>
         </form>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 };
 
