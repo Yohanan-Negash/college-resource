@@ -39,7 +39,7 @@ const FeatureSection = ({
             {subtitle}
           </span>
           <h2
-            className={`font-ubuntu text-5xl font-extrabold mb-10 text-center ${titleColor}`}
+            className={`font-ubuntu text-5xl font-extrabold pb-2 mb-10 text-center ${titleColor}`}
           >
             {title}
           </h2>

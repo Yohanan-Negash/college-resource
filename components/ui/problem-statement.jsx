@@ -3,7 +3,7 @@ import { GraduationCap, Building, BookX } from 'lucide-react';
 
 const ProblemStatement = () => {
   return (
-    <section className='pt-20 pb-12'>
+    <section className='mt-5 pt-23 pb-16'>
       {' '}
       {/* Increased vertical padding */}
       {/* Header Section - Keep center aligned */}
@@ -15,7 +15,7 @@ const ProblemStatement = () => {
           {/* Increased text size and margin */}
           PROBLEM
         </span>
-        <h2 className='font-ubuntu text-5xl font-extrabold mb-10 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+        <h2 className='font-ubuntu text-5xl font-extrabold mb-10 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent pb-2'>
           Landing that first internship is hard
         </h2>
       </div>
