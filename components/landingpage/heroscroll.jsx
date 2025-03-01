@@ -8,9 +8,9 @@ const HeroScroll = () => {
   return (
     <div className='flex flex-col overflow-hidden'>
       <h1 className='font-ubuntu text-2xl text-center text-cyan-300'>
-        Never miss an Opportunity <br />
+          Pathway & Leadership programs <br />
         <span className='font-ubuntu text-4xl md:text-6xl font-bold mt-4 block leading-none bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-4'>
-          150+ Internships
+          150+ Opportunities
         </span>
       </h1>
       <ShineBorder

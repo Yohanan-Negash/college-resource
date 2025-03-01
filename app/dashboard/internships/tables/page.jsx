@@ -261,9 +261,9 @@ export default function InternshipsTable() {
             </Card>
             <Card className="mb-6">
                 <CardHeader>
-                    <CardTitle className="text-3xl font-bold">Internship Opportunities</CardTitle>
+                    <CardTitle className="text-3xl font-bold">Pathway & Leadership programs</CardTitle>
                     <CardDescription>
-                        Browse through our comprehensive database of internship programs
+                        Browse through our comprehensive database of Pathway & Leadership programs
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

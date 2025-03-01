@@ -163,7 +163,7 @@ export default function Internships() {
           <CardHeader>
             <CardTitle className='text-2xl font-bold flex items-center text-yellow-600 dark:text-yellow-400'>
               <BriefcaseIcon className='h-6 w-6 mr-2' />
-              Why Pursue Internships?
+              Why Pursue Pathway & Leadership programs?
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -189,7 +189,7 @@ export default function Internships() {
           <CardHeader>
             <CardTitle className="text-2xl font-bold flex items-center text-blue-600 dark:text-blue-400">
               <Search className="h-6 w-6 mr-2" />
-              Explore Our Internship Database
+              Explore Our Pathway & Leadership programs
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
