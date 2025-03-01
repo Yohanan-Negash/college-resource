@@ -20,7 +20,7 @@ const ProblemStatement = () => {
         </h2>
       </div>
       {/* Problems Grid */}
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 max-w-6xl mx-auto px-6'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 max-w-6xl mx-auto px-6'>
         {' '}
         {/* Increased gaps and max-width */}
         {/* University Failure */}
@@ -36,39 +36,39 @@ const ProblemStatement = () => {
           <h3 className='font-ubuntu text-white text-xl lg:text-2xl font-semibold'>
             {' '}
             {/* Increased text size */}
-            The University Failure
+            Unclear Starting Point
           </h3>
           <p className='font-ubuntu text-gray-400 text-base lg:text-lg leading-relaxed'>
             {' '}
             {/* Increased text size and line height */}
-            Most universities are failing their CS students with outdated
-            curricula that don't align with real-world industry needs.
+            Many students don’t know where to begin—what programming language to learn first, how to build meaningful projects that showcase their skills,
+            or where to find reliable resources for internships, resume writing, and interview preparation.
           </p>
         </div>
-        {/* Ivy League Advantage */}
+        {/* Lack of guidance */}
         <div className='flex flex-col items-start text-left space-y-5'>
           <div className='w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center'>
             <Building className='w-8 h-8 text-purple-500' />
           </div>
           <h3 className='font-ubuntu text-white text-xl lg:text-2xl font-semibold'>
-            Ivy League Advantage
+            Lack of Guidance
           </h3>
           <p className='font-ubuntu text-gray-400 text-base lg:text-lg leading-relaxed'>
-            Non-top-tier university students lack access to extensive alumni
-            networks and recruiting events that open doors effortlessly.
+            Without access to experienced mentors or peers in tech, students often struggle to navigate the recruiting process,
+            prepare for interviews, and build a competitive profile.
           </p>
         </div>
-        {/* Missing Opportunities */}
+        {/* Hidden resources */}
         <div className='flex flex-col items-start text-left space-y-5'>
           <div className='w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center'>
             <BookX className='w-8 h-8 text-purple-500' />
           </div>
           <h3 className='font-ubuntu text-white text-xl lg:text-2xl font-semibold'>
-            Missing Opportunities
+            Hidden Career Resources
           </h3>
           <p className='font-ubuntu text-gray-400 text-base lg:text-lg leading-relaxed'>
-            Students miss crucial career-advancing opportunities because they
-            don't know they exist or how to access them.
+            Many valuable opportunities coding challenges, networking events, and company sponsored programs aren’t widely advertised,
+            leaving students unaware of crucial stepping stones to success.
           </p>
         </div>
       </div>
