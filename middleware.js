@@ -1,4 +1,8 @@
+import { NextResponse } from 'next/server';
 import { updateSession } from './lib/supabase/middleware';
+
+// Routes to protect
+const PROTECTED_ROUTES = ['/login', '/dashboard'];
 
 export async function middleware(request) {
   return await updateSession(request);
