@@ -147,7 +147,7 @@ const TermsOfServicePage = () => {
             </h2>
             <p>
               If you have any questions about these Terms, please contact us at
-              [Your Contact Email].
+              team@phazeone.tech.
             </p>
           </section>
         </div>

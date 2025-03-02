@@ -154,7 +154,7 @@ const PrivacyPolicyPage = () => {
             </h2>
             <p>
               If you have any questions about this Privacy Policy, please
-              contact us at [Your Contact Email].
+              contact us at team@phazeone.tech.
             </p>
           </section>
         </div>
