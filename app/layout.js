@@ -22,9 +22,9 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: 'PhazeOne | Tech Career Launchpad for CS Students',
+  title: 'PhazeOne | Tech Career Launchpad for SWE Students',
   description:
-    'Your tech career launchpad. Curated resources, roadmaps, and tools for CS freshmen and sophomores. Write your first line of code, ace interviews, and start building your future in tech.',
+    'Your tech career launchpad. Curated resources, roadmaps, and tools for SWE freshmen and sophomores. Write your first line of code, ace interviews, and start building your future in tech.',
 };
 
 export default function RootLayout({ children }) {
