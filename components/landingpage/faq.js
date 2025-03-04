@@ -20,7 +20,7 @@ const faqData = [
   {
     question: 'Is it really free?',
     answer:
-      'Yes! Beta users (first 1,000 waitlist members) will receive lifetime access to all premium features completely free. No hidden fees, no credit card required.',
+      'Yes! Beta users (first 100 waitlist members) will receive lifetime access to all premium features completely free. No hidden fees, no credit card required.',
   },
   {
     question: 'What kind of support will I receive?',
