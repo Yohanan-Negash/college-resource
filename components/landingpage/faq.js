@@ -5,12 +5,12 @@ const faqData = [
   {
     question: 'How does the waitlist work?',
     answer:
-      "Once you join our waitlist, you'll receive a confirmation email. When we launch the beta version, the first 1,000 waitlist members will receive exclusive access to the platform. We'll notify you via email with instructions to set up your account.",
+      "Once you join our waitlist, you'll receive a confirmation email. When we launch the beta version, the first 100 waitlist members will receive exclusive access to the platform. We'll notify you via email with instructions to set up your account.",
   },
   {
     question: 'When will the platform launch?',
     answer:
-      "We're currently in the final stages of development. Beta access will be rolled out in early 2024. Waitlist members will be the first to know and get priority access.",
+      "We're currently in the final stages of development. Beta access will be rolled out as soon as possible. Waitlist members will be the first to know and get priority access.",
   },
   {
     question: 'What makes PhazeOne different from other platforms?',
