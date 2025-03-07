@@ -21,7 +21,7 @@ const ctaContent = {
     },
   ],
   buttonText: 'Join the Exclusive Waitlist 🚀',
-  footnote: 'Only 1,000 beta spots available - Join now to secure your place',
+  footnote: 'Only 100 beta spots available - Join now to secure your place',
 };
 
 const FinalCTA = ({ onJoinWaitlist }) => {
