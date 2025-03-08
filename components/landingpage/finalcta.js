@@ -5,7 +5,7 @@ import BorderBeam from '../ui/borderbeam';
 const ctaContent = {
   title: 'Time-Sensitive Opportunity',
   description:
-    "Be one of the first 1,000 students to gain early access to our revolutionary platform. As a beta user, you'll receive:",
+    "Be one of the first 100 students to gain early access to our revolutionary platform. As a beta user, you'll receive:",
   benefits: [
     {
       title: 'Lifetime Free Access',
