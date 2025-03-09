@@ -55,7 +55,7 @@ const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
             variant: 'destructive',
             title: 'Error',
             description:
-              'There was an issue with your request. Please try again.',
+                'There was an issue with your request. Please try again.',
           });
         }
       } else {
@@ -85,71 +85,76 @@ const WaitlistForm = ({ isOpen, onClose, onSubmit }) => {
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className='sm:max-w-[425px] w-[95vw] max-w-[95vw] rounded-lg border-purple-500/20'>
-        <DialogHeader>
-          <DialogTitle className='text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-center'>
-            Join Waitlist
-          </DialogTitle>
-        </DialogHeader>
+      <Dialog open={isOpen} onOpenChange={handleClose}>
+        <DialogContent className='sm:max-w-[425px] w-[95vw] max-w-[95vw] rounded-lg border-purple-500/20'>
+          <DialogHeader>
+            <DialogTitle className='text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-center'>
+              Join Waitlist
+            </DialogTitle>
+          </DialogHeader>
 
-        <form onSubmit={handleSubmit(onFormSubmit)} className='space-y-4 py-2'>
-          <div>
-            <Input
-              {...register('firstName', { required: 'First name is required' })}
-              placeholder='First Name'
-              className='bg-background/50 w-full'
-            />
-            {errors.firstName && (
-              <p className='text-xs text-destructive mt-1'>
-                {errors.firstName.message}
-              </p>
-            )}
-          </div>
+          <form onSubmit={handleSubmit(onFormSubmit)} className='space-y-4 py-2'>
+            <div>
+              <Input
+                  {...register('firstName', { required: 'First name is required' })}
+                  placeholder='First Name'
+                  className='bg-background/50 w-full'
+              />
+              {errors.firstName && (
+                  <p className='text-xs text-destructive mt-1'>
+                    {errors.firstName.message}
+                  </p>
+              )}
+            </div>
 
-          <div>
-            <Input
-              {...register('lastName', { required: 'Last name is required' })}
-              placeholder='Last Name'
-              className='bg-background/50 w-full'
-            />
-            {errors.lastName && (
-              <p className='text-xs text-destructive mt-1'>
-                {errors.lastName.message}
-              </p>
-            )}
-          </div>
+            <div>
+              <Input
+                  {...register('lastName', { required: 'Last name is required' })}
+                  placeholder='Last Name'
+                  className='bg-background/50 w-full'
+              />
+              {errors.lastName && (
+                  <p className='text-xs text-destructive mt-1'>
+                    {errors.lastName.message}
+                  </p>
+              )}
+            </div>
 
-          <div>
-            <Input
-              type='email'
-              {...register('email', {
-                required: 'Email is required',
-                validate: (value) =>
-                  value.endsWith('.edu') || 'Must be a valid .edu email',
-              })}
-              placeholder='your.name@university.edu'
-              className='bg-background/50 w-full'
-            />
-            {errors.email && (
-              <p className='text-xs text-destructive mt-1'>
-                {errors.email.message}
-              </p>
-            )}
-          </div>
+            <div>
+              <Input
+                  type='email'
+                  {...register('email', {
+                    required: 'Email is required',
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: 'Please enter a valid email address'
+                    },
+                    validate: (value) => {
+                      return !!value || 'Email cannot be empty';
+                    }
+                  })}
+                  placeholder='your.name@example.com'
+                  className='bg-background/50 w-full'
+              />
+              {errors.email && (
+                  <p className='text-xs text-destructive mt-1'>
+                    {errors.email.message}
+                  </p>
+              )}
+            </div>
 
-          <DialogFooter className='mt-4 sm:mt-6'>
-            <Button
-              type='submit'
-              disabled={loading}
-              className='w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition-opacity'
-            >
-              {loading ? 'Submitting...' : 'Join Waitlist'}
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
+            <DialogFooter className='mt-4 sm:mt-6'>
+              <Button
+                  type='submit'
+                  disabled={loading}
+                  className='w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition-opacity'
+              >
+                {loading ? 'Submitting...' : 'Join Waitlist'}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
   );
 };
 
