@@ -11,29 +11,29 @@ import { createClient } from '@/lib/supabase/client';
 import { useEffect, useState } from 'react';
 
 export function SettingsModal({ user, open, onOpenChange }) {
-  const [subscriptionStatus, setSubscriptionStatus] = useState('Loading...');
+  // const [subscriptionStatus, setSubscriptionStatus] = useState('Loading...');
 
-  useEffect(() => {
-    async function fetchSubscriptionStatus() {
-      const supabase = createClient();
-      const { data, error } = await supabase
-        .from('User')
-        .select('isPremium')
-        .eq('supabaseAuthId', user.id)
-        .single();
+  // useEffect(() => {
+  //   async function fetchSubscriptionStatus() {
+  //     const supabase = createClient();
+  //     const { data, error } = await supabase
+  //       .from('User')
+  //       .select('isPremium')
+  //       .eq('supabaseAuthId', user.id)
+  //       .single();
 
-      if (error) {
-        console.error('Error fetching subscription status:', error);
-        setSubscriptionStatus('Error');
-      } else {
-        setSubscriptionStatus(data.isPremium ? 'Paid' : 'Free');
-      }
-    }
+  //     if (error) {
+  //       console.error('Error fetching subscription status:', error);
+  //       setSubscriptionStatus('Error');
+  //     } else {
+  //       setSubscriptionStatus(data.isPremium ? 'Paid' : 'Free');
+  //     }
+  //   }
 
-    if (open) {
-      fetchSubscriptionStatus();
-    }
-  }, [open, user.id]);
+  //   if (open) {
+  //     fetchSubscriptionStatus();
+  //   }
+  // }, [open, user.id]);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
