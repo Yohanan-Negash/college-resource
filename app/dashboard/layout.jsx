@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function Layout({ children }) {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: userData, error: userError } = await supabase.auth.getUser();
 

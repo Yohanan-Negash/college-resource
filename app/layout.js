@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 import { Ubuntu } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from '../components/theme-provider';
+import { ThemeProviderWrapper } from '@/components/theme-provider-wrapper';
 
 const ubuntu = Ubuntu({
   weight: ['300', '400', '500', '700'],
@@ -29,18 +29,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${ubuntu.variable} antialiased`}
+        suppressHydrationWarning
       >
-        <ThemeProvider
+        <ThemeProviderWrapper
           attribute='class'
           defaultTheme='system'
           enableSystem
           disableTransitionOnChange
         >
           {children}
-        </ThemeProvider>
+        </ThemeProviderWrapper>
       </body>
     </html>
   );

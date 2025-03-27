@@ -122,7 +122,7 @@ const comingSoonItems = [
 ];
 
 export async function AppSidebar() {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const { data: userData, error: userError } = await supabase.auth.getUser();
 

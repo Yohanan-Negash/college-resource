@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 export function ComingSoonFeatureTeaser({ icon: Icon, title }) {
   return (
     <div
@@ -30,13 +28,3 @@ export function ComingSoonFeatureTeaser({ icon: Icon, title }) {
     </div>
   );
 }
-
-ComingSoonFeatureTeaser.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  title: PropTypes.string.isRequired,
-};
-
-ComingSoonFeatureTeaser.defaultProps = {
-  icon: null,
-  title: 'Coming Soon',
-};

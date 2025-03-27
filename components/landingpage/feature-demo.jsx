@@ -7,24 +7,21 @@ const features = [
     title: 'Hackathons',
     content:
       'Get access to the latest hackathons through carefully curated links to help you connect with peers and showcase your skills.',
-    image:
-      'https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/hackathon_s.png',
+    image: '/hackathon_s.png',
   },
   {
     step: 'Step 2',
     title: 'Paths',
     content:
       'Choose from curated paths that help you navigate your unique tech journey.',
-    image:
-      'https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/path.png',
+    image: '/path.png',
   },
   {
     step: 'Step 3',
     title: 'Roadmaps',
     content:
       'Follow structured paths to guide your learning and career progression in tech.',
-    image:
-      'https://kkpqypbvgqiygycagfey.supabase.co/storage/v1/object/public/video-image-storage/comparison-images-videos/roadmap_s.png',
+    image: '/roadmap_s.png',
   },
 ];
 

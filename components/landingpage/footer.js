@@ -118,7 +118,7 @@ const Footer = () => {
         {/* Copyright - Smaller padding */}
         <div className='border-t border-zinc-800 py-6'>
           <p className='font-ubuntu text-sm text-zinc-400 text-center'>
-            © {new Date().getFullYear()} PhazeOne. All rights reserved.
+            © 2025 PhazeOne. All rights reserved.
           </p>
         </div>
       </div>
