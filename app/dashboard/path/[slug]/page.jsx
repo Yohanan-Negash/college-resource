@@ -103,25 +103,13 @@ const pathData = {
         completed: false,
         resourcePath: 'open-source',
       },
-      // {
-      //   title: 'Basic Data Structures',
-      //   description:
-      //     'Learn about fundamental data structures like arrays, lists, and dictionaries.',
-      //   completed: false,
-      //   resourcePath: 'basic-data-structures',
-      // },
-      // {
-      //   title: 'Basic Algorithms',
-      //   description: 'Learn about basic sorting and searching algorithms.',
-      //   completed: false,
-      //   resourcePath: 'basic-algorithms',
-      // },
     ],
   },
 };
 
-export default function PathPage({ params }) {
-  const path = pathData[params.slug];
+export default async function PathPage({ params }) {
+  const awaitParams = await params;
+  const path = pathData[awaitParams.slug];
 
   if (!path) {
     return <div>Path not found</div>;
@@ -129,7 +117,7 @@ export default function PathPage({ params }) {
 
   return (
     <div className='container mx-auto p-6'>
-      <PathGuide {...path} pathSlug={params.slug} />
+      <PathGuide {...path} pathSlug={awaitParams.slug} />
     </div>
   );
 }
