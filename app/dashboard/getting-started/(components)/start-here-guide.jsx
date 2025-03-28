@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { ArrowRight, BookOpen, Laptop, Building2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
