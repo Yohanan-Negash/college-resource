@@ -2,16 +2,16 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 
 const faqData = [
-  {
-    question: 'How does the waitlist work?',
-    answer:
-      "Once you join our waitlist, you'll receive a confirmation email. When we launch the beta version, the first 100 waitlist members will receive exclusive access to the platform. We'll notify you via email with instructions to set up your account.",
-  },
-  {
-    question: 'When will the platform launch?',
-    answer:
-      "We're currently in the final stages of development. Beta access will be rolled out as soon as possible. Waitlist members will be the first to know and get priority access.",
-  },
+  // {
+  //   question: 'How does the waitlist work?',
+  //   answer:
+  //     "Once you join our waitlist, you'll receive a confirmation email. When we launch the beta version, the first 100 waitlist members will receive exclusive access to the platform. We'll notify you via email with instructions to set up your account.",
+  // },
+  // {
+  //   question: 'When will the platform launch?',
+  //   answer:
+  //     "We're currently in the final stages of development. Beta access will be rolled out as soon as possible. Waitlist members will be the first to know and get priority access.",
+  // },
   {
     question: 'What makes PhazeOne different from other platforms?',
     answer:
@@ -20,13 +20,13 @@ const faqData = [
   {
     question: 'Is it really free?',
     answer:
-      'Yes! Beta users (first 100 waitlist members) will receive lifetime access to all premium features completely free. No hidden fees, no credit card required.',
+      'Yes! First 1000 members will receive lifetime access to our platform.',
   },
-  {
-    question: 'What kind of support will I receive?',
-    answer:
-      "You'll get access to our smart notification system, expert-designed templates, exclusive events, and a supportive community. Beta users also receive priority support from our team.",
-  },
+  // {
+  //   question: 'What kind of support will I receive?',
+  //   answer:
+  //     "You'll get access to our smart notification system, expert-designed templates, exclusive events, and a supportive community. Beta users also receive priority support from our team.",
+  // },
   {
     question: "What if I'm not a SWE student?",
     answer:
@@ -37,11 +37,11 @@ const faqData = [
     answer:
       "All waitlist members will receive email updates about our progress and launch timeline. When we're ready to launch, you'll receive detailed instructions on how to access your account.",
   },
-  {
-    question: 'Can I share my access with others?',
-    answer:
-      'Beta access is individual and tied to your email address. However, we encourage you to tell your friends to join the waitlist to secure their own spot.',
-  },
+  // {
+  //   question: 'Can I share my access with others?',
+  //   answer:
+  //     'Beta access is individual and tied to your email address. However, we encourage you to tell your friends to join the waitlist to secure their own spot.',
+  // },
 ];
 
 const FAQ = () => {
