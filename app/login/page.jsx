@@ -16,7 +16,7 @@ import { Icons } from '@/lib/icons';
 import { googleAuth, signInWithEmail } from '@/lib/actions/auth';
 import Link from 'next/link';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ChevronLeft } from 'lucide-react';
 
 export default function AuthForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -325,6 +325,19 @@ export default function AuthForm() {
 
       <Card className='w-[350px] bg-[#2A2D3E]/30 backdrop-blur-md border border-zinc-700/50 hover:border-purple-500/40 transition-all duration-500 rounded-xl shadow-xl shadow-purple-500/30'>
         <CardHeader className='text-center'>
+          <div className='absolute top-4 left-4'>
+            <Button
+              variant='ghost'
+              size='sm'
+              className='text-zinc-400 hover:text-white hover:bg-purple-500/20 transition-all duration-300 rounded-lg'
+              asChild
+            >
+              <Link href='/'>
+                <ChevronLeft className='mr-1 h-4 w-4' />
+                Home
+              </Link>
+            </Button>
+          </div>
           <CardTitle className='text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
             Welcome!
           </CardTitle>
