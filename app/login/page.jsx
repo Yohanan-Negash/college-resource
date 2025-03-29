@@ -345,7 +345,7 @@ export default function AuthForm() {
             Login or Sign Up to get started.
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        {/* <CardContent>
           {showSuccessAlert && (
             <Alert className='mb-4 bg-green-500/20 text-green-400 border-green-500/50'>
               <CheckCircle2 className='h-4 w-4' />
@@ -390,7 +390,7 @@ export default function AuthForm() {
               )}
             </Button>
           </form>
-        </CardContent>
+        </CardContent> */}
         <CardFooter>
           <form onSubmit={handleGoogleAuth} className='w-full'>
             <Button
