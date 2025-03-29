@@ -13,7 +13,7 @@ export async function middleware(request) {
   );
 
   // Always allow access in development environment
-  const isDevelopment = process.env.NODE_ENV === 'development';
+  const isDevelopment = process.env.NODE_ENV === 'production';
 
   // If it's a protected route and we're in production, redirect to home
   if (isProtectedRoute && !isDevelopment) {
