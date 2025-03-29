@@ -42,12 +42,7 @@ const paths = [
     description: 'Build practical skills for startups',
     progress: 0,
     icon: Laptop,
-    steps: [
-      'Full-Stack Development',
-      'Product Skills',
-      'Rapid Prototyping',
-      'Agile',
-    ],
+    steps: ['Full-Stack Development', 'Rapid Prototyping', 'Agile'],
     difficulty: 'Intermediate',
     color: 'bg-primary/10',
     iconColor: 'text-primary',
