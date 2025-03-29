@@ -42,24 +42,11 @@ const pathData = {
         resourcePath: 'full-stack-development',
       },
       {
-        title: 'Product Skills',
-        description: 'Develop product thinking and user-centric design skills.',
-        completed: false,
-        resourcePath: 'product-skills',
-      },
-      {
         title: 'Rapid Prototyping',
         description:
           'Master the art of quickly building and iterating on product ideas.',
         completed: false,
         resourcePath: 'rapid-prototyping',
-      },
-      {
-        title: 'Agile Methodologies',
-        description:
-          'Learn about Agile and Scrum practices commonly used in startups.',
-        completed: false,
-        resourcePath: 'agile-methodologies',
       },
       {
         title: 'DevOps Basics',
