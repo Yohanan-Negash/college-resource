@@ -2,24 +2,24 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
   Code,
   Rocket,
-  Book,
   Users,
   PenToolIcon as Tool,
   Trophy,
   ChevronRight,
+  Sparkles,
 } from 'lucide-react';
 import {
   Tooltip,
@@ -30,6 +30,7 @@ import {
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     setMounted(true);
@@ -43,13 +44,6 @@ export default function Home() {
       href: '/dashboard/getting-started',
       primary: true,
     },
-    // {
-    //   title: 'Foundations',
-    //   description:
-    //     'Master the fundamentals of programming and computer science',
-    //   icon: Book,
-    //   href: '/dashboard/foundations',
-    // },
     {
       title: 'Explore Roadmaps',
       description: 'View detailed career roadmaps',
@@ -77,71 +71,170 @@ export default function Home() {
     },
   ];
 
+  // Staggered card animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      y: 20,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+  };
+
   if (!mounted) return null;
 
   return (
-    <div className='min-h-screen bg-background'>
+    <div className='min-h-screen bg-background relative overflow-hidden'>
+      {/* Decorative elements */}
+      <div className='absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-b from-purple-500/10 to-transparent rounded-full blur-3xl -z-10 animate-pulse-slow'></div>
+      <div className='absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-t from-pink-500/10 to-transparent rounded-full blur-3xl -z-10 animate-pulse-slow'></div>
+
       <div className='container mx-auto px-4 py-16 sm:px-6 lg:px-8'>
-        <div className='text-center mb-16'>
-          <h1 className='text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
-            Welcome to PhazeOne!
-          </h1>
-          <p className='text-xl text-muted-foreground max-w-3xl mx-auto'>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className='text-center mb-16'
+        >
+          <div className='inline-block relative mb-2'>
+            <motion.div
+              animate={{
+                scale: [1, 1.05, 1],
+                rotate: [0, 2, 0, -2, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: 'reverse',
+              }}
+            >
+              <Sparkles className='w-8 h-8 text-purple-400 absolute -top-6 -right-6' />
+            </motion.div>
+            <h1 className='text-5xl font-extrabold tracking-tight sm:text-6xl mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+              Welcome to PhazeOne!
+            </h1>
+          </div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className='text-xl text-muted-foreground max-w-3xl mx-auto'
+          >
             Enjoy a collection of carefully curated resources, handpicked to
             help you succeed in your developer journey and achieve your career
             goals.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          variants={containerVariants}
+          initial='hidden'
+          animate='visible'
           className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'
         >
           {resources.map((item, index) => (
             <TooltipProvider key={index}>
-              <Tooltip open={item.primary}>
+              <Tooltip open={item.primary && activeCard === null}>
                 <TooltipTrigger asChild>
-                  <Card
-                    className={`h-full transition-all duration-300 hover:shadow-lg ${
-                      item.primary ? 'ring-2 ring-primary shadow-lg' : ''
-                    }`}
+                  <motion.div
+                    variants={cardVariants}
+                    whileHover={{
+                      scale: 1.02,
+                      transition: { duration: 0.2 },
+                    }}
+                    onMouseEnter={() => setActiveCard(index)}
+                    onMouseLeave={() => setActiveCard(null)}
                   >
-                    <CardHeader>
-                      <CardTitle className='flex items-center space-x-2'>
-                        <item.icon
-                          className={`w-6 h-6 ${
-                            item.primary
-                              ? 'text-primary'
-                              : 'text-muted-foreground'
-                          }`}
-                        />
-                        <span>{item.title}</span>
-                      </CardTitle>
-                      <CardDescription>{item.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Button
-                        asChild
-                        className={`w-full ${
-                          item.primary ? 'bg-primary hover:bg-primary/90' : ''
+                    <Card
+                      className={`h-full flex flex-col transition-all duration-300 shadow-xl relative ${
+                        item.primary
+                          ? 'ring-2 ring-primary shadow-purple-500/30 dark:shadow-purple-500/30'
+                          : 'shadow-purple-500/10 dark:shadow-purple-500/10 hover:shadow-purple-500/20 dark:hover:shadow-purple-500/20'
+                      }`}
+                    >
+                      {/* Subtle gradient border effect */}
+                      <div
+                        className={`absolute inset-0 rounded-lg opacity-0 transition-opacity duration-500 pointer-events-none ${
+                          activeCard === index ? 'opacity-100' : ''
                         }`}
                       >
-                        <Link href={item.href}>
-                          {item.primary ? 'Get Started' : 'Explore'}
-                          {item.primary ? (
-                            <ChevronRight className='ml-2 h-4 w-4' />
-                          ) : (
-                            <ArrowRight className='ml-2 h-4 w-4' />
-                          )}
-                        </Link>
-                      </Button>
-                    </CardContent>
-                  </Card>
+                        <div className='absolute inset-0 rounded-lg bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 animate-gradient-x'></div>
+                      </div>
+
+                      <CardHeader>
+                        <CardTitle className='flex items-center gap-2'>
+                          <div
+                            className={`p-2 rounded-md ${
+                              item.primary ? 'bg-primary/10' : 'bg-muted'
+                            }`}
+                          >
+                            <item.icon
+                              className={`w-5 h-5 flex-shrink-0 ${
+                                item.primary
+                                  ? 'text-primary'
+                                  : 'text-muted-foreground'
+                              }`}
+                            />
+                          </div>
+                          <span>{item.title}</span>
+                        </CardTitle>
+                        <CardDescription className='mt-2'>
+                          {item.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardFooter className='mt-auto pt-0'>
+                        <Button
+                          asChild
+                          className={`w-full group ${
+                            item.primary ? 'bg-primary hover:bg-primary/90' : ''
+                          }`}
+                        >
+                          <Link
+                            href={item.href}
+                            className='flex items-center justify-center'
+                          >
+                            {item.primary ? 'Get Started' : 'Explore'}
+                            <span
+                              className={`ml-2 transition-transform duration-300 ${
+                                item.primary
+                                  ? 'group-hover:translate-x-1'
+                                  : 'group-hover:translate-x-1'
+                              }`}
+                            >
+                              {item.primary ? (
+                                <ChevronRight className='h-4 w-4' />
+                              ) : (
+                                <ArrowRight className='h-4 w-4' />
+                              )}
+                            </span>
+                          </Link>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
                 </TooltipTrigger>
                 {item.primary && (
-                  <TooltipContent sideOffset={5}>
+                  <TooltipContent
+                    sideOffset={5}
+                    className='animate-in fade-in-50 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95'
+                  >
                     <p>Start here to kickstart your tech journey!</p>
                   </TooltipContent>
                 )}
@@ -150,13 +243,18 @@ export default function Home() {
           ))}
         </motion.div>
 
-        <div className='mt-16 text-center'>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className='mt-16 text-center'
+        >
           <p className='text-xl text-muted-foreground'>
             Thank you for joining thousands of aspiring developers who are
             accelerating their careers with our platform. Your journey to
             success starts here!
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -12,15 +12,14 @@ import { Button } from '@/components/ui/button';
 import {
   GitMerge,
   Code,
-  Database,
   Cloud,
   Terminal,
   PenTool,
   Users,
-  Briefcase,
   MessageSquare,
   ExternalLink,
   DollarSign,
+  Wrench,
 } from 'lucide-react';
 
 export default function ToolsAndResources() {
@@ -29,6 +28,9 @@ export default function ToolsAndResources() {
       title: 'Version Control',
       description:
         'Tools for managing code versions and collaborating with others.',
+      icon: GitMerge,
+      color: 'bg-blue-500/10',
+      iconColor: 'text-blue-500',
       items: [
         {
           name: 'Git',
@@ -68,6 +70,9 @@ export default function ToolsAndResources() {
     {
       title: 'Development Tools',
       description: 'Essential tools for coding and development.',
+      icon: Code,
+      color: 'bg-purple-500/10',
+      iconColor: 'text-purple-500',
       items: [
         {
           name: 'Visual Studio Code',
@@ -98,6 +103,9 @@ export default function ToolsAndResources() {
     {
       title: 'Hosting & Deployment',
       description: 'Platforms for hosting and deploying your applications.',
+      icon: Cloud,
+      color: 'bg-green-500/10',
+      iconColor: 'text-green-500',
       items: [
         {
           name: 'Vercel',
@@ -139,6 +147,9 @@ export default function ToolsAndResources() {
       title: 'Free Cloud Credits & Resources',
       description:
         'Platforms offering free credits or tiers for cloud services.',
+      icon: DollarSign,
+      color: 'bg-emerald-500/10',
+      iconColor: 'text-emerald-500',
       items: [
         {
           name: 'AWS Free Tier',
@@ -180,6 +191,9 @@ export default function ToolsAndResources() {
     {
       title: 'Often Overlooked Skills',
       description: 'Essential skills that complement technical abilities.',
+      icon: PenTool,
+      color: 'bg-orange-500/10',
+      iconColor: 'text-orange-500',
       items: [
         {
           name: 'Technical Writing Guide',
@@ -217,22 +231,35 @@ export default function ToolsAndResources() {
     },
   ];
 
-  const Section = ({ title, description, items }) => (
-    <Card className='mb-8'>
+  const Section = ({
+    title,
+    description,
+    icon: Icon,
+    color,
+    iconColor,
+    items,
+  }) => (
+    <Card className='mb-8 shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)]'>
       <CardHeader>
-        <CardTitle className='text-2xl font-bold text-primary'>
-          {title}
-        </CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <div className='flex items-center space-x-3'>
+          <div className={`p-2 rounded-md ${color}`}>
+            <Icon className={`h-6 w-6 ${iconColor}`} />
+          </div>
+          <CardTitle className='text-2xl font-bold'>{title}</CardTitle>
+        </div>
+        <CardDescription className='mt-2'>{description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className='grid gap-4 sm:grid-cols-2'>
           {items.map((item) => (
-            <Card key={item.name} className='overflow-hidden'>
+            <Card
+              key={item.name}
+              className='overflow-hidden transition-all duration-200 hover:shadow-[0_0_10px_rgba(139,92,246,0.15)] dark:hover:shadow-[0_0_10px_rgba(139,92,246,0.15)]'
+            >
               <CardContent className='p-0'>
                 <Button
                   variant='ghost'
-                  className='w-full h-full justify-start py-4 px-4 hover:bg-accent'
+                  className='w-full h-full justify-start py-4 px-4 hover:bg-accent group'
                   asChild
                 >
                   <Link
@@ -241,7 +268,7 @@ export default function ToolsAndResources() {
                     rel='noopener noreferrer'
                   >
                     <div className='flex items-start space-x-4 w-full'>
-                      <item.icon className='h-5 w-5 mt-1 flex-shrink-0' />
+                      <item.icon className='h-5 w-5 mt-1 flex-shrink-0 text-primary' />
                       <div className='flex-grow min-w-0'>
                         <div className='font-semibold truncate'>
                           {item.name}
@@ -253,7 +280,7 @@ export default function ToolsAndResources() {
                           {item.type} • {item.source}
                         </div>
                       </div>
-                      <ExternalLink className='h-4 w-4 mt-1 flex-shrink-0 opacity-50' />
+                      <ExternalLink className='h-4 w-4 mt-1 flex-shrink-0 opacity-50 transition-transform duration-300 group-hover:translate-x-1' />
                     </div>
                   </Link>
                 </Button>
@@ -267,12 +294,17 @@ export default function ToolsAndResources() {
 
   return (
     <div className='container mx-auto p-6 max-w-100'>
-      <Card className='mb-8'>
+      <Card className='mb-8 shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)]'>
         <CardHeader>
-          <CardTitle className='text-4xl font-bold text-primary'>
-            Tools & Resources
-          </CardTitle>
-          <CardDescription className='text-lg'>
+          <div className='flex items-center space-x-3'>
+            <div className='p-2 rounded-md bg-purple-500/10'>
+              <Wrench className='h-6 w-6 text-purple-500' />
+            </div>
+            <CardTitle className='text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+              Tools & Resources
+            </CardTitle>
+          </div>
+          <CardDescription className='text-lg mt-2'>
             Discover powerful free tools, platforms, and resources we have
             handpicked to help you build amazing projects without spending a
             dime. Whether you are working on hobby projects, sharpening your
@@ -287,6 +319,9 @@ export default function ToolsAndResources() {
           key={category.title}
           title={category.title}
           description={category.description}
+          icon={category.icon}
+          color={category.color}
+          iconColor={category.iconColor}
           items={category.items}
         />
       ))}

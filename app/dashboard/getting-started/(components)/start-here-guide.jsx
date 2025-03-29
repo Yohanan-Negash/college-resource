@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
+import { motion } from 'motion/react';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -8,9 +9,16 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, BookOpen, Laptop, Building2 } from 'lucide-react';
+import {
+  ArrowRight,
+  BookOpen,
+  Laptop,
+  Building2,
+  Sparkles,
+} from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 const paths = [
@@ -26,6 +34,8 @@ const paths = [
       'Open Source',
     ],
     difficulty: 'Beginner',
+    color: 'bg-purple-500/10',
+    iconColor: 'text-purple-500',
   },
   {
     title: 'Startup Track',
@@ -39,6 +49,8 @@ const paths = [
       'Agile',
     ],
     difficulty: 'Intermediate',
+    color: 'bg-primary/10',
+    iconColor: 'text-primary',
   },
   {
     title: 'FAANG Track',
@@ -47,11 +59,14 @@ const paths = [
     icon: Building2,
     steps: ['Data Structures', 'Algorithms', 'System Design'],
     difficulty: 'Advanced',
+    color: 'bg-destructive/10',
+    iconColor: 'text-destructive',
   },
 ];
 
 export function StartHereGuide() {
   const router = useRouter();
+  const [activeCard, setActiveCard] = useState(null);
 
   const handleStartPath = (pathTitle) => {
     router.push(
@@ -59,63 +74,179 @@ export function StartHereGuide() {
     );
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: {
+      y: 20,
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+  };
+
+  const stepVariants = {
+    hidden: { opacity: 0, x: -5 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.3,
+      },
+    }),
+  };
+
   return (
-    <div className='space-y-8'>
-      <div className='space-y-2'>
-        <h2 className='text-3xl font-bold tracking-tight text-primary'>
-          Start Your Tech Journey Here!
-        </h2>
+    <div className='space-y-8 bg-background'>
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className='space-y-2'
+      >
+        <div className='flex items-center gap-2'>
+          <h2 className='text-lg font-bold tracking-tight sm:text-6xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+            Start Your Tech Journey Here!
+          </h2>
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              rotate: [0, 5, 0, -5, 0],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: 'reverse',
+            }}
+          >
+            <Sparkles className='h-6 w-6 text-primary' />
+          </motion.div>
+        </div>
         <p className='text-muted-foreground'>
           Choose your path based on your goals and experience level.
         </p>
-      </div>
+      </motion.div>
 
-      <div className='grid gap-4 md:grid-cols-3'>
-        {paths.map((path) => (
-          <Card key={path.title} className='relative overflow-hidden'>
-            <CardHeader>
-              <div className='flex items-center justify-between'>
-                <path.icon className='h-8 w-8 text-primary' />
-                <Badge
-                  variant={
-                    path.difficulty === 'Beginner'
-                      ? 'secondary'
-                      : path.difficulty === 'Intermediate'
-                      ? 'default'
-                      : 'destructive'
-                  }
-                >
-                  {path.difficulty}
-                </Badge>
-              </div>
-              <CardTitle>{path.title}</CardTitle>
-              <CardDescription>{path.description}</CardDescription>
-            </CardHeader>
-            <CardContent className='flex flex-col justify-between h-[200px]'>
-              <div
-                className='overflow-y-auto pr-2'
-                style={{ maxHeight: '150px' }}
-              >
-                {path.steps.map((step, index) => (
-                  <div key={step} className='flex items-center gap-2 mb-2'>
-                    <div className='flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-sm'>
-                      {index + 1}
-                    </div>
-                    <span>{step}</span>
+      <motion.div
+        variants={containerVariants}
+        initial='hidden'
+        animate='visible'
+        className='grid gap-6 md:grid-cols-3'
+      >
+        {paths.map((path, pathIndex) => (
+          <motion.div
+            key={path.title}
+            variants={cardVariants}
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.2 },
+            }}
+            onMouseEnter={() => setActiveCard(pathIndex)}
+            onMouseLeave={() => setActiveCard(null)}
+          >
+            <Card
+              className={`relative overflow-hidden h-full flex flex-col ${
+                activeCard === pathIndex
+                  ? 'shadow-[0_0_25px_rgba(139,92,246,0.25)] dark:shadow-[0_0_25px_rgba(139,92,246,0.25)]'
+                  : 'shadow-[0_0_15px_rgba(139,92,246,0.1)] dark:shadow-[0_0_15px_rgba(139,92,246,0.1)]'
+              }`}
+            >
+              {/* Animated border effect for active card */}
+              {activeCard === pathIndex && (
+                <div className='absolute inset-0 rounded-lg overflow-hidden pointer-events-none'>
+                  <div
+                    className='absolute inset-0 rounded-lg'
+                    style={{
+                      background:
+                        'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent)',
+                      backgroundSize: '200% 100%',
+                      animation: 'shine 2s infinite linear',
+                    }}
+                  ></div>
+                </div>
+              )}
+
+              <CardHeader>
+                <div className='flex items-center justify-between'>
+                  <div className={`p-2 rounded-md ${path.color}`}>
+                    <path.icon className={`h-6 w-6 ${path.iconColor}`} />
                   </div>
-                ))}
-              </div>
-              <Button
-                className='w-full mt-4'
-                onClick={() => handleStartPath(path.title)}
-              >
-                Start This Path
-                <ArrowRight className='ml-2 h-4 w-4' />
-              </Button>
-            </CardContent>
-          </Card>
+                  <Badge
+                    variant={
+                      path.difficulty === 'Beginner'
+                        ? 'secondary'
+                        : path.difficulty === 'Intermediate'
+                        ? 'default'
+                        : 'destructive'
+                    }
+                    className='transition-all duration-300 hover:scale-105'
+                  >
+                    {path.difficulty}
+                  </Badge>
+                </div>
+                <CardTitle className='mt-2'>{path.title}</CardTitle>
+                <CardDescription>{path.description}</CardDescription>
+              </CardHeader>
+              <CardContent className='flex-grow'>
+                <div
+                  className='overflow-y-auto pr-2 space-y-3'
+                  style={{ maxHeight: '150px' }}
+                >
+                  {path.steps.map((step, index) => (
+                    <motion.div
+                      custom={index}
+                      variants={stepVariants}
+                      initial='hidden'
+                      animate='visible'
+                      key={step}
+                      className='flex items-center gap-3 group'
+                    >
+                      <div
+                        className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-sm transition-colors duration-300 ${
+                          activeCard === pathIndex ? path.color : 'bg-muted/30'
+                        }`}
+                      >
+                        {index + 1}
+                      </div>
+                      <span className='transition-colors duration-300 group-hover:text-primary'>
+                        {step}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </CardContent>
+              <CardFooter className='pt-0'>
+                <Button
+                  className='w-full group'
+                  onClick={() => handleStartPath(path.title)}
+                >
+                  Start This Path
+                  <span className='ml-2 transition-transform duration-300 group-hover:translate-x-1'>
+                    <ArrowRight className='h-4 w-4' />
+                  </span>
+                </Button>
+              </CardFooter>
+            </Card>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
