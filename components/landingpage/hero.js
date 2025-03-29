@@ -21,13 +21,13 @@ const Hero = ({ onJoinWaitlist }) => {
         </p>
 
         <div className='flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-2'>
-          <button
-            onClick={onJoinWaitlist}
+          <Link
+            href='/login'
             className='font-ubuntu group px-8 py-4 rounded-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center text-sm'
           >
-            Join Waitlist
+            Sign Up/Login
             <ChevronRight className='ml-1 w-6 h-6 group-hover:translate-x-1 transition-transform' />
-          </button>
+          </Link>
           <Link
             href='/blog'
             className='font-ubuntu group px-8 py-4 rounded-lg font-medium bg-zinc-900 border border-zinc-700/50 hover:border-purple-500/50 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center text-zinc-400 hover:text-white text-sm'

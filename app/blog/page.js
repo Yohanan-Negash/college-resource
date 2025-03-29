@@ -5,6 +5,7 @@ import WaitlistForm from '../../components/landingpage/waitlistform';
 import { Toaster } from '../../components/ui/toaster';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
+import Link from 'next/link';
 
 const BlogPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -55,13 +56,13 @@ const BlogPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <button
-          onClick={() => setIsFormOpen(true)}
+        <Link
+          href='/login'
           className='group w-3/5 sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center text-white hover:text-white text-sm sm:text-base'
         >
-          Join Waitlist
+          Get Started
           <ChevronRight className='ml-1 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform' />
-        </button>
+        </Link>
       </motion.div>
 
       <WaitlistForm

@@ -13,8 +13,11 @@ const Navigation = ({ className }) => {
           </div>
         </Link>
         <div className='flex items-center space-x-2 bg-[#2A2D3E]/50 backdrop-blur-sm px-4 py-2 rounded-full text-sm lg:text-base border border-purple-500/20 hover:border-purple-500/40 transition-colors'>
-          <div className='h-2 w-2 bg-green-400 rounded-full animate-pulse'></div>
-          <span className='font-ubuntu text-zinc-300'>Coming Soon</span>
+          <div className='relative'>
+            <div className='h-2.5 w-2.5 bg-green-400 rounded-full animate-[pulse_1.2s_ease-in-out_infinite]'></div>
+            <div className='absolute inset-0 h-2.5 w-2.5 bg-green-400 rounded-full animate-[ping_1.5s_cubic-bezier(0,0,.2,1)_infinite] opacity-30'></div>
+          </div>
+          <span className='font-ubuntu text-zinc-300'>Platform is live!</span>
         </div>
       </div>
     </nav>

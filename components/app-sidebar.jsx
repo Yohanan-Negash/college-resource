@@ -145,8 +145,12 @@ export async function AppSidebar() {
                   <GalleryVerticalEnd className='size-4' />
                 </div>
                 <div className='flex flex-col gap-0.5 leading-none'>
-                  <span className='font-semibold'>PhazeOne</span>
-                  <span className='ml-2 mt-1.5'>v1.0.0 - beta</span>
+                  <span className='font-semibold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
+                    PhazeOne
+                  </span>
+                  <span className='text-xs text-muted-foreground ml-2 mt-1'>
+                    v1.0.0
+                  </span>
                 </div>
               </Link>
             </SidebarMenuButton>

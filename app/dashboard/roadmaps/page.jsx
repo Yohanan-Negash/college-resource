@@ -8,6 +8,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import {
@@ -19,11 +20,13 @@ import {
   ChevronDown,
   LightbulbIcon,
   Heart,
+  ExternalLink,
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'motion/react';
 
 export default function RoadmapsPage() {
   const [isMobileExpanded, setIsMobileExpanded] = useState(false);
+  const [activeCard, setActiveCard] = useState(null);
 
   const careerPaths = [
     {
@@ -32,6 +35,8 @@ export default function RoadmapsPage() {
         'Specialize in creating user interfaces and experiences for web applications.',
       icon: Code,
       roadmapLink: 'https://roadmap.sh/frontend',
+      color: 'bg-blue-500/10',
+      iconColor: 'text-blue-500',
     },
     {
       title: 'Backend Developer',
@@ -39,6 +44,8 @@ export default function RoadmapsPage() {
         'Focus on server-side logic, databases, and application architecture.',
       icon: Server,
       roadmapLink: 'https://roadmap.sh/backend',
+      color: 'bg-green-500/10',
+      iconColor: 'text-green-500',
     },
     {
       title: 'Full Stack Developer',
@@ -46,6 +53,8 @@ export default function RoadmapsPage() {
         'Develop both client and server software, handling all aspects of web development.',
       icon: Database,
       roadmapLink: 'https://roadmap.sh/full-stack',
+      color: 'bg-purple-500/10',
+      iconColor: 'text-purple-500',
     },
   ];
 
@@ -64,27 +73,29 @@ export default function RoadmapsPage() {
 
   return (
     <div className='container mx-auto p-6 max-w-100'>
-      <Card className='mb-8 '>
+      <Card className='mb-8 shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)]'>
         <CardHeader>
-          <CardTitle className='text-4xl font-bold bg-clip-text text-primary'>
+          <CardTitle className='text-4xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
             Tech Career Roadmaps
           </CardTitle>
-          <CardDescription className='text-lg text-gray-600 dark:text-gray-300'>
+          <CardDescription className='text-lg text-muted-foreground'>
             Explore different career paths in tech and find comprehensive
             roadmaps to guide your learning journey.
           </CardDescription>
         </CardHeader>
       </Card>
 
-      <Card className='mb-8 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-800 dark:to-gray-900'>
+      <Card className='mb-8 shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-shadow duration-300 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-gray-800/50 dark:to-gray-900/50 border border-yellow-200 dark:border-yellow-900/30'>
         <CardHeader>
           <CardTitle className='text-2xl font-bold flex items-center text-yellow-600 dark:text-yellow-400'>
-            <LightbulbIcon className='h-6 w-6 mr-2' />
+            <div className='p-2 rounded-md bg-yellow-500/10 mr-2'>
+              <LightbulbIcon className='h-6 w-6 text-yellow-500' />
+            </div>
             Why Follow These Roadmaps?
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className='list-none pl-5 space-y-2'>
+          <ul className='list-none pl-5 space-y-3'>
             {[
               'Get a clear path for learning and skill development',
               'Understand the technologies and concepts crucial for your chosen career',
@@ -92,8 +103,8 @@ export default function RoadmapsPage() {
               'Identify gaps in your knowledge and fill them systematically',
               'Boost your confidence by tracking your progress along the roadmap',
             ].map((item, index) => (
-              <li key={index} className='flex items-start'>
-                <ArrowRight className='h-5 w-5 mr-2 text-yellow-500 flex-shrink-0 mt-1' />
+              <li key={index} className='flex items-start group'>
+                <ArrowRight className='h-5 w-5 mr-3 text-yellow-500 flex-shrink-0 mt-0.5' />
                 <span className='text-gray-700 dark:text-gray-200'>{item}</span>
               </li>
             ))}
@@ -104,42 +115,54 @@ export default function RoadmapsPage() {
       <div className='grid gap-8 md:grid-cols-2'>
         {careerPaths.map((path, index) => (
           <Card
-            key={index}
-            className='h-full transition-all duration-300 hover:shadow-lg'
+            key={path.title}
+            className='h-full flex flex-col shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300'
+            onMouseEnter={() => setActiveCard(index)}
+            onMouseLeave={() => setActiveCard(null)}
           >
             <CardHeader>
-              <div className='flex items-center space-x-2'>
-                <path.icon className='w-6 h-6 text-primary' />
+              <div className='flex items-center space-x-3'>
+                <div className={`p-2 rounded-md ${path.color}`}>
+                  <path.icon className={`w-6 h-6 ${path.iconColor}`} />
+                </div>
                 <CardTitle className='text-xl'>{path.title}</CardTitle>
               </div>
             </CardHeader>
-            <CardContent>
-              <CardDescription className='mb-4'>
+            <CardContent className='flex-grow'>
+              <CardDescription className='mb-4 text-muted-foreground'>
                 {path.description}
               </CardDescription>
-              <Button asChild className='w-full'>
+            </CardContent>
+            <CardFooter className='pt-0'>
+              <Button asChild className='w-full group'>
                 <Link
                   href={path.roadmapLink}
                   target='_blank'
                   rel='noopener noreferrer'
                 >
                   View Roadmap
-                  <ArrowRight className='ml-2 h-4 w-4' />
+                  <ExternalLink className='h-4 w-4 ml-2' />
                 </Link>
               </Button>
-            </CardContent>
+            </CardFooter>
           </Card>
         ))}
 
-        <Card className='h-full transition-all duration-300 hover:shadow-lg'>
+        <Card
+          className='h-full flex flex-col shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300'
+          onMouseEnter={() => setActiveCard('mobile')}
+          onMouseLeave={() => setActiveCard(null)}
+        >
           <CardHeader>
-            <div className='flex items-center space-x-2'>
-              <Smartphone className='w-6 h-6 text-primary' />
+            <div className='flex items-center space-x-3'>
+              <div className='p-2 rounded-md bg-orange-500/10'>
+                <Smartphone className='w-6 h-6 text-orange-500' />
+              </div>
               <CardTitle className='text-xl'>Mobile Development</CardTitle>
             </div>
           </CardHeader>
-          <CardContent>
-            <CardDescription className='mb-4'>
+          <CardContent className='flex-grow'>
+            <CardDescription className='mb-4 text-muted-foreground'>
               Develop native mobile applications for iOS and Android platforms.
             </CardDescription>
             <Button
@@ -148,13 +171,11 @@ export default function RoadmapsPage() {
               variant='outline'
             >
               Choose Platform
-              <motion.div
-                animate={{ rotate: isMobileExpanded ? 180 : 0 }}
-                transition={{ duration: 0.2 }}
-                className='ml-2'
-              >
-                <ChevronDown className='h-4 w-4' />
-              </motion.div>
+              <ChevronDown
+                className={`h-4 w-4 ml-2 transition-transform duration-200 ${
+                  isMobileExpanded ? 'rotate-180' : ''
+                }`}
+              />
             </Button>
 
             <AnimatePresence>
@@ -164,27 +185,24 @@ export default function RoadmapsPage() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.2 }}
-                  className='space-y-2'
+                  className='space-y-3'
                 >
                   {mobileOptions.map((option, index) => (
-                    <motion.div
+                    <Button
                       key={index}
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ delay: index * 0.1 }}
+                      asChild
+                      className='w-full'
+                      variant='secondary'
                     >
-                      <Button asChild className='w-full' variant='secondary'>
-                        <Link
-                          href={option.roadmapLink}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          {option.title}
-                          <ArrowRight className='ml-2 h-4 w-4' />
-                        </Link>
-                      </Button>
-                    </motion.div>
+                      <Link
+                        href={option.roadmapLink}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {option.title}
+                        <ExternalLink className='h-4 w-4 ml-2' />
+                      </Link>
+                    </Button>
                   ))}
                 </motion.div>
               )}
@@ -193,15 +211,19 @@ export default function RoadmapsPage() {
         </Card>
       </div>
 
-      <Card className='mt-8 shadow-lg hover:shadow-xl transition-shadow duration-300 '>
+      <Card className='mt-8 shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-shadow duration-300 border border-pink-200 dark:border-pink-900/30'>
         <CardHeader>
-          <CardTitle className='text-2xl font-bold flex items-center text-pink-600 dark:text-pink-400'>
-            <Heart className='h-6 w-6 mr-2' />
-            Appreciating roadmap.sh
+          <CardTitle className='text-2xl font-bold flex items-center'>
+            <div className='p-2 rounded-md bg-pink-500/10 mr-2'>
+              <Heart className='h-6 w-6 text-pink-500' />
+            </div>
+            <span className='bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent'>
+              Appreciating roadmap.sh
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <p className='text-gray-700 dark:text-gray-200 mb-4'>
+          <p className='text-muted-foreground mb-6'>
             roadmap.sh has been a game-changer for us as we built our app for
             aspiring developers. Their open-source roadmaps provided clarity in
             our learning paths, helping us stay focused and productive. Their
@@ -211,8 +233,7 @@ export default function RoadmapsPage() {
           </p>
           <Button
             asChild
-            variant='outline'
-            className='bg-gradient-to-r from-pink-500 to-red-500 text-white border-0 hover:from-pink-600 hover:to-red-600'
+            className='w-full bg-gradient-to-r from-pink-500 to-red-500 text-white hover:from-pink-600 hover:to-red-600'
           >
             <Link
               href='https://roadmap.sh/about'
@@ -220,7 +241,7 @@ export default function RoadmapsPage() {
               rel='noopener noreferrer'
             >
               Learn More About roadmap.sh
-              <ArrowRight className='h-4 w-4 ml-2' />
+              <ExternalLink className='h-4 w-4 ml-2' />
             </Link>
           </Button>
         </CardContent>

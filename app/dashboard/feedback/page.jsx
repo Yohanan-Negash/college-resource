@@ -75,7 +75,7 @@ export default function FeedbackPage() {
 
   return (
     <div className='container mx-auto p-6 max-w-100'>
-      <Card>
+      <Card className='shadow-[0_0_15px_rgba(139,92,246,0.15)] dark:shadow-[0_0_15px_rgba(139,92,246,0.15)]'>
         <CardHeader>
           <CardTitle className='text-primary font-bold text-2xl'>
             Submit Feedback

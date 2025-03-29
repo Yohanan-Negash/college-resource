@@ -1,27 +1,29 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import BorderBeam from '../ui/borderbeam';
+import Link from 'next/link';
 
 const ctaContent = {
   title: 'Time-Sensitive Opportunity',
   description:
-    "Be one of the first 100 students to gain early access to our revolutionary platform. As a beta user, you'll receive:",
+    "Be one of the first 1000 students to gain early access to our revolutionary platform. As an early user, you'll receive:",
   benefits: [
     {
       title: 'Lifetime Free Access',
-      description: 'Get permanent access to premium features at no cost',
+      description: 'Get permanent access to new features at no cost',
     },
     {
       title: 'Priority Support',
-      description: 'Direct line to our team for personalized guidance',
+      description:
+        'We have a built in support feature for you to submit bug reports and app improvements.',
     },
     {
       title: 'Early Feature Access',
       description: 'Be the first to try new tools and features',
     },
   ],
-  buttonText: 'Join the Exclusive Waitlist 🚀',
-  footnote: 'Only 100 beta spots available - Join now to secure your place',
+  buttonText: 'Get Started',
+  // footnote: 'Only 100 beta spots available - Join now to secure your place',
 };
 
 const FinalCTA = ({ onJoinWaitlist }) => {
@@ -57,13 +59,13 @@ const FinalCTA = ({ onJoinWaitlist }) => {
             </div>
           ))}
         </div>
-        <button
-          onClick={onJoinWaitlist}
-          className='font-ubuntu group px-8 py-4 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center mx-auto'
+        <Link
+          href='/login'
+          className='font-ubuntu group px-10 py-5 rounded-xl font-medium bg-gradient-to-r from-purple-500 to-pink-500 hover:shadow-lg hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300 flex items-center justify-center mx-auto max-w-72 '
         >
           {ctaContent.buttonText}
-          <ChevronRight className='ml-2 group-hover:translate-x-1 transition-transform' />
-        </button>
+          <ChevronRight className='ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform' />
+        </Link>
         <p className='font-ubuntu text-sm text-zinc-400 mt-4'>
           {ctaContent.footnote}
         </p>
