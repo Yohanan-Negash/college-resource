@@ -38,8 +38,8 @@ const footerContent = {
     {
       title: 'Legal',
       links: [
-        { name: 'Privacy', href: '#' },
-        { name: 'Terms', href: '#' },
+        { name: 'Privacy', href: '/privacy-policy' },
+        { name: 'Terms', href: '/terms-of-service' },
         { name: 'Cookie Policy', href: '#' },
         { name: 'License', href: '#' },
       ],
