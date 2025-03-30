@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import { Ubuntu } from 'next/font/google';
 import './globals.css';
 import { ThemeProviderWrapper } from '@/components/theme-provider-wrapper';
+import { Analytics } from '@vercel/analytics/next';
 
 const ubuntu = Ubuntu({
   weight: ['300', '400', '500', '700'],
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
         </ThemeProviderWrapper>
       </body>
     </html>
