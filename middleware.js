@@ -7,6 +7,13 @@ const PROTECTED_ROUTES = ['/login', '/dashboard'];
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
 
+  // Redirect /login to home
+  if (pathname === '/login') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    return NextResponse.redirect(url);
+  }
+
   // Check if the current path is a protected route
   const isProtectedRoute = PROTECTED_ROUTES.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`)
