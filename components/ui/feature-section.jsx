@@ -58,7 +58,7 @@ const FeatureSection = ({
                     : 'border-zinc-700/50 hover:border-purple-500/30'
                 )}
                 initial={{ opacity: 0.3 }}
-                animate={{ opacity: index === currentFeature ? 1 : 0.5 }}
+                animate={{ opacity: index === currentFeature ? 1 : 0.7 }}
                 transition={{ duration: 0.5 }}
                 onClick={() => setCurrentFeature(index)}
               >
