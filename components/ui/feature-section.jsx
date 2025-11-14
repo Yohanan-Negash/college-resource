@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import BorderBeam from './borderbeam';
 
 const FeatureSection = ({
   features,
@@ -46,39 +47,69 @@ const FeatureSection = ({
         </div>
 
         <div className='flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-10'>
-          <div className='order-2 md:order-1 space-y-8'>
+          <div className='order-2 md:order-1 space-y-6'>
             {features.map((feature, index) => (
               <motion.div
                 key={index}
-                className='flex items-center gap-6 md:gap-8'
+                className={cn(
+                  'relative bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border transition-all duration-300 cursor-pointer',
+                  index === currentFeature
+                    ? 'border-purple-500/50 shadow-lg shadow-purple-500/20 scale-[1.02]'
+                    : 'border-zinc-700/50 hover:border-purple-500/30'
+                )}
                 initial={{ opacity: 0.3 }}
-                animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
+                animate={{ opacity: index === currentFeature ? 1 : 0.7 }}
                 transition={{ duration: 0.5 }}
+                onClick={() => setCurrentFeature(index)}
               >
-                <motion.div
-                  className={cn(
-                    'w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2',
-                    index === currentFeature
-                      ? 'bg-primary border-purple-500 text-primary-foreground scale-110'
-                      : 'bg-muted border-muted-foreground'
-                  )}
-                >
-                  {index <= currentFeature ? (
-                    <span className='font-ubuntu text-lg font-bold'>✓</span>
-                  ) : (
-                    <span className='font-ubuntu text-lg font-semibold'>
-                      {index + 1}
-                    </span>
-                  )}
-                </motion.div>
+                {index === currentFeature && (
+                  <BorderBeam
+                    size={200}
+                    duration={10}
+                    delay={0}
+                    colorFrom='#FFD700'
+                    colorTo='#FFA500'
+                    borderWidth={1.5}
+                  />
+                )}
+                <div className='flex items-start gap-4'>
+                  <motion.div
+                    className={cn(
+                      'w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center border-2 flex-shrink-0 transition-all',
+                      index === currentFeature
+                        ? 'bg-purple-500/20 border-purple-500 text-purple-400 scale-110'
+                        : 'bg-zinc-800/50 border-zinc-700 text-zinc-500'
+                    )}
+                  >
+                    {index <= currentFeature ? (
+                      <span className='font-ubuntu text-lg font-bold'>✓</span>
+                    ) : (
+                      <span className='font-ubuntu text-lg font-semibold'>
+                        {index + 1}
+                      </span>
+                    )}
+                  </motion.div>
 
-                <div className='flex-1'>
-                  <h3 className='font-ubuntu text-xl md:text-2xl font-semibold text-white'>
-                    {feature.title || feature.step}
-                  </h3>
-                  <p className='font-ubuntu text-sm md:text-lg text-muted-foreground'>
-                    {feature.content}
-                  </p>
+                  <div className='flex-1 space-y-2'>
+                    <h3
+                      className={cn(
+                        'font-ubuntu text-xl md:text-2xl font-semibold transition-colors',
+                        index === currentFeature ? 'text-white' : 'text-zinc-400'
+                      )}
+                    >
+                      {feature.title || feature.step}
+                    </h3>
+                    <p
+                      className={cn(
+                        'font-ubuntu text-sm md:text-base leading-relaxed transition-colors',
+                        index === currentFeature
+                          ? 'text-zinc-300'
+                          : 'text-zinc-500'
+                      )}
+                    >
+                      {feature.content}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -86,9 +117,18 @@ const FeatureSection = ({
 
           <div
             className={cn(
-              'order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg'
+              'order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-xl border transition-all duration-300 bg-[#2A2D3E]/30',
+              'border-purple-500/50 shadow-lg shadow-purple-500/20'
             )}
           >
+            <BorderBeam
+              size={200}
+              duration={10}
+              delay={0}
+              colorFrom='#FFD700'
+              colorTo='#FFA500'
+              borderWidth={1.5}
+            />
             <AnimatePresence mode='wait'>
               {features.map(
                 (feature, index) =>
@@ -108,7 +148,7 @@ const FeatureSection = ({
                         width={1000}
                         height={500}
                       />
-                      <div className='absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background via-background/50 to-transparent' />
+                      <div className='absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black via-black/60 to-transparent' />
                     </motion.div>
                   )
               )}

@@ -32,6 +32,9 @@ const CompanyCarousel = () => {
             `}</style>
 
             <div className="mt-20 overflow-hidden">
+                <p className="text-center text-zinc-400 text-sm md:text-base mb-6 font-ubuntu max-w-2xl mx-auto px-4">
+                    Resources and internships from these companies that we store and keep fresh
+                </p>
                 <div className="flex w-[calc(150px*22)] animate-[scroll_40s_linear_infinite]">
                     {/* First set */}
                     {companies.map((company) => (

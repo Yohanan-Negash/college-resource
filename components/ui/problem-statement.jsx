@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { GraduationCap, Building, BookX } from 'lucide-react';
+import BorderBeam from './borderbeam';
 
 const ProblemStatement = () => {
   return (
@@ -24,7 +25,15 @@ const ProblemStatement = () => {
         {' '}
         {/* Increased gaps and max-width */}
         {/* University Failure */}
-        <div className='flex flex-col items-start text-left space-y-5'>
+        <div className='flex flex-col items-start text-left space-y-5 relative bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50'>
+          <BorderBeam
+            size={200}
+            duration={10}
+            delay={0}
+            colorFrom='#FFD700'
+            colorTo='#FFA500'
+            borderWidth={1.5}
+          />
           {' '}
           {/* Added space between elements */}
           <div className='w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center'>
@@ -46,7 +55,15 @@ const ProblemStatement = () => {
           </p>
         </div>
         {/* Lack of guidance */}
-        <div className='flex flex-col items-start text-left space-y-5'>
+        <div className='flex flex-col items-start text-left space-y-5 relative bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50'>
+          <BorderBeam
+            size={200}
+            duration={10}
+            delay={0}
+            colorFrom='#FFD700'
+            colorTo='#FFA500'
+            borderWidth={1.5}
+          />
           <div className='w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center'>
             <Building className='w-8 h-8 text-purple-500' />
           </div>
@@ -59,7 +76,15 @@ const ProblemStatement = () => {
           </p>
         </div>
         {/* Hidden resources */}
-        <div className='flex flex-col items-start text-left space-y-5'>
+        <div className='flex flex-col items-start text-left space-y-5 relative bg-[#2A2D3E]/50 backdrop-blur-sm p-6 rounded-xl border border-zinc-700/50'>
+          <BorderBeam
+            size={200}
+            duration={10}
+            delay={0}
+            colorFrom='#FFD700'
+            colorTo='#FFA500'
+            borderWidth={1.5}
+          />
           <div className='w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center'>
             <BookX className='w-8 h-8 text-purple-500' />
           </div>
